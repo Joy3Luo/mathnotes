@@ -1,8 +1,20 @@
 ---
+layout: post
 title: Behavior of interpolating functions In MatLab
-categories: [Notes]
-comments: true
+date: 2020-10-30 23:18 +0800
+tags: [ ]
 ---
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG0XJZG53F"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-TG0XJZG53F');
+  </script>
+
 
 ```matlab
 function interpgui(arg1,arg2)
