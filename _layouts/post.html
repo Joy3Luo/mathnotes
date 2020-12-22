@@ -1,59 +1,53 @@
 ---
 layout: default
-css: ["post.css"]
-js: ["post.js"]
 ---
-<div id="post-info">
-  <h3>{{page.title}}</h3>
-  <ul class="collapsible hoverable" data-collapsible="accordion">
-    <li>
-      <div class="collapsible-header">
-        <span>
-          <i class="material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Date">date_range</i>
-          {{page.date | date: "%d/%m/%Y %H:%M"}}
-          <i id="indicate" class="right material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Show extra info">info</i>
+
+<article class="post">
+  <h1 class="post-title">{{ page.title }}</h1>
+  <div class="post-meta">
+    {%- assign date_format = site.date_format | default: "%-d %b %Y" -%}
+    <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: date_format }}</time>
+    {%- if page.last_modified_at -%}
+      <span> ~ </span>
+      {%- assign mdate = page.last_modified_at | date_to_xmlschema -%}
+      <time datetime="{{ mdate }}" itemprop="dateModified">
+        {{ mdate | date: date_format }}
+      </time>
+    {%- endif -%}
+    {%- if page.author -%}
+      <span> • </span>
+      {% for author in page.author %}
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          {{ author }}
         </span>
-      </div>
-      <div class="collapsible-body">
-        <span>
-          <i class="material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Categories">sort</i>
-          {% for cat in page.categories %}
-          {% capture test %}{{cat | slice: 0}}{% endcapture %}
-          {% capture testup %}{{cat | slice: 0 | upcase}}{% endcapture %}
-          <a href="{{site.baseurl}}/categories#{{cat | slugify}}{% if test == testup %}_cap{% endif %}" target="_blank"><div class="chip">{{cat}}</div></a>
-          {% endfor %}
-        </span>
-        <span>
-          <i class="material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Tags">label</i>
-          {% for tag in page.tags %}
-          {% capture test %}{{tag | slice: 0}}{% endcapture %}
-          {% capture testup %}{{tag | slice: 0 | upcase}}{% endcapture %}
-          <a href="{{site.baseurl}}/tags#{{tag | slugify}}{% if test == testup %}_cap{% endif %}" target="_blank"><div class="chip">{{tag}}</div></a>
-          {% endfor %}
-        </span>
-      </div>
-    </li>
-  </ul>
-</div>
-<div class="divider"></div>
-<div class="row">
-  <div class="col s12">
-    {{ content }}
+        {%- if forloop.last == false %}, {% endif -%}
+      {% endfor %}
+    {%- endif -%}
   </div>
-</div>
-{% if site.disqus_shortname and page.comments %}
-<div id="disqus_thread"></div>
-<script>
-  var disqus_config = function () {
-    this.page.url = "{{site.url}}{{site.baseurl}}{{page.url}}";
-    this.page.identifier = "{{page.id}}";
-  };
-  (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = '//{{site.disqus_shortname}}.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  {{ content }}
+
+  {% if page.tags %}
+    {% include post-tags.html %}
+  {% endif %}
+
+  {% if jekyll.environment == "production" and site.disqus and page.comments != false %}
+    {% include disqus.html %}
+  {% endif %}
+</article>
+
+{% if site.related_posts != empty %}
+<aside class="related">
+  <h2>Related posts</h2>
+  <ul class="related-posts">
+    {% for post in site.related_posts limit:3 %}
+      <li>
+        <a href="{{ post.url | relative_url }}">
+          {{ post.title }}
+          <small><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time></small>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</aside>
 {% endif %}

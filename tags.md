@@ -1,6 +1,6 @@
 ---
-layout: page
-title: "Tags"
-css: ["tags.css"]
+layout: archive-taxonomies
+permalink: /tags/
+title: Tags
+type: tags
 ---
-{% include tags.html %}
