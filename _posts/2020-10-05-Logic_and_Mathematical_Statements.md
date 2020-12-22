@@ -1,8 +1,20 @@
 ---
+layout: post
 title: Logic and Mathematical Statements
-categories: [Notes]
-comments: true
+date: 2020-10-05 23:18 +0800
+tags: [Notes]
 ---
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG0XJZG53F"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-TG0XJZG53F');
+  </script>
+
 
 ## <font color= 977FD7> Negation</font>
 Sometimes in mathematics it's important to determine what the opposite of a given mathematical statement is. This is usually referred to as "negating" a statement. One thing to keep in mind is that if a statement is true, then its negation is false (and if a statement is false, then its negation is true).
