@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Niven's Theorem2
+title: Niven's Theorem
 date: 2020-10-07 23:18 +0800
 tags: [Theorem]
 ---
