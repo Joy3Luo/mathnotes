@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: About me
 ---
 
 <img src="{{ '/IMG_0621.jpg' | relative_url }}" width="300px">
