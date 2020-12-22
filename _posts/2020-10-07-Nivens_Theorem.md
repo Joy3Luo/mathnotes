@@ -2,7 +2,6 @@
 layout: post
 title: Niven's Theorem
 date: 2020-10-07 23:18 +0800
-last_modified_at: 2020-10-07 01:08:25 +0800
 tags: [Theorem]
 toc:  true
 ---
