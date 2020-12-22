@@ -1,8 +1,12 @@
 ---
+layout: post
 title: Composite Numerical Integration
-categories: [Notes]
-comments: true
+date: 2020-11-10 23:18 +0800
+tags: [ ]
+toc:  true
 ---
+
+
 <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG0XJZG53F"></script>
   <script>
