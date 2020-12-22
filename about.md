@@ -2,6 +2,7 @@
 layout: page
 title: About
 ---
+<img src="{{ '/IMG_0621.jpg' | relative_url }}" width="45px">
 
 Welcome to my little world.  I am glad that you find me here (≥∇≤)Y
 
