@@ -1,8 +1,10 @@
 ---
+layout: post
 title: Markdown - Customizing Text
-categories: [Others]
-comments: true
+date: 2019-09-24 23:18 +0800
+tags: [Markdown]
 ---
+
 
 ## <font color= 977FD7> Customizing Text with Markdown</font>
 ### <font color= 6FBCE1> Headings</font>
