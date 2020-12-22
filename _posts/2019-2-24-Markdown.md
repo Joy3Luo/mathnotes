@@ -5,6 +5,15 @@ date: 2019-09-24 23:18 +0800
 tags: [Markdown]
 ---
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG0XJZG53F"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-TG0XJZG53F');
+  </script>
 
 ## <font color= 977FD7> Customizing Text with Markdown</font>
 ### <font color= 6FBCE1> Headings</font>
