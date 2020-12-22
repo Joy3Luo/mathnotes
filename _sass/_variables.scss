@@ -10,6 +10,8 @@
   --gray-800: #343a40;
   --gray-900: #212529;
 
+
+
   --red: #fa5252;
   --pink: #e64980;
   --grape: #be4bdb;
@@ -34,8 +36,8 @@
 
   --text-font: Times, "Times New Roman", "Free Serif", "Noto Serif", TimesNewRomanPSMT, "Droid Serif";
 
-  --link-color: var(--blue);
-  --link-hover-color: #1c7ed6;
+  --link-color: #935DF5; //#changed to purper var(--blue);
+  --link-hover-color: #935DF5; //#changed to purper;
 
   --heading-color: var(--gray-900);
 
@@ -53,10 +55,10 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --body-color: var(--gray-300);
+    --body-color: #F17EC8 ; //changed to pink from #var(--gray-300);
     --body-bg: var(--gray-800);
 
-    --heading-color: #fff;
+    --heading-color: #F17EC8; // changed to pink #fff;
 
     --link-color: var(--blue-300);
     --link-hover-color: var(--blue-400);
