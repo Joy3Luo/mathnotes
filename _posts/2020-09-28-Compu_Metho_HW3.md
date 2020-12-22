@@ -5,6 +5,16 @@ date: 2020-09-28 23:18 +0800
 tags: [Homework]
 ---
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG0XJZG53F"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-TG0XJZG53F');
+  </script>
+
 ```matlab
 %% AMSC 460 - Computational Methods Fall 2020
 
