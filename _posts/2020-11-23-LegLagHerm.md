@@ -1,7 +1,9 @@
 ---
+layout: post
 title: Gaussian Quadrature
-categories: [Notes]
-comments: true
+date: 2020-11-23 23:18 +0800
+tags: [ ]
+toc:  true
 ---
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
