@@ -204,6 +204,8 @@ Some lists use circles or bullets
 HTML table elements
 - \<table>\</table>
 - contains rows \<tr>\</tr>
+- header elements \<th>\</th>
+- table cells \<td>\</td>
 
 ```html
 <table>
