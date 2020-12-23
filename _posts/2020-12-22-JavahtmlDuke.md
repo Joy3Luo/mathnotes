@@ -76,7 +76,7 @@ Different Types of Elements
 - Defines section of web page
 - Useful for CSS
 
-```HTML
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
