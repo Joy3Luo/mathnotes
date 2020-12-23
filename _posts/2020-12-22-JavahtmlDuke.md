@@ -17,9 +17,6 @@ math: true
     gtag('config', 'G-TG0XJZG53F');
   </script>
 
-
-## Programming Foundations with JavaScript, HTML and CS
-
 #### <font color= 6FBCE1>Week 1</font>
 
 ## <font color= 977FD7> Building a Web Page with HTML - What Is HTML?</font>
