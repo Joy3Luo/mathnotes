@@ -19,7 +19,9 @@ math: true
 
 #### <font color= 6FBCE1>Week 1</font>
 
-## <font color= 977FD7> Building a Web Page with HTML - What Is HTML?</font>
+# Building a Web Page with HTML
+
+## <font color= 977FD7>What Is HTML?</font>
 
 HTML is a language used to make web pages
 - NOT a programming language, markup language
@@ -41,7 +43,7 @@ Collaborative standard
   <body>
 <html>
 ```
->Hellp World!
+\> Hellp World!
 
 ---
 
@@ -98,3 +100,19 @@ id="courseraLogo"/>
  <h1>Build Software Applications</h1>
 </div>
 ```
+
+---
+
+## <font color= 977FD7>Formatting Text and Nesting Tags</font>
+
+Tags surround text or page elements
+```html
+<b> Make text stylistically different </b>
+<b> Traditionally bold face, but can change </b>
+<em> Emphasize text! </em>
+<b>this</b> <em>is an <b>example of nested</b> tags</em>
+```
+\> <b> Make text stylistically different </b>
+\> <b> Traditionally bold face, but can change </b>
+\> <em> Emphasize text! </em>
+\> <b>this</b> <em>is an <b>example of nested</b> tags</em>
