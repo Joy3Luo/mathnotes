@@ -172,11 +172,10 @@ Some lists use circles or bullets
  </ul>
  ```
 \>
-<li>How computing and programming are changing the world.</li>
+ <ul><li>How computing and programming are changing the world.</li>
 <li>Internet and the Web</li>
 <li>HTML and CSS to create web pages</li>
-<li>Javascript to create images and to</li>
-
+<li>Javascript to create images and to</li> </ul>
 
 
 \<ol> is ordered list
