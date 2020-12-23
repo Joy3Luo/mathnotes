@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Programming Foundations with JavaScript, HTML and CS
+title: Building a Web Page with HTML
 date: 2020-12-22 23:18 +0800
-tags: [Java, HTML]
+tags: [HTML]
 toc:  true
 math: true
 ---
@@ -16,10 +16,6 @@ math: true
 
     gtag('config', 'G-TG0XJZG53F');
   </script>
-
-#### <font color= 6FBCE1>Week 1</font>
-
-# Building a Web Page with HTML
 
 ## <font color= 977FD7>What Is HTML?</font>
 
