@@ -155,4 +155,32 @@ a resource for learning
 
 ---
 
-## <font color= 977FD7>Images and Storage</font>
+## <font color= 977FD7>Lists and Tables</font>
+
+
+Some lists use circles or bullets
+- These are unordered lists, tag: \<ul> \</ul>
+  - Inside \<ul> \</ul> must have sequence of \<li>\</li> elements
+- Content viewed in order, list labels all the same
+
+ ```html
+ <ul>
+ <li>How computing and programming are changing the world.</li>
+ <li>Internet and the Web</li>
+ <li>HTML and CSS to create web pages</li>
+<li>Javascript to create images and to</li>
+ </ul>
+ ```
+\>
+<li>How computing and programming are changing the world.</li>
+<li>Internet and the Web</li>
+<li>HTML and CSS to create web pages</li>
+<li>Javascript to create images and to</li>
+
+
+
+\<ol> is ordered list
+- \<li>\</li> required
+- Automatic numbering
+- Add, remove \<li>
+- Numbers change
