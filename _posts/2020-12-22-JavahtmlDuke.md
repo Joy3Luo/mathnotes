@@ -113,6 +113,13 @@ Tags surround text or page elements
 <b>this</b> <em>is an <b>example of nested</b> tags</em>
 ```
 \> <b> Make text stylistically different </b>
+
 \> <b> Traditionally bold face, but can change </b>
+
 \> <em> Emphasize text! </em>
+
 \> <b>this</b> <em>is an <b>example of nested</b> tags</em>
+
+---
+
+## <font color= 977FD7>Adding Images and Links</font>
