@@ -131,9 +131,8 @@ Image tag:
 <img src=“{{ '/IMG_0621.jpg' | relative_url }}” />
 ```
 \>
-<img src=“{{ '/IMG_0621.jpg' | relative_url }}” width=“75%”/>
 <img src="{{ '/IMG_0621.jpg' | relative_url }}" width="300px">
-<img src=“{{ '/IMG_0621.jpg' | relative_url }}” />
+
 
 No end tag, src required, width optional
 - height=
