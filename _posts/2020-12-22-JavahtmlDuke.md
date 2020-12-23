@@ -30,6 +30,7 @@ Collaborative standard
 - First standard in 1993
 - Current (2020) standard in 2014
 
+<font color= E675A7> For example</font>
 
 ```html
 <html>
@@ -75,6 +76,8 @@ Different Types of Elements
 \<div>
 - Defines section of web page
 - Useful for CSS
+
+<font color= E675A7> For example</font>
 
 ```html
 <!DOCTYPE html>
