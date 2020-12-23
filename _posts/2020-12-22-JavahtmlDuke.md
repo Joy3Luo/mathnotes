@@ -53,8 +53,6 @@ Different Types of Elements
 
     - \<body>, \<h1>, \<div>
 
----
-
 \<html>
 - Contains all other elements
 - Specifies using HTML standard
