@@ -43,6 +43,7 @@ Collaborative standard
 ```
 >Hellp World!
 
+---
 
 Different Types of Elements
 - Metadata elements
