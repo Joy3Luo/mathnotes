@@ -231,7 +231,8 @@ HTML table elements
 </table>
 ```
 
-\> <table>
+\>
+<table>
  <tr>
  <th>Sweet</th>
  <th>Sour</th>
