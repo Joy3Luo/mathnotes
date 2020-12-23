@@ -123,3 +123,20 @@ Tags surround text or page elements
 ---
 
 ## <font color= 977FD7>Adding Images and Links</font>
+
+Image tag:
+```html
+<img src=“{{ '/IMG_0621.jpg' | relative_url }}” width=“75%”/>
+<img src="{{ '/IMG_0621.jpg' | relative_url }}" width="300px">
+<img src=“{{ '/IMG_0621.jpg' | relative_url }}” />
+```
+\>
+<img src=“{{ '/IMG_0621.jpg' | relative_url }}” width=“75%”/>
+<img src="{{ '/IMG_0621.jpg' | relative_url }}" width="300px">
+<img src=“{{ '/IMG_0621.jpg' | relative_url }}” />
+
+• Options: extra information
+• Some required
+• No end tag, src required, width optional
+• height=
+• CSS later
