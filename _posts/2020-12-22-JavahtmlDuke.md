@@ -2,7 +2,7 @@
 layout: post
 title: Programming Foundations with JavaScript, HTML and CS
 date: 2020-12-22 23:18 +0800
-tags: [Java]
+tags: [Java, HTML]
 toc:  true
 math: true
 ---
