@@ -152,3 +152,7 @@ a resource for learning
 ```
 
 \> Mozilla provides <a href="https://developer.mozilla.org/en-US/Learn/HTML"> a resource for learning</a> HTML.
+
+---
+
+## <font color= 977FD7>Images and Storage</font>
