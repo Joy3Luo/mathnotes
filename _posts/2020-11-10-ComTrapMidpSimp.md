@@ -30,7 +30,7 @@ math: true
           all[i].SourceElement().parentNode.className += ' has-jax';
       }});
   </script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML-full"></script>
-  
+
 ## <font color= 977FD7> Numerical Integration</font>
 
 We will derive and analyse various numerical methods for approximating definite integrals of the form
