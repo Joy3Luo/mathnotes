@@ -177,10 +177,79 @@ Some lists use circles or bullets
 <li>HTML and CSS to create web pages</li>
 <li>Javascript to create images and to</li>
 
-
+</br>
 
 \<ol> is ordered list
 - \<li>\</li> required
 - Automatic numbering
 - Add, remove \<li>
 - Numbers change
+
+```html
+<ol>
+  <li>Apple1</li>
+  <li>Apple2</li>
+  <li>Apple3</li>
+  <li>Apple4</li>
+</ol>
+```
+\>
+<ol>
+  <li>Apple1</li>
+  <li>Apple2</li>
+  <li>Apple3</li>
+  <li>Apple4</li>
+</ol>
+
+
+HTML table elements
+- \<table>\</table>
+- contains rows \<tr>\</tr>
+
+```html
+<table>
+ <tr>
+ <th>Sweet</th>
+ <th>Sour</th>
+ <th>Salty</th>
+ </tr>
+ <tr>
+ <td> Milk </td>
+ <td> Yogurt </td>
+ <td> Sardines </td>
+ </tr>
+ <tr>
+ <td> Pineapple </td>
+ <td> Kimchi </td>
+ <td> Salami </td>
+ </tr>
+ <tr>
+ <td> Grape </td>
+ <td> Vinegar </td>
+ <td> Pickles </td>
+ </tr>
+</table>
+```
+
+\> <table>
+ <tr>
+ <th>Sweet</th>
+ <th>Sour</th>
+ <th>Salty</th>
+ </tr>
+ <tr>
+ <td> Milk </td>
+ <td> Yogurt </td>
+ <td> Sardines </td>
+ </tr>
+ <tr>
+ <td> Pineapple </td>
+ <td> Kimchi </td>
+ <td> Salami </td>
+ </tr>
+ <tr>
+ <td> Grape </td>
+ <td> Vinegar </td>
+ <td> Pickles </td>
+ </tr>
+</table>
