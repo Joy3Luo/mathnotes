@@ -55,10 +55,10 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --body-color: #var(--gray-300);
+    --body-color: #F17EC8 ; //changed to pink from #var(--gray-300);
     --body-bg: var(--gray-800);
 
-    --heading-color: #fff;
+    --heading-color: #F17EC8; // changed to pink #fff;
 
     --link-color: var(--blue-300);
     --link-hover-color: var(--blue-400);
