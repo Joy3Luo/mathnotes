@@ -177,7 +177,7 @@ Some lists use circles or bullets
 <li>HTML and CSS to create web pages</li>
 <li>Javascript to create images and to</li>
 
-</br>
+
 
 \<ol> is ordered list
 - \<li>\</li> required
