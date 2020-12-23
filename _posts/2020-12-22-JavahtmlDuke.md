@@ -137,3 +137,18 @@ Image tag:
 No end tag, src required, width optional
 - height=
 - CSS later
+
+Linking Pages Together
+
+```html
+<h1>Where to learn HTML?</h1>
+<p>
+There are many sites that will serve as …
+<p>
+Mozilla provides
+<a href="https://developer.mozilla.org/en-US/Learn/HTML">
+a resource for learning
+</a> HTML.
+```
+
+\> Mozilla provides <a href="https://developer.mozilla.org/en-US/Learn/HTML"> a resource for learning</a> HTML.
