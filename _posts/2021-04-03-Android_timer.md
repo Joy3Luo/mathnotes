@@ -68,4 +68,5 @@ home |5 min timer
 <img src="https://joy3luo.github.io/mathnotes/app/android-timer/v2home.png" width="200"> |  <img src="https://joy3luo.github.io/mathnotes/app/android-timer/v25min.png" width="200">
 
 The growth of my timer is also dependent on users’ feedback.
+
 Bug reports and feature ideas are always welcome!
