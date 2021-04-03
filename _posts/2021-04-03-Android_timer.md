@@ -41,16 +41,16 @@ This worked — forcing yourself to focus before rewarding yourself with a break
 
 #### <font color= E675A7> Screen for the 5 minutes timer </font>
 
-<img src="{{ '/app/android-timer/screen5min.gif' | relative_url }}">
+<img src="{{ '/app/android-timer/screen5min.gif' | relative_url }}" width="300px">
 
 #### <font color= E675A7> after you select the 5 minutes timer </font>
 
-<img src="{{ '/app/android-timer/screen5minhome.png' | relative_url }}">
+<img src="{{ '/app/android-timer/screen5minhome.png' | relative_url }}" width="300px">
 
 #### <font color= E675A7> Screen for the customize timer </font>
 
-<img src="{{ '/app/android-timer/screencusplay.gif' | relative_url }}">
+<img src="{{ '/app/android-timer/screencusplay.gif' | relative_url }}" width="300px">
 
 #### <font color= E675A7> Want to support me?! </font>
 
-<img src="{{ '/app/android-timer/supporrt.png' | relative_url }}">
+<img src="{{ '/app/android-timer/supporrt.png' | relative_url }}" width="300px">
