@@ -58,3 +58,6 @@ This worked — forcing yourself to focus before rewarding yourself with a break
 #### <font color= 6FBCE1> Version 2</font>
 
 <img src="{{ '/app/android-timer/v25min.png' | relative_url }}" width="300px">
+
+
+<img src="/app/android-timer/v1home.png" width="200"/> <img src="/app/android-timer/v15min.png" width="200"/>
