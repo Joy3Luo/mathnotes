@@ -61,4 +61,6 @@ home |5 min timer
 
 #### <font color= 6FBCE1> Version 2</font>
 
-<img src="{{ '/app/android-timer/v25min.png' | relative_url }}" width="200px">
+home |5 min timer
+:---------------------:|:---------------------:
+<img src="https://joy3luo.github.io/mathnotes/app/android-timer/v2home.png" width="200"> |  <img src="https://joy3luo.github.io/mathnotes/app/android-timer/v25min.png" width="200">
