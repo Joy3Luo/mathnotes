@@ -17,7 +17,7 @@ math: true
   </script>
 
 
-## <font color= 977FD7> A cute timer for Android user</font>
+## <font color= 977FD7> A cute timer for Android user1</font>
 
 #### <font color= E675A7> contact me if you want to try it out >w<</font>
 
