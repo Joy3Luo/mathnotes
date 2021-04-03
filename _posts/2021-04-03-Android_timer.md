@@ -41,7 +41,9 @@ This worked — forcing yourself to focus before rewarding yourself with a break
 
 #### <font color= E675A7> Screen for the 5 minutes timer & after you select the 5 minutes timer</font>
 
-<img src="{{ '/app/android-timer/screen5min.gif' | relative_url }}" width="300px"> <img src="{{ '/app/android-timer/screen5minhome.jpg' | relative_url }}" width="300px">
+<font color= E675A7> 5 min timer</font> |  <font color= E675A7> home </font>
+:-------------------------:|:-------------------------:
+<img src="https://joy3luo.github.io/mathnotes/app/android-timer/screen5min.gif" width="300"> |  <img src="https://joy3luo.github.io/mathnotes/app/android-timer/screen5minhome.jpg" width="300">
 
 #### <font color= E675A7> Screen for the customize timer </font>
 
@@ -53,20 +55,10 @@ This worked — forcing yourself to focus before rewarding yourself with a break
 
 #### <font color= 6FBCE1> Version 1</font>
 
-<img src="{{ '/app/android-timer/v1home.png' | relative_url }}" width="300px"> <img src="{{ '/app/android-timer/v15min.png' | relative_url }}" width="300px">
+ <font color= E675A7> home </font>|<font color= E675A7> 5 min timer</font>
+:-------------------------:|:-------------------------:
+<img src="https://joy3luo.github.io/mathnotes/app/android-timer/v1home.png" width="200"> |  <img src="https://joy3luo.github.io/mathnotes/app/android-timer/v15min.png" width="200">
 
 #### <font color= 6FBCE1> Version 2</font>
 
-<img src="{{ '/app/android-timer/v25min.png' | relative_url }}" width="300px">
-
-
-![](https://joy3luo.github.io/mathnotes/app/android-timer/v15min.png)  |  ![](https://joy3luo.github.io/mathnotes/app/android-timer/v15min.png)
-:-------------------------:|:-------------------------:
-
-<img src="https://joy3luo.github.io/mathnotes/app/android-timer/v15min.png" width="200"> | <img src="https://joy3luo.github.io/mathnotes/app/android-timer/v15min.png" width="200">
-:-------------------------:|:-------------------------:
-
-
-Solarized dark             |  Solarized Ocean
-:-------------------------:|:-------------------------:
-<img src="https://joy3luo.github.io/mathnotes/app/android-timer/v15min.png" width="200"> |  <img src="https://joy3luo.github.io/mathnotes/app/android-timer/v15min.png" width="200">
+<img src="{{ '/app/android-timer/v25min.png' | relative_url }}" width="200px">
