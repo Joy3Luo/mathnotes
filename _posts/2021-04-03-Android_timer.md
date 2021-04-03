@@ -56,7 +56,7 @@ This worked — forcing yourself to focus before rewarding yourself with a break
 #### <font color= 6FBCE1> Version 1</font>
 
 home |5 min timer
-:---------------------:|:---------------------:
+:-----------------:|:-----------------:
 <img src="https://joy3luo.github.io/mathnotes/app/android-timer/v1home.png" width="200"> |  <img src="https://joy3luo.github.io/mathnotes/app/android-timer/v15min.png" width="200">
 
 #### <font color= 6FBCE1> Version 2</font>
