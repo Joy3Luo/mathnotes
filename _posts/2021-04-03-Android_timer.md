@@ -35,18 +35,22 @@ A simple timer could help, set it for 10 minutes, and tried working solidly for 
 
 This worked — forcing yourself to focus before rewarding yourself with a break helped you to get more done !
 
-##### <font color= E675A7> And it looks like this </font>
+#### <font color= E675A7> And it looks like this </font>
 
 <img src="{{ '/app/android-timer/home.png' | relative_url }}">
 
-##### <font color= E675A7> Screen for the 5 minutes timer </font>
+#### <font color= E675A7> Screen for the 5 minutes timer </font>
 
-<img src="{{ '/app/android-timer/screen5min.png' | relative_url }}">
+<img src="{{ '/app/android-timer/screen5min.gif' | relative_url }}">
 
-##### <font color= E675A7> after you select the 5 minutes timer </font>
+#### <font color= E675A7> after you select the 5 minutes timer </font>
 
 <img src="{{ '/app/android-timer/screen5minhome.png' | relative_url }}">
 
-##### <font color= E675A7> Screen for the customize timer </font>
+#### <font color= E675A7> Screen for the customize timer </font>
 
 <img src="{{ '/app/android-timer/screencusplay.gif' | relative_url }}">
+
+#### <font color= E675A7> Want to support me?! </font>
+
+<img src="{{ '/app/android-timer/supporrt.png' | relative_url }}">
