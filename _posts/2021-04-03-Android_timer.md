@@ -59,5 +59,6 @@ This worked — forcing yourself to focus before rewarding yourself with a break
 
 <img src="{{ '/app/android-timer/v25min.png' | relative_url }}" width="300px">
 
-
-<img src="/app/android-timer/v1home.png" width="200"/> <img src="/app/android-timer/v15min.png" width="200"/>
+Solarized dark             |  Solarized Ocean
+:-------------------------:|:-------------------------:
+![](https://joy3luo.github.io/mathnotes/app/android-timer/v15min.png)  |  ![](https://joy3luo.github.io/mathnotes/app/android-timer/v15min.png)
