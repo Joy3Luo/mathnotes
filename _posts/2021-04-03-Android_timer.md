@@ -37,7 +37,7 @@ This worked — forcing yourself to focus before rewarding yourself with a break
 
 #### <font color= E675A7> And it looks like this </font>
 
-<img src="{{ '/app/android-timer/home.png' | relative_url }}"width="300px">
+<img src="{{ '/app/android-timer/home.png' | relative_url }}" width="300px">
 
 #### <font color= E675A7> Screen for the 5 minutes timer </font>
 
