@@ -2,7 +2,7 @@
 layout: post
 title: Math - Composite Numerical Integration
 date: 2020-11-10 23:18 +0800
-tags: [Notes]
+tags: [Math]
 toc:  true
 math: true
 ---
