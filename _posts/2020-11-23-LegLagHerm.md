@@ -2,7 +2,7 @@
 layout: post
 title: Math - Gaussian Quadrature
 date: 2020-11-23 23:18 +0800
-tags: [Notes] [Math]
+tags: [Math]
 toc:  true
 math: true
 ---
