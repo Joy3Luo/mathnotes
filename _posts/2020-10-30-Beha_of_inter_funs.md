@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Behavior of interpolating functions In MatLab
+title: MatLab - Behavior of interpolating functions
 date: 2020-10-30 23:18 +0800
 tags: [MatLab]
 ---

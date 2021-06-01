@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Runge Phenomenon In MatLab
+title: MatLab - Runge Phenomenon
 date: 2020-10-09 23:18 +0800
 tags: [MatLab]
 ---
