@@ -1,8 +1,8 @@
 ---
 layout: post
-title: The First and Second Derivatives
+title: Math - The First and Second Derivatives
 date: 2020-10-06 23:18 +0800
-tags: [Notes]
+tags: [Math]
 math: true
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: Math - Niven's Theorem
 date: 2020-10-07 23:18 +0800
-tags: [Notes]
+tags: [Math]
 math: true
 ---
 
