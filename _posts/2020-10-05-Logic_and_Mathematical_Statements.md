@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Logic and Mathematical Statements
+title: Math - Logic and Mathematical Statements
 date: 2020-10-05 23:18 +0800
-tags: [Notes]
+tags: [Math]
 ---
 
 <!-- Global site tag (gtag.js) - Google Analytics -->

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Advance Calculus (Still working on it..)
+title: Math - Advance Calculus (Still working on it..)
 date: 2020-10-06 23:18 +0800
-tags: [Notes]
+tags: [Math]
 math: true
 ---
 
@@ -29,7 +29,7 @@ math: true
           all[i].SourceElement().parentNode.className += ' has-jax';
       }});
   </script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML-full"></script>  
-  
+
 ### <font color= 977FD7>Chapter 10</font>
 ##### <font color= 6FBCE1> The Scalar Product</font>
 Let u and v be points in $R^n$. The <font color= E675A7>scalar product</font> of u and v, denoted by $<u,v>$, is defined by the formula $<u,v> = u_{1}v_{1} + ··· + u_{n}v_{n}>$. <br/>
