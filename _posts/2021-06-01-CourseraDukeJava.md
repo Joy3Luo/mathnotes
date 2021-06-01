@@ -15,5 +15,20 @@ tags: [Programming]
     gtag('config', 'G-TG0XJZG53F');
   </script>
 
-## Chapter 1 - Building Strong Foundations
-### Hello World
+## Week2
+### Variables
+declare a new Variable,
+var x = 3;
+more variables
+var y = 4;
+var z = x + 2 * y;
+update variables
+x = z - 1;
+y = y * 2;
+more complex
+var fgImage = new SimpleImage("drewRobert.png");
+var bgImage = new SimpleImage("dinos.png");
+calling methods:Syntax
+var fgImage = new SimpleImage("drewRobert.png");
+var w = fgImage.getWidth();
+var h = fgImage.getHeight();
