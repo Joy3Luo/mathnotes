@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Composite Numerical Integration
+title: Math - Composite Numerical Integration
 date: 2020-11-10 23:18 +0800
 tags: [Notes]
 toc:  true
