@@ -214,3 +214,14 @@ OUTPUT:
 272
 
 256
+
+
+
+
+### For Loops
+```JavaScript
+for ( var pixel of img.values() ) {
+ var newG = 255 - pixel.getGreen();
+ pixel.setGreen(newG);
+}
+```
