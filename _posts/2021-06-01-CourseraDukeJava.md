@@ -18,52 +18,68 @@ toc:  true
 
 ### Variables
 declare a new Variable,
-> var x = 3;
+```JavaScript
+var x = 3;
+```
 
 more variables
-> var y = 4;
+```JavaScript
+var y = 4;
 var z = x + 2 * y;
+```
 
 update variables
-> x = z - 1;
+```JavaScript
+x = z - 1;
 y = y * 2;
+```
 
 more complex
-> var fgImage = new SimpleImage("drewRobert.png");
+```JavaScript
+var fgImage = new SimpleImage("drewRobert.png");
 var bgImage = new SimpleImage("dinos.png");
+```
 
 calling methods:Syntax
-> var fgImage = new SimpleImage("drewRobert.png");
+```JavaScript
+var fgImage = new SimpleImage("drewRobert.png");
 var w = fgImage.getWidth();
 var h = fgImage.getHeight();
+```
 
 Some Methods Have Parameters
-> var pixel = fgImage.getPixel(0,0);
+```JavaScript
+var pixel = fgImage.getPixel(0,0);
+```
 
 ### Functions
-> function square(x) {
+```JavaScript
+function square(x) {
  var ans = x * x;
  return ans;
 }
-\
-var y = square(4);
 
+var y = square(4);
+```
+
+### Week 2 Exercises
 #### Exercise 1 - Make a Phrase From Three Words
 Write a function named phrase3words that puts three words together into a phrase that is of type string with blanks between the words. The function phrase3words has three parameters named value1, value2 andvalue3. This function concatenates the words together into one string that has value1 first, followed by a blank, followed by value2, followed by a blank, followed by value3.
 
-> function phrase3words(value1, value2, value3) {
+```JavaScript
+function phrase3words(value1, value2, value3) {
     var answer = value1 + " " + value2 + " " + value3;    return answer;
 }
-\
+
 var result1 = phrase3words("smile","at","everyone");
 print(result1);
 var result2 = phrase3words("everyone","wave", "back");
 print(result2);
 var result3 = phrase3words("coding","is", "fun");
 print(result3);
+```
 
 OUTPUT:
-
 smile at everyone
 everyone wave back
 coding is fun
@@ -73,18 +89,19 @@ Write a function namedreformatName that puts a name together in a specific forma
 
 For example, the call reformatName("Susan", "Rodger") returns the string "Rodger, Susan", and the call reformatName("Robert", "Duvall") returns the string "Duvall, Robert".
 
->function reformatName(first, last) {
+```JavaScript
+function reformatName(first, last) {
     var answer = last + "," + first;
     return answer;
 }
-\
+
 var result = reformatName("Susan", "Rodger");
 print(result);
 result = reformatName("Robert", "Duvall");
 print(result);
+```
 
 OUTPUT:
-
 Rodger, Susan
 Duvall, Robert
 
@@ -93,42 +110,43 @@ Write a function named numberPixels that calculates the total number of pixels i
 
 For example, the call numberPixels("chapel.png") returns 71148, and the call numberPixels("dinos.png") returns 2073600. Both of these are images on the dukelearntoprogram.com website. For each image on that website it also displays the size of that image. That website shows that chapel.png has 231 pixels in width and 308 pixels in height, and 231\*308 is 71148 total pixels. That website also shows that dinos.png has 1920 pixels in with and 1080 pixels in height, and 1920*1080 is 2073600 total pixels.
 
->function numberPixels(namefile) {
+```JavaScript
+function numberPixels(namefile) {
     var someImg = new SimpleImage(namefile);
     var height = someImg.getHeight();
     var width = someImg.getWidth();
     var answer = height*width;
     return answer
 }
-\
+
 var result = numberPixels("chapel.png");
 print(result);
 result = numberPixels("dinos.png");
 print(result);
+```
 
 OUTPUT:
-
 71148
 2073600
-
 
 #### Exercise 4 - Perimeter of an image
 Write a function named perimeter that calculates the number of pixels in the perimeter of an image. The perimeter is the number of pixels on the edge of the image, from all four sides. The function perimeter has one parameter named imageName, which is a string that is the name of an image file. This function calculates and returns the perimeter in the specified image filename.
 
 For example, the image "rodger.png" has 315 pixels in width and 424 pixels in height. That means it has 315 pixels on the bottom, 315 on the top, 424 on the right side and 424 on the left side. The perimeter of this image is 315 + 315 + 424 + 424 =  1478. The call perimeter("rodger.png") returns 1478.
 
->function perimeter(imageName) {
+```JavaScript
+function perimeter(imageName) {
     var someImg = new SimpleImage(imageName);
     var height = someImg.getHeight();
     var width = someImg.getWidth();
     var answer = height*2 + width*2;
     return answer
 }
-\
+
 print(perimeter("rodger.png"));
+```
 
 OUTPUT:
-
 1478
 
 #### Exercise 5 - Print the RGB values of a pixel
@@ -136,7 +154,8 @@ Write a function named printPixel that prints the red, blue and green values of 
 
 Note that in the image drewgreen.png, Drew is standing in the middle and the background is bright green. So the first pixel printed at x and y location (10,10) is near the edge and is bright green. For its red, green and blue values, it has all green (255), no blue (0)  and only a tiny bit of red (1). The second pixel printed is in the middle of the image and is some part of Drew.
 
->function printPixel(nameImage, xpos, ypos) {
+```JavaScript
+function printPixel(nameImage, xpos, ypos) {
     var someImg = new SimpleImage(nameImage);
     var red = " red is " + someImg.getRed(xpos,ypos);
     var green = " green is " + someImg.getGreen(xpos,ypos);
@@ -145,12 +164,12 @@ Note that in the image drewgreen.png, Drew is standing in the middle and the bac
     print(green);
     print(blue);
 }
-\
+
 printPixel("drewgreen.png",10, 10);
 printPixel("drewgreen.png",250, 500);
+```
 
 OUTPUT:
-
 red is 1
 green is 255
 blue is 0
@@ -162,3 +181,20 @@ blue is 80
 Write a function named sumPixel that calculates and returns the sum of the red, blue and green values of a pixel.  The function sumPixel has three parameters,  namefile, which is a string that is the name of an image file, and xpos and ypos that are numbers representing the x and y coordinates of the pixel location. Since this function is returning a value, it should NOT have a print statement in the function, and it should have a return statement.
 
 Consider the image drewgreen.png.  The pixel at location (250,500) has red component 102, green component 90 and blue component 80. The call  sumPixel("drewgreen.png", 250, 500) should return 102+90+80 = 272. The pixel at location (10,10) has red component 1, green component 255 and blue component 0. The call  sumPixel("drewgreen.png", 10, 10) should return 1 + 255 + 0 = 256.
+
+```JavaScript
+function sumPixel(nameOfImage, xpos, ypos) {
+    var someImg = new SimpleImage(nameOfImage);
+    var answer = someImg.getRed(xpos,ypos) + someImg.getGreen(xpos,ypos) + someImg.getBlue(xpos,ypos);
+    return answer;
+}
+
+var answer = sumPixel("drewgreen.png", 250, 500);
+print(answer);
+answer = sumPixel("drewgreen.png",10, 10);
+print(answer);
+```
+
+OUTPUT:
+272
+256
