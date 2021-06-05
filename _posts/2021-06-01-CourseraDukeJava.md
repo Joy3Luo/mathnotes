@@ -3,6 +3,7 @@ layout: post
 title: Programming - Programming Foundations with JavaScript
 date: 2021-06-01 12:18 +0800
 tags: [Programming]
+toc:  true
 ---
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -47,10 +48,8 @@ Some Methods Have Parameters
 \
 var y = square(4);
 
-#### Exercise 1
-Make a Phrase From Three Words
+#### Exercise 1 - Make a Phrase From Three Words
 Write a function named phrase3words that puts three words together into a phrase that is of type string with blanks between the words. The function phrase3words has three parameters named value1, value2 andvalue3. This function concatenates the words together into one string that has value1 first, followed by a blank, followed by value2, followed by a blank, followed by value3.
-
 
 > function phrase3words(value1, value2, value3) {
     var answer = value1 + " " + value2 + " " + value3;    return answer;
@@ -136,3 +135,30 @@ OUTPUT:
 Write a function named printPixel that prints the red, blue and green values of a pixel, in that order, one on each line, and identifies each one.  The function printPixel has three parameters,  namefile, which is a string that is the name of an image file, and xpos and ypos that are numbers representing the x and y coordinates of the pixel location. Consider using the SimpleImage methods getRed, getGreen, and getBlue. Since this function is printing values, it does not need a return statement.
 
 Note that in the image drewgreen.png, Drew is standing in the middle and the background is bright green. So the first pixel printed at x and y location (10,10) is near the edge and is bright green. For its red, green and blue values, it has all green (255), no blue (0)  and only a tiny bit of red (1). The second pixel printed is in the middle of the image and is some part of Drew.
+
+>function printPixel(nameImage, xpos, ypos) {
+    var someImg = new SimpleImage(nameImage);
+    var red = " red is " + someImg.getRed(xpos,ypos);
+    var green = " green is " + someImg.getGreen(xpos,ypos);
+    var blue = " blue is " + someImg.getBlue(xpos,ypos);
+    print(red);
+    print(green);
+    print(blue);
+}
+\
+printPixel("drewgreen.png",10, 10);
+printPixel("drewgreen.png",250, 500);
+
+OUTPUT:
+
+red is 1
+green is 255
+blue is 0
+red is 102
+green is 90
+blue is 80
+
+#### Exercise 6 - Sum of the RGB values for a Pixel
+Write a function named sumPixel that calculates and returns the sum of the red, blue and green values of a pixel.  The function sumPixel has three parameters,  namefile, which is a string that is the name of an image file, and xpos and ypos that are numbers representing the x and y coordinates of the pixel location. Since this function is returning a value, it should NOT have a print statement in the function, and it should have a return statement.
+
+Consider the image drewgreen.png.  The pixel at location (250,500) has red component 102, green component 90 and blue component 80. The call  sumPixel("drewgreen.png", 250, 500) should return 102+90+80 = 272. The pixel at location (10,10) has red component 1, green component 255 and blue component 0. The call  sumPixel("drewgreen.png", 10, 10) should return 1 + 255 + 0 = 256.
