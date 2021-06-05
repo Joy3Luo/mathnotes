@@ -62,7 +62,7 @@ function square(x) {
 var y = square(4);
 ```
 
-### Week 2 Exercises
+### Exercises
 #### Exercise 1 - Make a Phrase From Three Words
 Write a function named phrase3words that puts three words together into a phrase that is of type string with blanks between the words. The function phrase3words has three parameters named value1, value2 andvalue3. This function concatenates the words together into one string that has value1 first, followed by a blank, followed by value2, followed by a blank, followed by value3.
 
@@ -80,8 +80,11 @@ print(result3);
 ```
 
 OUTPUT:
+
 smile at everyone
+
 everyone wave back
+
 coding is fun
 
 #### Exercise 2 - Format a name
@@ -102,7 +105,9 @@ print(result);
 ```
 
 OUTPUT:
+
 Rodger, Susan
+
 Duvall, Robert
 
 #### Exercise 3 - Number of pixels in an image
@@ -126,7 +131,9 @@ print(result);
 ```
 
 OUTPUT:
+
 71148
+
 2073600
 
 #### Exercise 4 - Perimeter of an image
@@ -147,6 +154,7 @@ print(perimeter("rodger.png"));
 ```
 
 OUTPUT:
+
 1478
 
 #### Exercise 5 - Print the RGB values of a pixel
@@ -170,11 +178,17 @@ printPixel("drewgreen.png",250, 500);
 ```
 
 OUTPUT:
+
 red is 1
+
 green is 255
+
 blue is 0
+
 red is 102
+
 green is 90
+
 blue is 80
 
 #### Exercise 6 - Sum of the RGB values for a Pixel
@@ -196,5 +210,7 @@ print(answer);
 ```
 
 OUTPUT:
+
 272
+
 256
