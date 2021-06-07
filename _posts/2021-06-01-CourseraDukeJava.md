@@ -225,3 +225,36 @@ for ( var pixel of img.values() ) {
  pixel.setGreen(newG);
 }
 ```
+
+### Conditional Execution
+```JavaScript
+if (x < y) {
+ z = 2;
+}
+else {
+ a = y + 1;
+ y = x - 3;
+}
+```
+
+```JavaScript
+var img = new SimpleImage("small.png");
+for (var pixel of img.values()) {
+ if (pixel.getX() >= img.getWidth()/2){
+ pixel.setRed(pixel.getRed()/2);
+ }
+ else {
+ pixel.setBlue(pixel.getRed());
+ }
+}
+```
+
+
+
+### Exercises
+#### Exercise 1 - Turn the chapel red.
+Write code that starts with the image “chapel.png” shown below on the left and turns the red part of every pixel to the highest red value possible, resulting in the image shown on the right.
+
+![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/FIjLP7q0Rj-Iyz-6tPY_9Q_1065ebf372874c9b9aa909d67b2a550e_chapelTurnRed.png?expiry=1623196800000&hmac=PhJsz1iiOzob773mT81-Vb6KcLi8TlGt94ir5mJPMRE)
+
+<img src="{{ 'https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/FIjLP7q0Rj-Iyz-6tPY_9Q_1065ebf372874c9b9aa909d67b2a550e_chapelTurnRed.png?expiry=1623196800000&hmac=PhJsz1iiOzob773mT81-Vb6KcLi8TlGt94ir5mJPMRE' | relative_url }}" width="300px">
