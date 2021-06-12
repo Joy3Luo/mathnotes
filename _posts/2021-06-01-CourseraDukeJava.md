@@ -443,8 +443,65 @@ for(var pixel of fgImage.values()){
 }
 ```
 
+### Thinking Critically about Your Program
 
-#### 
+```JavaScript
+var bb = new SimpleImage("duke_blue_devil.png");
+for (var pp of bb.values()) {
+ if(pp.getRed() < 200 && pp.getGreen() < 150 && pp.getBlue() != 255){
+ pp.setRed(0);
+ pp.setGreen(255);
+ pp.setBlue(100);
+ }
+}
+print(bb);
+```
+
+### Event-Driven programming
+
+```JavaScript
+
+```
+
+###
+
+```JavaScript
+
+```
+
+
+
+###
+
+```JavaScript
+
+```
+
+
+###
+
+```JavaScript
+
+```
+
+
+
+###
+
+```JavaScript
+
+```
+
+
+
+###
+
+```JavaScript
+
+```
+
+
+####
 
 ![]()
 
