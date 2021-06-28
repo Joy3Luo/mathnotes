@@ -482,27 +482,15 @@ Two \<div> ID’s
 
 ```html
 <div id="d1" >
- Hello
+  Hello
 </div>
 <div id="d2" >
- Goodbye
+  Goodbye
 </div>
 <p>
-<input type="button" value="color change"
- onclick = "changecolor()" >
+<input type="button" value="color change" onclick = "changecolor()" >
 </p>
 ```
-
-<div id="d1" >
- Hello
-</div>
-<div id="d2" >
- Goodbye
-</div>
-<p>
-<input type="button" value="color change"
- onclick = "changecolor()" >
-</p>
 
 Getting HTML Elements
 
@@ -514,6 +502,7 @@ function changecolor() {
   dd2.className = "yellowback";
 }
 ```
+
 Setting the CSS Class
 
 ```css
@@ -526,13 +515,30 @@ Setting the CSS Class
 }
 ```
 
-###
+<div id="d1" >
+  Hello
+</div>
+<div id="d2" >
+  Goodbye
+</div>
+<p>
+<input type="button" value="color change" onclick = "changecolor()" >
+</p>
+
+Changing HTML Text
 
 ```html
+function changetext() {
+  var dd1 = document.getElementById("d1");
+  var dd2 = document.getElementById("d2");
 
+  dd1.innerHTML = "Bonjour";
+  dd2.innerHTML = "Sayonara";
+}
 ```
 
-###
+### Programming Exercise: TODO list
+
 
 ```html
 
