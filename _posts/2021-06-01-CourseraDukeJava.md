@@ -16,29 +16,6 @@ toc:  true
     gtag('config', 'G-TG0XJZG53F');
   </script>
 
-
-  ```ruby
-  def print_hi(name)
-    puts "Hi, #{name}"
-  end
-  print_hi('Tom')
-  #=> prints 'Hi, Tom' to STDOUT.
-  ```
-
-  ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>quote</title>
-</head>
-<body>
-    <!-- Maya Angelou -->
-    <p>Try to be a rainbow in someone's cloud.</p>
-</body>
-</html>
-```
-
 ### JavaScript
 #### Variables
 declare a new Variable,
@@ -46,7 +23,7 @@ declare a new Variable,
 var x = 3;
 ```
 more variables
-```JavaScript
+```javascript
 var y = 4;
 var z = x + 2 * y;
 ```
