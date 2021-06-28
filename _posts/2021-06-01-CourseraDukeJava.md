@@ -504,7 +504,7 @@ Two \<div> ID’s
  onclick = "changecolor()" >
 </p>
 
-Getting HTML Elements1
+Getting HTML Elements
 
 ```javascript
 function changecolor() {
@@ -512,6 +512,17 @@ function changecolor() {
   var dd2 = document.getElementById("d2");
   dd1.className = "blueback";
   dd2.className = "yellowback";
+}
+```
+Setting the CSS Class
+
+```css
+.yelloback {
+  background-color: yellow:
+}
+
+.blueback {
+  background-color: lightblue;
 }
 ```
 
@@ -526,7 +537,21 @@ function changecolor() {
 ```html
 
 ```
+###
 
+```html
+
+```
+###
+
+```html
+
+```
+###
+
+```html
+
+```
 ###
 
 ```html
