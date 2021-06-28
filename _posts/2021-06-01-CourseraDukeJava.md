@@ -19,7 +19,7 @@ toc:  true
 ### JavaScript
 #### Variables
 declare a new Variable,
-```JavaScript
+```javascript
 var x = 3;
 ```
 more variables
@@ -28,28 +28,28 @@ var y = 4;
 var z = x + 2 * y;
 ```
 update variables
-```JavaScript
+```javascript
 x = z - 1;
 y = y * 2;
 ```
 more complex
-```JavaScript
+```javascript
 var fgImage = new SimpleImage("drewRobert.png");
 var bgImage = new SimpleImage("dinos.png");
 ```
 calling methods:Syntax
-```JavaScript
+```javascript
 var fgImage = new SimpleImage("drewRobert.png");
 var w = fgImage.getWidth();
 var h = fgImage.getHeight();
 ```
 Some Methods Have Parameters
-```JavaScript
+```javascript
 var pixel = fgImage.getPixel(0,0);
 ```
 
 #### Functions
-```JavaScript
+```javascript
 function square(x) {
  var ans = x * x;
  return ans;
@@ -61,7 +61,7 @@ var y = square(4);
 #### Exercise 1 - Make a Phrase From Three Words
 Write a function named phrase3words that puts three words together into a phrase that is of type string with blanks between the words. The function phrase3words has three parameters named value1, value2 andvalue3. This function concatenates the words together into one string that has value1 first, followed by a blank, followed by value2, followed by a blank, followed by value3.
 
-```JavaScript
+```javascript
 function phrase3words(value1, value2, value3) {
     var answer = value1 + " " + value2 + " " + value3;    return answer;
 }
@@ -87,7 +87,7 @@ Write a function namedreformatName that puts a name together in a specific forma
 
 For example, the call reformatName("Susan", "Rodger") returns the string "Rodger, Susan", and the call reformatName("Robert", "Duvall") returns the string "Duvall, Robert".
 
-```JavaScript
+```javascript
 function reformatName(first, last) {
     var answer = last + "," + first;
     return answer;
@@ -110,7 +110,7 @@ Write a function named numberPixels that calculates the total number of pixels i
 
 For example, the call numberPixels("chapel.png") returns 71148, and the call numberPixels("dinos.png") returns 2073600. Both of these are images on the dukelearntoprogram.com website. For each image on that website it also displays the size of that image. That website shows that chapel.png has 231 pixels in width and 308 pixels in height, and 231\*308 is 71148 total pixels. That website also shows that dinos.png has 1920 pixels in with and 1080 pixels in height, and 1920*1080 is 2073600 total pixels.
 
-```JavaScript
+```javascript
 function numberPixels(namefile) {
     var someImg = new SimpleImage(namefile);
     var height = someImg.getHeight();
@@ -136,7 +136,7 @@ Write a function named perimeter that calculates the number of pixels in the per
 
 For example, the image "rodger.png" has 315 pixels in width and 424 pixels in height. That means it has 315 pixels on the bottom, 315 on the top, 424 on the right side and 424 on the left side. The perimeter of this image is 315 + 315 + 424 + 424 =  1478. The call perimeter("rodger.png") returns 1478.
 
-```JavaScript
+```javascript
 function perimeter(imageName) {
     var someImg = new SimpleImage(imageName);
     var height = someImg.getHeight();
@@ -157,7 +157,7 @@ Write a function named printPixel that prints the red, blue and green values of 
 
 Note that in the image drewgreen.png, Drew is standing in the middle and the background is bright green. So the first pixel printed at x and y location (10,10) is near the edge and is bright green. For its red, green and blue values, it has all green (255), no blue (0)  and only a tiny bit of red (1). The second pixel printed is in the middle of the image and is some part of Drew.
 
-```JavaScript
+```javascript
 function printPixel(nameImage, xpos, ypos) {
     var someImg = new SimpleImage(nameImage);
     var red = " red is " + someImg.getRed(xpos,ypos);
@@ -191,7 +191,7 @@ Write a function named sumPixel that calculates and returns the sum of the red, 
 
 Consider the image drewgreen.png.  The pixel at location (250,500) has red component 102, green component 90 and blue component 80. The call  sumPixel("drewgreen.png", 250, 500) should return 102+90+80 = 272. The pixel at location (10,10) has red component 1, green component 255 and blue component 0. The call  sumPixel("drewgreen.png", 10, 10) should return 1 + 255 + 0 = 256.
 
-```JavaScript
+```javascript
 function sumPixel(nameOfImage, xpos, ypos) {
     var someImg = new SimpleImage(nameOfImage);
     var answer = someImg.getRed(xpos,ypos) + someImg.getGreen(xpos,ypos) + someImg.getBlue(xpos,ypos);
@@ -212,7 +212,7 @@ OUTPUT:
 
 
 #### For Loops
-```JavaScript
+```javascript
 for ( var pixel of img.values() ) {
  var newG = 255 - pixel.getGreen();
  pixel.setGreen(newG);
@@ -220,7 +220,7 @@ for ( var pixel of img.values() ) {
 ```
 
 #### Conditional Execution
-```JavaScript
+```javascript
 if (x < y) {
  z = 2;
 }
@@ -230,7 +230,7 @@ else {
 }
 ```
 
-```JavaScript
+```javascript
 var img = new SimpleImage("small.png");
 for (var pixel of img.values()) {
  if (pixel.getX() >= img.getWidth()/2){
@@ -248,7 +248,7 @@ Write code that starts with the image “chapel.png” shown below on the left a
 
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/FIjLP7q0Rj-Iyz-6tPY_9Q_1065ebf372874c9b9aa909d67b2a550e_chapelTurnRed.png?expiry=1623196800000&hmac=PhJsz1iiOzob773mT81-Vb6KcLi8TlGt94ir5mJPMRE)
 
-```JavaScript
+```javascript
 var image = new SimpleImage("chapel.png");
 for (var pixel of image.values())
 {
@@ -261,7 +261,7 @@ print(image);
 Write code that starts with the image “chapel.png” shown below on the left and removes all the red, resulting in the image shown on the right. You will notice that in the resulting image you will mostly see blue and green colors.
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/WVAWujiLQ2CQFro4iyNgEw_3ae809d7f77f435fa2631b0306020d1a_chapelTurnNoRed.png?expiry=1623196800000&hmac=23c8_e9mQCFzzbtKxpc1mPq7yKLcjyW-yN5Kp-Ai0BA)
 
-```JavaScript
+```javascript
 var image = new SimpleImage("chapel.png");
 for (var pixel of image.values())
 {
@@ -273,7 +273,7 @@ print(image);
 #### Exercise 3 - Turn the eggs less red
 Write code that starts with the image “eastereggs.jpg” shown below on the left and reduces all the red pixel values that are greater than 70 to 70, resulting in the image shown on the right. You will notice that in the resulting image you will see some reddish colors but no bright reds.
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/Js7ajhvQQoiO2o4b0PKI-w_00473ba9f0664c67b2b1638e6cb90ce9_eastereggsToLessRed.png?expiry=1623196800000&hmac=kALR4H0O_bqaPf9mXXJaUb_oJOu5XEiwpOBu-92yMu4)
-```JavaScript
+```javascript
 var image = new SimpleImage("eastereggs.jpg");
 for (var pixel of image.values()){
     if(pixel.getRed() > 70){
@@ -287,7 +287,7 @@ print(image);
 Write code that starts with the image “astrachan.jpg” shown below on the left and replaces the bottom ten rows with black pixels, resulting in the image shown on the right. Note that the color black has a red value of 0, a green value of 0 and a blue value of 0. Also note that the pixel in the top left corner has x-value 0 and y-value 0.
 
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/6GHq97J_TIqh6veyfzyK3Q_bf6ffb938906460eac33aa23443c8664_astrachanAddBlackLine.png?expiry=1623196800000&hmac=xOLKcfvvsBnMATqT1ML3Z7YeZUxnpVdo_ezNdR2KSU4)
-```JavaScript
+```javascript
 var image = new SimpleImage("astrachan.jpg");
 for (var pixel of image.values()){
     if(pixel.getY() >= image.getHeight()-10){
@@ -303,7 +303,7 @@ print(image);
 Write code that starts with the image “chapel.png” shown below on the left, and replaces the top left corner with an all green square of size 50 by 50, resulting in the image on the right below.
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/IwB2vkS3SWuAdr5Et5lrgA_6118176763b44fa2bb992e036666e79d_chapelAddLineBottomGreenSquare.png?expiry=1623196800000&hmac=OB5VPdEsVHOvjWeA8KUeSQP19LdOgaP6W0NmCzCa-Zc)
 
-```JavaScript
+```javascript
 var image = new SimpleImage("chapel.png");
 for (var pixel of image.values()){
     if(pixel.getY() <= 51 && pixel.getX() <= 51){
@@ -330,7 +330,7 @@ where picture2 is the simpleImage on the left below, followed by print(result2) 
 
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/mrb2FEPsRfW29hRD7MX1sg_66b90ea7c66545c8990bd55342dbb140_lionAddRedRect.png?expiry=1623196800000&hmac=qMsiASX6gR3ivmBLlVrS3PrA7EMbz5XzsIHIjAHnO7E)
 
-```JavaScript
+```javascript
 function topRightCorner(cornerWidth, cornerHeight, someImage, red, green, blue) {
     var image = new SimpleImage(someImage);
     for (var pixel of image.values()){
@@ -358,7 +358,7 @@ Write the function named changeRed that draws a rectangle of width 256 showing a
 
 Here are more details. When one loops over pixels with a for loop, they are processed row by row starting with the top row and in each row they are processed from left to right. This function should start at the first pixel with red set to 0 and increment red by 1 with each new pixel it processes. Since the width is 256, the range of the color red goes from 0 to 255 as the row is processed. After the red reaches 255, it should be reset back to 0 for the next row. With red set to 0 on the right it looks like black. As the red number increases by 1 each time it eventually looks like bright red.
 
-```JavaScript
+```javascript
 function changeRed(width, height) {
     var picture = new SimpleImage(width, height);
     var red = 0;
@@ -384,7 +384,7 @@ Modify the function changeRed so that numbers for blue and green can also be pas
 
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/K-O1dgpoSvujtXYKaIr7oA_523f956c46334c80a9e086bbe7f658ce_changeRedWithBlueGreen.png?expiry=1623196800000&hmac=7ho4TyQZD7_yQaBkVBu-tYBrFQaGpdk0wbaDx0hlGjU)
 
-```JavaScript
+```javascript
 function changeRed(width, height) {
     var picture = new SimpleImage(width, height);
     var red = 0;
@@ -406,7 +406,7 @@ print(result);
 ```
 
 #### Translating to Code
-```JavaScript
+```javascript
 //Start with the foreground image you want(fgImage)
 var fgImage = new SimpleImage("drewRobert.png");
 //... and with the background image you want(bgImage)
@@ -436,7 +436,7 @@ for(var pixel of fgImage.values()){
 
 #### Thinking Critically about Your Program
 
-```JavaScript
+```javascript
 var bb = new SimpleImage("duke_blue_devil.png");
 for (var pp of bb.values()) {
  if(pp.getRed() < 200 && pp.getGreen() < 150 && pp.getBlue() != 255){
@@ -453,7 +453,7 @@ print(bb);
 
  \<input> tag
 
-```HTML
+```html
 <input type = "button"
 value = "change"
 onclick = "alert('clicked button')" >
@@ -466,7 +466,7 @@ onclick = "alert('clicked button')" >
 
 Calling a JavaScript Function
 
-```HTML
+```html
 <input type = "button"
 value = "change"
 onclick = " dochange() " >
@@ -480,7 +480,7 @@ function dochange() {
 
 Two \<div> ID’s
 
-```HTML
+```html
 <div id="d1" >
  Hello
 </div>
@@ -506,7 +506,7 @@ Two \<div> ID’s
 
 Getting HTML Elements
 
-```JavaScript
+```javascript
 function changecolor() {
   var dd1 = document.getElementById("d1");
   var dd2 = document.getElementById("d2");
@@ -517,41 +517,33 @@ function changecolor() {
 
 ###
 
-```HTML
+```html
 
 ```
 
 ###
 
-```HTML
+```html
 
 ```
 
 ###
 
-```HTML
-
-```
-
-
-###
-
-```JavaScript
+```html
 
 ```
 
 
 ###
 
-```JavaScript
+```javascript
 
 ```
 
 
-
 ###
 
-```JavaScript
+```javascript
 
 ```
 
@@ -559,7 +551,15 @@ function changecolor() {
 
 ###
 
-```JavaScript
+```javascript
+
+```
+
+
+
+###
+
+```javascript
 
 ```
 
@@ -568,7 +568,7 @@ function changecolor() {
 
 ![]()
 
-```JavaScript
+```javascript
 
 ```
 
@@ -577,7 +577,7 @@ function changecolor() {
 
 ![]()
 
-```JavaScript
+```javascript
 
 ```
 
@@ -585,7 +585,7 @@ function changecolor() {
 
 ![]()
 
-```JavaScript
+```javascript
 
 ```
 
@@ -594,25 +594,9 @@ function changecolor() {
 
 ![]()
 
-```JavaScript
+```javascript
 
 ```
-
-
-
-
-
-
-
-
-####
-
-![]()
-
-```JavaScript
-
-```
-
 
 
 
@@ -625,11 +609,9 @@ function changecolor() {
 
 ![]()
 
-```JavaScript
+```javascript
 
 ```
-
-
 
 
 
@@ -643,7 +625,7 @@ function changecolor() {
 
 ![]()
 
-```JavaScript
+```javascript
 
 ```
 
@@ -661,6 +643,24 @@ function changecolor() {
 
 ![]()
 
-```JavaScript
+```javascript
+
+```
+
+
+
+
+
+
+
+
+
+
+
+####
+
+![]()
+
+```javascript
 
 ```
