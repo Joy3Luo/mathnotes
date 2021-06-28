@@ -504,7 +504,7 @@ Two \<div> ID’s
  onclick = "changecolor()" >
 </p>
 
-Getting HTML Elements
+Getting HTML Elements1
 
 ```javascript
 function changecolor() {
@@ -646,7 +646,6 @@ function changecolor() {
 ```javascript
 
 ```
-
 
 
 
