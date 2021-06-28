@@ -16,6 +16,8 @@ toc:  true
     gtag('config', 'G-TG0XJZG53F');
   </script>
 
+1
+
 ### JavaScript
 #### Variables
 declare a new Variable,
@@ -539,7 +541,7 @@ function changetext() {
 
 ### Programming Exercise: TODO list
 
-123
+
 ```html
 
 ```
