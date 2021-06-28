@@ -16,8 +16,6 @@ toc:  true
     gtag('config', 'G-TG0XJZG53F');
   </script>
 
-1
-
 ### JavaScript
 #### Variables
 declare a new Variable,
