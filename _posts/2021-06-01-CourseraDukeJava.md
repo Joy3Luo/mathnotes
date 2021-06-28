@@ -16,6 +16,16 @@ toc:  true
     gtag('config', 'G-TG0XJZG53F');
   </script>
 
+
+  ```ruby
+  def print_hi(name)
+    puts "Hi, #{name}"
+  end
+  print_hi('Tom')
+  #=> prints 'Hi, Tom' to STDOUT.
+  ```
+
+  
 ### JavaScript
 #### Variables
 declare a new Variable,
