@@ -16,43 +16,39 @@ toc:  true
     gtag('config', 'G-TG0XJZG53F');
   </script>
 
-### Variables
+### JavaScript
+#### Variables
 declare a new Variable,
 ```JavaScript
 var x = 3;
 ```
-
 more variables
 ```JavaScript
 var y = 4;
 var z = x + 2 * y;
 ```
-
 update variables
 ```JavaScript
 x = z - 1;
 y = y * 2;
 ```
-
 more complex
 ```JavaScript
 var fgImage = new SimpleImage("drewRobert.png");
 var bgImage = new SimpleImage("dinos.png");
 ```
-
 calling methods:Syntax
 ```JavaScript
 var fgImage = new SimpleImage("drewRobert.png");
 var w = fgImage.getWidth();
 var h = fgImage.getHeight();
 ```
-
 Some Methods Have Parameters
 ```JavaScript
 var pixel = fgImage.getPixel(0,0);
 ```
 
-### Functions
+#### Functions
 ```JavaScript
 function square(x) {
  var ans = x * x;
@@ -61,7 +57,6 @@ function square(x) {
 
 var y = square(4);
 ```
-
 ### Exercises
 #### Exercise 1 - Make a Phrase From Three Words
 Write a function named phrase3words that puts three words together into a phrase that is of type string with blanks between the words. The function phrase3words has three parameters named value1, value2 andvalue3. This function concatenates the words together into one string that has value1 first, followed by a blank, followed by value2, followed by a blank, followed by value3.
@@ -216,9 +211,7 @@ OUTPUT:
 256
 
 
-
-
-### For Loops
+#### For Loops
 ```JavaScript
 for ( var pixel of img.values() ) {
  var newG = 255 - pixel.getGreen();
@@ -226,7 +219,7 @@ for ( var pixel of img.values() ) {
 }
 ```
 
-### Conditional Execution
+#### Conditional Execution
 ```JavaScript
 if (x < y) {
  z = 2;
@@ -248,8 +241,6 @@ for (var pixel of img.values()) {
  }
 }
 ```
-
-
 
 ### Exercises
 #### Exercise 1 - Turn the chapel red.
@@ -414,7 +405,7 @@ var result = changeRed(256,200);
 print(result);
 ```
 
-### Translating to Code
+#### Translating to Code
 ```JavaScript
 //Start with the foreground image you want(fgImage)
 var fgImage = new SimpleImage("drewRobert.png");
@@ -443,7 +434,7 @@ for(var pixel of fgImage.values()){
 }
 ```
 
-### Thinking Critically about Your Program
+#### Thinking Critically about Your Program
 
 ```JavaScript
 var bb = new SimpleImage("duke_blue_devil.png");
@@ -458,17 +449,89 @@ print(bb);
 ```
 
 ### Event-Driven programming
+####Buttons with Divs
+
+ \<input> tag
+
+```HTML
+<input type = "button"
+value = "change"
+onclick = "alert('clicked button')" >
+```
+<p>
+<input type = "button"
+value = "change"
+onclick = "alert('clicked button')" >
+</p>
+
+Calling a JavaScript Function
+
+```HTML
+<input type = "button"
+value = "change"
+onclick = " dochange() " >
+
+function dochange() {
+  alert('clicked button');
+}
+```
+
+####Changing Pages Interactively
+
+Two \<div> ID’s
+
+```HTML
+<div id="d1" >
+ Hello
+</div>
+<div id="d2" >
+ Goodbye
+</div>
+<p>
+<input type="button" value="color change"
+ onclick = "changecolor()" >
+</p>
+```
+
+<div id="d1" >
+ Hello
+</div>
+<div id="d2" >
+ Goodbye
+</div>
+<p>
+<input type="button" value="color change"
+ onclick = "changecolor()" >
+</p>
+
+Getting HTML Elements
 
 ```JavaScript
+function changecolor() {
+  var dd1 = document.getElementById("d1");
+  var dd2 = document.getElementById("d2");
+  dd1.className = "blueback";
+  dd2.className = "yellowback";
+}
+```
+
+###
+
+```HTML
 
 ```
 
 ###
 
-```JavaScript
+```HTML
 
 ```
 
+###
+
+```HTML
+
+```
 
 
 ###
