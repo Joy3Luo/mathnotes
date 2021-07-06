@@ -228,6 +228,100 @@ class Solution
 }
 ```
 
+### Q5
+The function/method ***searchKeyIndex*** accepts two arguments list_head, a node representing the head node of the linked-list; and *key*, an integer
+representing the key value that must be searched inthe linked-list. It is supposed to return a list of integers representing the index values of the key in the linked list if the key value is present in the linked-ist. Otherwise, It returns a list of length of 1 with content '-1'.
+
+Your taskis to implement the function/method ***searchKeyIndex*** to search a value in the linkedist so that it passes all the test cases.
+
+The following lass is used to represent a node of the Linked List and is already implemented in the default code (Do not write this definition again in your code):
+
+```javascript
+class NodeLinkedList
+{
+  int key;
+  NodeLinkedList left, right;
+  public NodeLinkedList(int item)
+  {
+    key = item;
+    left = right = null;
+  }
+}
+```
+
+```javascript
+import java.util.*;
+import java.lang.*;
+import java.io.*
+class Solution
+{
+  List<Integer> searchKeyIndext(NodeLinkedList list_head, int key)
+  {
+    List<Integer> res = new ArrayList<>();
+    int flag =0;
+    int index = -1;
+    NodeLinkedList current = list_head;
+
+    while(current.nxt !=null)
+    {
+      index++;
+      if(current.value == key)
+      {
+        res.add(index);
+        flag = 1;
+      }
+      else {
+        current = current.next;
+      }
+
+    if(flag == 1)
+      return res;
+    else {
+      res.add(-1);
+      return res;
+    }
+    }
+  }
+}
+```
+Answer:
+```javascript
+import java.util.*;
+import java.lang.*;
+import java.io.*
+class Solution
+{
+  List<Integer> searchKeyIndext(NodeLinkedList list_head, int key)
+  {
+    List<Integer> res = new ArrayList<>();
+    int flag =0;
+    int index = 0;
+    NodeLinkedList current = list_head;
+
+    while(current.nxt !=null)
+    {
+      if(current.value == key)
+      {
+        res.add(index);
+        flag = 1;
+        current = current.next;
+      }
+      else {
+        current = current.next;
+      }
+      index++;
+    }
+
+    if(flag == 1)
+      return res;
+    else {
+      res.add(-1);
+      return res;
+    }
+  }
+}
+```
+
 ### Q6
 The function ***calculateGeneralHCF*** accepts two arguments - *len* and *arr*, an integer representing the length of the array and alist of integers, respectively. It is supposed to calculate and return the maximum element inthe input array.
 
@@ -266,6 +360,60 @@ class Solution
     else {
       return searchBST(root.right, key);
     }
+  }
+}
+```
+
+
+
+### Q7
+The function ***calculateGeneralMax*** accepts two arguments - *len* and *arr*, an integer representing the length of the array and a list of integers, respectively. Its supposed to calculate and return the maximum element in the input array.
+
+Another function ***calculateMax(int a, int b)*** returns the maximum element of two input numbers aand b.
+
+Your task is to use ***calculateMax(int a, int b)*** function and complete the code in ***calculateGeneralMax(int len, int *arr)*** so that it passes all test cases.
+
+```javascript
+class Solution
+{
+  int calculateMax(int a, int b)
+  {
+    if(a > b)
+      return a;
+    else {
+      return b;
+    }
+  }
+
+  int calculateGeneralMax(int len, int[] arr)
+  {
+    //WRITE YOUR CODE HERE
+  }
+}
+```
+
+Answer:
+```javascript
+class Solution
+{
+  int calculateMax(int a, int b)
+  {
+    if(a > b)
+      return a;
+    else {
+      return b;
+    }
+
+  int calculateGeneralMax(int len, int[] arr)
+  {
+    int overallMax = arr[0];
+    for(int i = 0; i<arr.length; i++){
+      for(int j =0; j<arr.length; j++){
+        int currentMax = calculateMax(arr[i], arr[j]);
+        overallMax = calculateMax(currentMax, overallMax);
+      }
+    }
+    return overallMax;
   }
 }
 ```
