@@ -18,6 +18,7 @@ toc:  true
 
 <font color= blue> You are required to fix all syntactical errors in the given code. You can click on *Compile & Run* anytime to check the compilation/execution status of the program. You can use *System.out.printin* to debug your code. The submitted code should be logically/syntactically correct and pass al testcases. Do not write the *main()* function as it is not required.
 
+
 Code Approach: For this question, you will need to correct the given implementation. We de net expect you to modify the approach or incorporate any additional library methods. </font>
 
 ### Q1
