@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Programming - Amazon OA Practices
+title: Programming - Amazon OA practice test
 date: 2021-07-06 5:18 +0800
 tags: [Programming]
 toc:  true
@@ -228,11 +228,44 @@ class Solution
 }
 ```
 
+### Q6
+The function ***calculateGeneralHCF*** accepts two arguments - *len* and *arr*, an integer representing the length of the array and alist of integers, respectively. It is supposed to calculate and return the maximum element inthe input array.
 
+Another function ***calculateHCF(int a, int b)*** returns the HCF of two input numbers a and b.
 
+Your taskisto use calculateHCF(int a, int b) function and complete the code in ***calculateHCF(int len, int *arr)*** so that it passes all test cases.
 
+```javascript
+class Solution
+{
+  int calculateHCF(int a, int b)
+  {
+    if(a ==0)
+      return b;
+    return calculateHCF(b % a,a);
+  }
+  int calculateGeneralHCF(int len, int[] arr)
+  {
+    // WRITE YOUR CODE HERE
+  }
+}
+```
 
-
-
-
-
+Answer:
+```javascript
+class Solution
+{
+  int searchBST(NodeBst root, int key)
+  {
+    if(root == null)
+      return 0;
+    if(root.kry == key)
+      return 1;
+    if (key <= root.key)
+      return searchBST(root.left, key);
+    else {
+      return searchBST(root.right, key);
+    }
+  }
+}
+```
