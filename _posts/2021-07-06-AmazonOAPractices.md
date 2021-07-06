@@ -177,25 +177,18 @@ Your tasks to implement the function/method ***searchBST*** so that it passes al
 
 The following class is used to represent a node of the Binary search tree and is already implemented inthe default code (Do not write this definition again in your code):
 
+```javascript
 class Node
-
 {
-
   int key;
-
   Node left, right;
-
   public Node(int item)
-
   {
-
     key = item;
-
     left = right = null;
-
   }
-
 }
+```
 
 ```javascript
 class Solution
