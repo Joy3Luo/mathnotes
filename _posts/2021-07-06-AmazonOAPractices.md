@@ -16,9 +16,9 @@ toc:  true
     gtag('config', 'G-TG0XJZG53F');
   </script>
 
-<font color= #2E86C1> You are required to fix all syntactical errors in the given code. You can click on *Compile & Run* anytime to check the compilation/execution status of the program. You can use *System.out.printin* to debug your code. The submitted code should be logically/syntactically correct and pass al testcases. Do not write the *main()* function as it is not required.
+<font color= #2E86C1> You are required to fix all syntactical errors in the given code. You can click on *Compile & Run* anytime to check the compilation/execution status of the program. You can use *System.out.printin* to debug your code. The submitted code should be logically/syntactically correct and pass al testcases. Do not write the *main()* function as it is not required.</font>
 
-Code Approach: For this question, you will need to correct the given implementation. We de net expect you to modify the approach or incorporate any additional library methods. </font>
+<font color= #2E86C1> Code Approach: For this question, you will need to correct the given implementation. We de net expect you to modify the approach or incorporate any additional library methods. </font>
 
 ### Q1
 The function/method ***findIndex*** accept three arguments - *size*, *list* and *key*, an integer representing the size ofthe list; a list of integers and an integer representing the value to search from the given list, respectively. The functior/method ***findIndex*** is supposed to return the index ofthe *key* value if *key* found in the list else return '-1'
@@ -194,7 +194,7 @@ class Node
     left = right = null;
 
   }
-  
+
 }
 
 ```javascript
