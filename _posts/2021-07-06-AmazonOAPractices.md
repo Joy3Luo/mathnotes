@@ -298,7 +298,7 @@ class Solution
     int index = 0;
     NodeLinkedList current = list_head;
 
-    while(current.nxt !=null)
+    while(current.next !=null)
     {
       if(current.value == key)
       {
