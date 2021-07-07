@@ -70,7 +70,7 @@ class Solution
 > if(list(i) == key) -> if(list[i] == key)
 
 ### Q2
-The function/method ***evenMultiplication*** accept two arguments - *size*, and *list*, an integer representing the size of the list and a list of integers. The functior/method ***evenMultiplication*** is supposed to return an integer representing the multipicated value of all even number is present.
+The function/method ***evenMultiplication*** accept two arguments - *size*, and *list*, an integer representing the size of the list and a list of integers. The function/method ***evenMultiplication*** is supposed to return an integer representing the multipicated value of all even number is present.
 
 The function/method compiles successfully but falls to return the desired result for some test cases. Your tasks to fix the code so that it passes all the test cases,
 
@@ -158,7 +158,7 @@ class Solution
     int i =start;
     while(i<=end)
     {
-      if(list[t] % 2 != 0)
+      if(list[i] % 2 != 0)
       {
         sum+=list[i];
       }
@@ -255,14 +255,14 @@ import java.lang.*;
 import java.io.*
 class Solution
 {
-  List<Integer> searchKeyIndext(NodeLinkedList list_head, int key)
+  List<Integer> searchKeyIndex(NodeLinkedList list_head, int key)
   {
     List<Integer> res = new ArrayList<>();
     int flag =0;
     int index = -1;
     NodeLinkedList current = list_head;
 
-    while(current.nxt !=null)
+    while(current.next !=null)
     {
       index++;
       if(current.value == key)
@@ -349,17 +349,22 @@ Answer:
 ```javascript
 class Solution
 {
-  int searchBST(NodeBst root, int key)
+  int calculateHCF(int a, int b)
   {
-    if(root == null)
-      return 0;
-    if(root.kry == key)
-      return 1;
-    if (key <= root.key)
-      return searchBST(root.left, key);
-    else {
-      return searchBST(root.right, key);
+    if(a ==0)
+      return b;
+    return calculateHCF(b % a,a);
+  }
+  int calculateGeneralHCF(int len, int[] arr)
+  {
+    int overallHCF = 1;
+    for(int i = 0; i<arr.length; i++){
+      for(int j =0; j<arr.length; j++){
+        int currentHCF = calculateHCF(arr[i], arr[j]);
+        overallHCF = calculateHCF(currentMax, overallMax);
+      }
     }
+    return overallMax;
   }
 }
 ```
