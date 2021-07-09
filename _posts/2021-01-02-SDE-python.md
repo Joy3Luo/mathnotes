@@ -51,9 +51,7 @@ def main():
 if __name__ == "__main__":
     main()
 ```
-> hello world!
-> What is your name? ***joe***
-  Nice to meet you, joe
+> hello world! <br /> What is your name? ***joe*** <br /> Nice to meet you, joe
 
 variables and expressions
 
