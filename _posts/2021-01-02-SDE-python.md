@@ -20,9 +20,6 @@ toc:  true
 #### Run a file
 
 ```pyhon
-C:\Users\joy3l>cd"C:\Users\joy3l\Desktop\Exercise Files\Chap01"
-The filename, directory name, or volume label syntax is incorrect.
-
 C:\Users\joy3l>cd "C:\Users\joy3l\Desktop\Exercise Files\Chap01"
 
 C:\Users\joy3l\Desktop\Exercise Files\Chap01>dir
