@@ -368,3 +368,5 @@ print("Pi is:", math.pi)
 
 # try some of the math functions for yourself here:
 ```
+> The square root of 16 is 4.0 <br />
+  Pi is: 3.141592653589793
