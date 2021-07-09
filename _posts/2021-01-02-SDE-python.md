@@ -41,7 +41,7 @@ C:\Users\joy3l\Desktop\Exercise Files\Chap01>python 01_03.py
 Hello world!
 ```
 
-#### Example file for HelloWorld
+### Example file for HelloWorld
 ```python
 def main():
     print("hello world!")
@@ -55,7 +55,7 @@ if __name__ == "__main__":
   What is your name? ***joe*** <br />
   Nice to meet you, joe
 
-#### variables and expressions
+### Variables and expressions
 
 ```python
 # Declare a variable and initialize it
@@ -111,7 +111,7 @@ print (f)
 > NameError: name 'f' is not defined
 
 
-#### Example file for working with functions
+### Example file for working with functions
 
 ```python
 # define a basic function
@@ -174,7 +174,7 @@ print(multi_add(4, 5, 10, 4))
 ```
 > 23
 
-#### Example file for working with conditional statements
+### Example file for working with conditional statements
 
 ```python
 def main():
@@ -203,7 +203,7 @@ if __name__ == "__main__":
 > x is less than y <br />
   x is less than y
 
-#### Example file for working with loops
+### Example file for working with loops
 
 ```python
 def main():
@@ -228,16 +228,51 @@ if __name__ == "__main__":
   for x in range(5,10):
     print (x)
 
+if __name__ == "__main__":
+  main()
+```  
+> 5 <br />
+  6 <br />
+  7 <br />
+  8 <br />
+  9 <br />
+  
+```python
   # use a for loop over a collection
   days = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
   for d in days:
     print (d)
 
+if __name__ == "__main__":
+  main()
+```
+> Mon <br />
+  Tue <br />
+  Wed <br />
+  Thu <br />
+  Fri <br />
+  Sat <br />
+  Sun <br />
+
+```python
   # use the break and continue statements
   for x in range(5,10):
-    #if (x == 7): break
-    #if (x % 2 == 0): continue
+    if (x == 7): break
     print (x)
+```
+5
+6
+
+```python
+  # use the break and continue statements
+  for x in range(5,10):
+    if (x % 2 == 0): continue
+    print (x)
+```
+5
+7
+9
+
 
   #using the enumerate() function to get index
   days = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
