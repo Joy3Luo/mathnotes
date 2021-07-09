@@ -443,3 +443,107 @@ print("Pi is:", math.pi)
 ```
 > The square root of 16 is 4.0 <br />
   Pi is: 3.141592653589793
+
+### Example file for working with date information
+
+```python
+from datetime import date
+from datetime import time
+from datetime import datetime
+
+def main():
+  ## DATE OBJECTS
+  # Get today's date from the simple today() method from the date class
+  today = date.today()
+  print ("Today's date is ", today)
+
+  # print out the date's individual components
+  print ("Date Components: ", today.day, today.month, today.year)
+
+  # retrieve today's weekday (0=Monday, 6=Sunday)
+  print ("Today's Weekday #: ", today.weekday())
+  days = ["monday","tuesday","wednesday","thursday","friday","saturday","sunday"]
+  print ("Which is a " + days[today.weekday()])
+
+  ## DATETIME OBJECTS
+  # Get today's date from the datetime class
+  today = datetime.now()
+  print  ("The current date and time is ", today)
+
+  # Get the current time
+  t = datetime.time(datetime.now())
+  print ("The current time is ", t)
+
+
+if __name__ == "__main__":
+  main();
+```
+> Today's date is  2021-07-09 <br />
+  Date Components:  9 7 2021 <br />
+  Today's Weekday #:  4 <br />
+  Which is a friday <br />
+  The current date and time is  2021-07-09 14:15:32.017705 <br />
+  The current time is  14:15:32.017705 <br />
+
+### Example file for formatting time and date output
+
+```python
+from datetime import datetime
+
+def main():
+  # Times and dates can be formatted using a set of predefined string
+  # control codes
+  now = datetime.now() # get the current date and time
+
+  #### Date Formatting ####
+
+  # %y/%Y - Year, %a/%A - weekday, %b/%B - month, %d - day of month
+  print (now.strftime("The current year is: %Y")) # full year with century
+  print (now.strftime("%a, %d %B, %y")) # abbreviated day, num, full month, abbreviated year
+
+  # %c - locale's date and time, %x - locale's date, %X - locale's time
+  print (now.strftime("Locale date and time: %c"))
+  print (now.strftime("Locale date: %x"))
+  print (now.strftime("Locale time: %X"))
+
+  #### Time Formatting ####
+
+  # %I/%H - 12/24 Hour, %M - minute, %S - second, %p - locale's AM/PM
+  print (now.strftime("Current time: %I:%M:%S %p")) # 12-Hour:Minute:Second:AM
+  print (now.strftime("24-hour time: %H:%M")) # 24-Hour:Minute
+
+
+if __name__ == "__main__":
+  main();
+```
+> The current year is: 2021 <br />
+  Fri, 09 July, 21 <br />
+  Locale date and time: Fri Jul  9 14:20:47 2021 <br />
+  Locale date: 07/09/21 <br />
+  Locale time: 14:20:47 <br />
+  Current time: 02:20:47 PM <br />
+  24-hour time: 14:20 <br />
+
+```python
+
+
+```
+
+
+```python
+
+
+```
+
+
+```python
+
+
+```
+
+
+
+```python
+
+
+```
