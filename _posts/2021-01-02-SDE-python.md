@@ -169,11 +169,10 @@ def multi_add(*args):
     for x in args:
         result = result + x
     return result
-```
-
-
 
 print(multi_add(4, 5, 10, 4))
+```
+> 23
 
 
 ```python
