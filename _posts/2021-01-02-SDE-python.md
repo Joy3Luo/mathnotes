@@ -38,7 +38,7 @@ C:\Users\joy3l\Desktop\Exercise Files\Chap01>python 01_03.py
 Hello world!
 ```
 
-### Example file for HelloWorld
+### HelloWorld
 ```python
 def main():
     print("hello world!")
@@ -108,7 +108,7 @@ print (f)
 > NameError: name 'f' is not defined
 
 
-### Example file for working with functions
+### Functions
 
 ```python
 # define a basic function
@@ -171,7 +171,7 @@ print(multi_add(4, 5, 10, 4))
 ```
 > 23
 
-### Example file for working with conditional statements
+### Conditional statements
 
 ```python
 def main():
@@ -200,7 +200,7 @@ if __name__ == "__main__":
 > x is less than y <br />
   x is less than y
 
-### Example file for working with loops
+### Loops
 
 ```python
 def main():
@@ -317,7 +317,7 @@ elif (number>=10):
 else:
   print(1)
 ```
-### Example file for working with classes
+### Classes
 
 ```python
 class myClass():
@@ -444,7 +444,7 @@ print("Pi is:", math.pi)
 > The square root of 16 is 4.0 <br />
   Pi is: 3.141592653589793
 
-### Example file for working with date information
+### Date information
 
 ```python
 from datetime import date
