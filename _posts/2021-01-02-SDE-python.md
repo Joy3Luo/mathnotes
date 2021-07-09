@@ -485,7 +485,7 @@ if __name__ == "__main__":
   The current date and time is  2021-07-09 14:15:32.017705 <br />
   The current time is  14:15:32.017705 <br />
 
-### Example file for formatting time and date output
+### Date output
 
 ```python
 from datetime import datetime
