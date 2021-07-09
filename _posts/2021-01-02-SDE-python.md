@@ -306,32 +306,65 @@ class myClass():
     def method2(self, someString):
         print("myClass method2: " + someString)
 
+def main():
+    c = myClass()
+    c.method1()
+    c.method2("This is a string")
+
+if __name__ == "__main__":
+    main()
+```
+> myClass method1 <br />
+  myClass method2: This is a string
+
+
+```python
+class myClass():
+    def method1(self):
+        print("myClass method1")
+
+    def method2(self, someString):
+        print("myClass method2: " + someString)
+
 
 class anotherClass(myClass):
-    def method2(self):
-        print("anotherClass method2")
-
-    def method1(self):
+   def method1(self):
         myClass.method1(self)
-        print("anotherClass method1")
+        print("myClass method1")
+
+    def method2(self, someString):
+        print("myClass method2 ")
 
 
 def main():
     c = myClass()
     c.method1()
     c.method2("This is a string")
+
     c2 = anotherClass()
     c2.method1()
+    c2.method2("This is a string")
 
 
 if __name__ == "__main__":
     main()
 ```
+> myClass method1 <br />
+  myClass method2: This is a string <br />
+  myClass method1 <br />
+  anotherClass method1 <br />
+  anotherClass method2
 
+### Modules
 ```python
+# import the math module, which contains features for working with mathematics
+import math
 
-```
+# the math module contains lots of pre-built functions
+print("The square root of 16 is", math.sqrt(16))
 
-```python
+# in addition to functions, some modules contain useful constants
+print("Pi is:", math.pi)
 
+# try some of the math functions for yourself here:
 ```
