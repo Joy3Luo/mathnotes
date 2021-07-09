@@ -571,10 +571,61 @@ print ("It's just", time_to_afd.days, "days until next April Fools' Day!")
   April Fool's day already went by 99 days ago <br />
   It's just 266 days until next April Fools' Day! <br />
 
+### Calendars
 ```python
+import calendar
 
+# create a plain text calendar
+c = calendar.TextCalendar(calendar.SUNDAY)
+str = c.formatmonth(2017, 1, 0, 0)
+print (str)
+
+# create an HTML formatted calendar
+hc = calendar.HTMLCalendar(calendar.SUNDAY)
+str = hc.formatmonth(2017, 1)
+print (str)
+
+# loop over the days of a month
+# zeroes mean that the day of the week is in an overlapping month
+for i in c.itermonthdays(2017, 8):
+  print (i)
+
+# The Calendar module provides useful utilities for the given locale,
+# such as the names of days and months in both full and abbreviated forms
+for name in calendar.month_name:
+  print (name)
+
+for day in calendar.day_name:
+  print (day)
+
+# Calculate days based on a rule: For example, consider
+# a team meeting on the first Friday of every month.
+# To figure out what days that would be for each month,
+# we can use this script:
+print ("Team meetings will be on:")
+for m in range(1,13):
+  # returns an array of weeks that represent the month
+  cal = calendar.monthcalendar(2017, m)
+  # The first Friday has to be within the first two weeks
+  weekone = cal[0]
+  weektwo = cal[1]
+
+  if weekone[calendar.FRIDAY] != 0:
+    meetday = weekone[calendar.FRIDAY]
+  else:
+    # if the first friday isn't in the first week, it must be in the second
+    meetday = weektwo[calendar.FRIDAY]
+
+  print ("%10s %2d" % (calendar.month_name[m], meetday))
 
 ```
+> January 2017 <br />
+  Su Mo Tu We Th Fr Sa <br />
+  1  2  3  4  5  6  7 <br />
+  8  9 10 11 12 13 14 <br />
+  15 16 17 18 19 20 21 <br />
+  22 23 24 25 26 27 28 <br />
+  29 30 31 <br />
 
 
 ```python
