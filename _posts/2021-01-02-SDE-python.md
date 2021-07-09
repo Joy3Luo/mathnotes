@@ -236,7 +236,7 @@ if __name__ == "__main__":
   7 <br />
   8 <br />
   9 <br />
-  
+
 ```python
   # use a for loop over a collection
   days = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
@@ -259,21 +259,27 @@ if __name__ == "__main__":
   for x in range(5,10):
     if (x == 7): break
     print (x)
+
+if __name__ == "__main__":
+  main()
 ```
-5
-6
+> 5 <br />
+  6
 
 ```python
   # use the break and continue statements
   for x in range(5,10):
     if (x % 2 == 0): continue
     print (x)
+
+if __name__ == "__main__":
+  main()
 ```
-5
-7
-9
+> 5 <br />
+  7 <br />
+  9 <br />
 
-
+```python
   #using the enumerate() function to get index
   days = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
   for i, d in enumerate(days):
@@ -282,9 +288,44 @@ if __name__ == "__main__":
 if __name__ == "__main__":
   main()
 ```
+> 0 Mon <br />
+  1 Tue <br />
+  2 Wed <br />
+  3 Thu <br />
+  4 Fri <br />
+  5 Sat <br />
+  6 Sun <br />
+
+### Example file for working with classes
 
 ```python
+class myClass():
+    def method1(self):
+        print("myClass method1")
 
+    def method2(self, someString):
+        print("myClass method2: " + someString)
+
+
+class anotherClass(myClass):
+    def method2(self):
+        print("anotherClass method2")
+
+    def method1(self):
+        myClass.method1(self)
+        print("anotherClass method1")
+
+
+def main():
+    c = myClass()
+    c.method1()
+    c.method2("This is a string")
+    c2 = anotherClass()
+    c2.method1()
+
+
+if __name__ == "__main__":
+    main()
 ```
 
 ```python
