@@ -17,7 +17,7 @@ toc:  true
   </script>
 
 
-Run file
+Run a file
 
 ```pyhon
 C:\Users\joy3l>cd"C:\Users\joy3l\Desktop\Exercise Files\Chap01"
