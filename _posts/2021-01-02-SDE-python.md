@@ -293,6 +293,30 @@ if __name__ == "__main__":
   5 Sat <br />
   6 Sun <br />
 
+Q: Return the sum of the first item in the data list and every tenth item after?
+
+A:
+```python
+def Sum10th(data):
+  sum=0
+  for i,d in enumerate(data):
+    if (i % 10 == 0): sum=sum+d
+  return sum
+```
+
+Q: Print the number of digits in the number variable? You can assume this number is always positive and always less than 10,000.
+
+A:
+```python
+if (number>=1000):
+  print(4)
+elif (number>=100):
+  print(3)
+elif (number>=10):
+  print(2)
+else:
+  print(1)
+```
 ### Example file for working with classes
 
 ```python
@@ -351,6 +375,58 @@ if __name__ == "__main__":
   myClass method1 <br />
   anotherClass method1 <br />
   anotherClass method2
+
+```python
+class Advanced(Simple):
+  def Inverse(self,x,y):
+    return (1/Simple.Add(self,x,y))
+```
+
+Q: You have an existing class Simple() that returns the sum of two numbers using its Add(x,y) method. How can you leverage it to build another class that calculates the inverse of the sum of two numbers?
+
+A:
+```python
+class Simple():
+  def Add(self,x,y):
+      return (x + y)
+
+class Advanced(Simple):
+  def Inverse(self,x,y):
+      Simple.Add(self,x,y)
+      print (1/Simple.Add(self,x,y))
+
+def main():
+    c = Advanced()
+    c.Inverse(1,2)
+
+if __name__ == "__main__":
+    main()
+```
+> 0.3333333333333333
+
+Q: In Python, what is the correct way to develop a class called Person that has parameters in the initialize function called name, age, and sex?
+
+A:
+```python
+class Person:
+  def __initialize__(self, name, age, sex):
+    self.name = name
+    self.age = age
+    self.sex = sex   
+```
+
+Q: You need to set the annual payment in one function and print the respective monthly payment in a separate function. How would you fix the suggested code to work properly?
+
+A:
+```python
+def SetAnnual():
+  global annual
+  annual=10000
+def PrintMonthly():
+  print("Your monthly payment is "+str(annual/12)+" USD.")
+SetAnnual()
+PrintMonthly()
+```
 
 ### Modules
 ```python
