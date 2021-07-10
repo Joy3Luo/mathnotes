@@ -626,10 +626,50 @@ for m in range(1,13):
   15 16 17 18 19 20 21 <br />
   22 23 24 25 26 27 28 <br />
   29 30 31 <br />
+  Team meetings will be on: <br />
+     January  6 <br />
+    February  3 <br />
+       March  3 <br />
+       April  7 <br />
+         May  5 <br />
+        June  2 <br />
+        July  7 <br />
+      August  4 <br />
+   September  1 <br />
+     October  6 <br />
+    November  3 <br />
+    December  1 <br />
 
+### Built-in Python file methods
 
 ```python
+def main():  
+  # Open a file for writing and create it if it doesn't exist
+  f = open("textfile.txt","w+")
 
+  # Open the file for appending text to the end
+  # f = open("textfile.txt","a+")
+
+  # write some lines of data to the file
+  for i in range(10):
+    f.write("This is line %d\r\n" % (i+1))
+
+  # close the file when done
+  f.close()
+
+  # Open the file back up and read the contents
+  f = open("textfile.txt","r")
+  if f.mode == 'r': # check to make sure that the file was opened
+    # use the read() function to read the entire file
+    # contents = f.read()
+    # print (contents)
+
+    fl = f.readlines() # readlines reads the individual lines into a list
+    for x in fl:
+      print (x)
+
+if __name__ == "__main__":
+  main()
 
 ```
 
