@@ -246,9 +246,8 @@ for (var pixel of img.values()) {
 #### Exercise 1 - Turn the chapel red.
 Write code that starts with the image “chapel.png” shown below on the left and turns the red part of every pixel to the highest red value possible, resulting in the image shown on the right.
 
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/FIjLP7q0Rj-Iyz-6tPY_9Q_1065ebf372874c9b9aa909d67b2a550e_chapelTurnRed.png?expiry=1623196800000&hmac=PhJsz1iiOzob773mT81-Vb6KcLi8TlGt94ir5mJPMRE)
+![](https://joy3luo.github.io/mathnotes/pics/courseraduke/chapelTurnRed.png)
 
-![](/mathnotes/pics/courseraduke/chapelTurnRed.png)
 ```javascript
 var image = new SimpleImage("chapel.png");
 for (var pixel of image.values())
@@ -260,7 +259,8 @@ print(image);
 
 #### Exercise 2 - Remove all the red
 Write code that starts with the image “chapel.png” shown below on the left and removes all the red, resulting in the image shown on the right. You will notice that in the resulting image you will mostly see blue and green colors.
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/WVAWujiLQ2CQFro4iyNgEw_3ae809d7f77f435fa2631b0306020d1a_chapelTurnNoRed.png?expiry=1623196800000&hmac=23c8_e9mQCFzzbtKxpc1mPq7yKLcjyW-yN5Kp-Ai0BA)
+![](https://joy3luo.github.io/mathnotes/pics/courseraduke/chapelTurnNoRed.png)
+
 
 ```javascript
 var image = new SimpleImage("chapel.png");
@@ -273,7 +273,8 @@ print(image);
 
 #### Exercise 3 - Turn the eggs less red
 Write code that starts with the image “eastereggs.jpg” shown below on the left and reduces all the red pixel values that are greater than 70 to 70, resulting in the image shown on the right. You will notice that in the resulting image you will see some reddish colors but no bright reds.
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/Js7ajhvQQoiO2o4b0PKI-w_00473ba9f0664c67b2b1638e6cb90ce9_eastereggsToLessRed.png?expiry=1623196800000&hmac=kALR4H0O_bqaPf9mXXJaUb_oJOu5XEiwpOBu-92yMu4)
+![](https://joy3luo.github.io/mathnotes/pics/courseraduke/eastereggsToLessRed.png)
+
 ```javascript
 var image = new SimpleImage("eastereggs.jpg");
 for (var pixel of image.values()){
@@ -287,7 +288,7 @@ print(image);
 #### Exercise 4 - Add Thick Black Line to Bottom of Owen
 Write code that starts with the image “astrachan.jpg” shown below on the left and replaces the bottom ten rows with black pixels, resulting in the image shown on the right. Note that the color black has a red value of 0, a green value of 0 and a blue value of 0. Also note that the pixel in the top left corner has x-value 0 and y-value 0.
 
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/6GHq97J_TIqh6veyfzyK3Q_bf6ffb938906460eac33aa23443c8664_astrachanAddBlackLine.png?expiry=1623196800000&hmac=xOLKcfvvsBnMATqT1ML3Z7YeZUxnpVdo_ezNdR2KSU4)
+![](https://joy3luo.github.io/mathnotes/pics/courseraduke/astrachanAddBlackLine.png)
 ```javascript
 var image = new SimpleImage("astrachan.jpg");
 for (var pixel of image.values()){
@@ -302,7 +303,7 @@ print(image);
 
 #### Exercise 5 - Green square in top left corner
 Write code that starts with the image “chapel.png” shown below on the left, and replaces the top left corner with an all green square of size 50 by 50, resulting in the image on the right below.
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/IwB2vkS3SWuAdr5Et5lrgA_6118176763b44fa2bb992e036666e79d_chapelAddLineBottomGreenSquare.png?expiry=1623196800000&hmac=OB5VPdEsVHOvjWeA8KUeSQP19LdOgaP6W0NmCzCa-Zc)
+![](https://joy3luo.github.io/mathnotes/pics/courseraduke/chapelAddLineBottomGreenSquare.png)
 
 ```javascript
 var image = new SimpleImage("chapel.png");
@@ -323,13 +324,13 @@ For example, the call result = topRightCorner(30, 60, picture, 255, 255, 0)
 
 where picture is the simpleImage on the left below, followed by print(result) results in a yellow rectangle (all red and all green makes yellow) of width 30 and height 60  in the top right corner.
 
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/9mOuzDSKQ4Gjrsw0ioOBeA_baa7c3bcb2094b9c8b0cff987510b32d_chapelAddYellowRectangle.png?expiry=1623196800000&hmac=yzFTyGI5K285AL8saw_Gokj_lua3zxC_f4NTxSSoZg8)
+![](https://joy3luo.github.io/mathnotes/pics/courseraduke/chapelAddYellowRectangle.png)
 
 The call result2 = topRightCorner(125, 20, picture2, 255, 0, 0)
 
 where picture2 is the simpleImage on the left below, followed by print(result2) results in a red rectangle of width 125 and height 20 in the top right corner.
 
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/mrb2FEPsRfW29hRD7MX1sg_66b90ea7c66545c8990bd55342dbb140_lionAddRedRect.png?expiry=1623196800000&hmac=qMsiASX6gR3ivmBLlVrS3PrA7EMbz5XzsIHIjAHnO7E)
+![](https://joy3luo.github.io/mathnotes/pics/courseraduke/lionAddRedRect.png)
 
 ```javascript
 function topRightCorner(cornerWidth, cornerHeight, someImage, red, green, blue) {
@@ -355,7 +356,7 @@ print(result2);
 #### Exercise 7 - Changes in Red
 Write the function named changeRed that draws a rectangle of width 256 showing all the changes of the color red, from left to right repeatedly, while blue and green are both set to 0. With height set to 200, the resulting image is shown here.
 
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/Ef4YDUEdS6--GA1BHXuv1w_d55027e0996241b8ab33d21d5ac860f4_redChanges.png?expiry=1623196800000&hmac=2UL8WjHPPIU6VFDMQKrc624HrwXN8Cb7L0HgMm-OscY)
+![](https://joy3luo.github.io/mathnotes/pics/courseraduke/redChanges.png)
 
 Here are more details. When one loops over pixels with a for loop, they are processed row by row starting with the top row and in each row they are processed from left to right. This function should start at the first pixel with red set to 0 and increment red by 1 with each new pixel it processes. Since the width is 256, the range of the color red goes from 0 to 255 as the row is processed. After the red reaches 255, it should be reset back to 0 for the next row. With red set to 0 on the right it looks like black. As the red number increases by 1 each time it eventually looks like bright red.
 
@@ -383,7 +384,7 @@ print(result);
 #### OPTIONAL: ONE CHANGE
 Modify the function changeRed so that numbers for blue and green can also be passed in. Then the call with blue set to 100 and green set to 200 results in the picture:
 
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/K-O1dgpoSvujtXYKaIr7oA_523f956c46334c80a9e086bbe7f658ce_changeRedWithBlueGreen.png?expiry=1623196800000&hmac=7ho4TyQZD7_yQaBkVBu-tYBrFQaGpdk0wbaDx0hlGjU)
+![](https://joy3luo.github.io/mathnotes/pics/courseraduke/changeRedWithBlueGreen.png)
 
 ```javascript
 function changeRed(width, height) {
