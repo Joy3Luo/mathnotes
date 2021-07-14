@@ -248,6 +248,7 @@ Write code that starts with the image “chapel.png” shown below on the left a
 
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/FIjLP7q0Rj-Iyz-6tPY_9Q_1065ebf372874c9b9aa909d67b2a550e_chapelTurnRed.png?expiry=1623196800000&hmac=PhJsz1iiOzob773mT81-Vb6KcLi8TlGt94ir5mJPMRE)
 
+![](/mathnotes/pics/courseraduke/chapelTurnRed.png)
 ```javascript
 var image = new SimpleImage("chapel.png");
 for (var pixel of image.values())
