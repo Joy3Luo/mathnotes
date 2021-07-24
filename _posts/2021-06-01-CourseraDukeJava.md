@@ -543,8 +543,6 @@ function changetext() {
 
 <a href="/mathnotes/pics/courseraduke/Programming-Exercise---TODO-list.pdf">Programming Exercise: TODO list</a>
 
-![](https://joy3luo.github.io/mathnotes/pics/courseraduke/Programming-Exercise---TODO-list.pdf)
-
 Creating an Interactive TODO list
 
 In this programming exercise you will use codepen to write an interactive TODO list that you will be able to add items to, check the items off and remove the items. On the left below shows a TODO list with three items added to it, and on the right below shows the same TODO list in which the task walk dog has been checked off, swim laps has been removed from the list and write paper has been added to the list.
