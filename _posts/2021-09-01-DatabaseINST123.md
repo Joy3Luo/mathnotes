@@ -192,7 +192,10 @@ LINE 5:     ('Samuel', 'Cole', 'Myers Middle School', '2005-08-01', 43...
 
 Querying a Subset of Columns
 
-`SELECT last_name, first_name, salary 	FROM teachers;`
+```
+SELECT last_name, first_name, salary 	
+  FROM teachers;
+```
 
 ![](https://joy3luo.github.io/mathnotes/pics/databaseinst123/ch2%202.png)
 
@@ -200,7 +203,7 @@ Using DISTINCT to Find Unique Values
 
 ```
 SELECT DISTINCT school
-	FROM teachers;
+  FROM teachers;
 ```
 
 ![](https://joy3luo.github.io/mathnotes/pics/databaseinst123/ch2%203.png)
@@ -208,7 +211,7 @@ SELECT DISTINCT school
 Using DISTINCT on Multiple Columns
 ```
 SELECT DISTINCT school, salary
- 			FROM teachers;
+  FROM teachers;
 ```
 ![](https://joy3luo.github.io/mathnotes/pics/databaseinst123/ch2%204.png)
 
