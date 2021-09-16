@@ -57,7 +57,19 @@ RILEYPH002	Riley		Phelps		1996-06-15
 
 #### Databases
 
-What is an entity?
-An object about which data is captured in a database, such as "student"
-All of the information about a category, such as student information, is an entity
-A row of information, such as that about Abril Davis, is an instance of an entity
+What is an **entity**?
+- An object about which data is captured in a database, such as "student"
+- All of the information about a category, such as student information, is an **entity**
+- A row of information, such as that about Abril Davis, is an **instance** of an entity
+
+What are the main entities of an enrollments database?
+- Students
+- Classes
+- Sections
+- Instructors
+- Location
+
+Conceptual	Physical   [Logical]
+Entity		🡪  Table 🡪   [Relation]
+Instance	🡪  Row* 	🡪   [Tuple]
+Attribute	🡪  Column	🡪  [Attribute]
