@@ -221,3 +221,27 @@ SELECT first_name, last_name, salary
 ```
 
 ![](https://joy3luo.github.io/mathnotes/pics/databaseinst123/ch2%205.png)
+
+ORDER BY with Multiple Columns
+
+```
+SELECT last_name, school, hire_date
+  FROM teachers
+  ORDER BY school ASC, hire_date DESC;
+```
+
+![](https://joy3luo.github.io/mathnotes/pics/databaseinst123/ch2%206.png)
+
+Filtering Rows with WHERE
+
+```
+SELECT last_name, school, hire_date
+  FROM teachers
+  WHERE school = 'Myers Middle School';
+```
+
+![](https://joy3luo.github.io/mathnotes/pics/databaseinst123/ch2%207.png)
+
+Comparison and Matching Operators in PostgreSQL
+
+![](https://joy3luo.github.io/mathnotes/pics/databaseinst123/ch2%208.png)
