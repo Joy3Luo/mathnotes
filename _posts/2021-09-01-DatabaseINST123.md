@@ -188,4 +188,36 @@ LINE 5:     ('Samuel', 'Cole', 'Myers Middle School', '2005-08-01', 43...
 
 `SELECT * FROM teachers;`
 
-![](https://joy3luo.github.io/mathnotes/pics/databaseinst123/ch2 1.png)
+![](https://joy3luo.github.io/mathnotes/pics/databaseinst123/ch2%201.png)
+
+Querying a Subset of Columns
+
+`SELECT last_name, first_name, salary 	FROM teachers;`
+
+![](https://joy3luo.github.io/mathnotes/pics/databaseinst123/ch2%202.png)
+
+Using DISTINCT to Find Unique Values
+
+```
+SELECT DISTINCT school
+	FROM teachers;
+```
+
+![](https://joy3luo.github.io/mathnotes/pics/databaseinst123/ch2%203.png)
+
+Using DISTINCT on Multiple Columns
+```
+SELECT DISTINCT school, salary
+ 			FROM teachers;
+```
+![](https://joy3luo.github.io/mathnotes/pics/databaseinst123/ch2%204.png)
+
+Sorting Data with ORDER BY
+
+```
+SELECT first_name, last_name, salary
+  FROM teachers
+  ORDER BY salary DESC;
+```
+
+![](https://joy3luo.github.io/mathnotes/pics/databaseinst123/ch2%205.png)
