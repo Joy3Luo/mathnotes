@@ -70,8 +70,11 @@ What are the main entities of an enrollments database?
 - Location
 
 Conceptual	Physical   [Logical]
+
 Entity		🡪  Table 🡪   [Relation]
+
 Instance	🡪  Row* 	🡪   [Tuple]
+
 Attribute	🡪  Column	🡪  [Attribute]
 
 #### Creating a Database on the RDBMS
@@ -101,19 +104,31 @@ The semi-colon ***is not*** required at the end of every command
     - A data type (e.g., text, integer, decimal, date)
 
 To create a `teachers` table in the `analysis` database
-➊ CREATE TABLE teachers (			
+
+➊ CREATE TABLE teachers (		
+
     ➋ id bigserial,
+
     ➌ first_name varchar(25),
+
        last_name varchar(50),
+
        school varchar(50),
+
     ➍ hire_date date,
+
     ➎ salary numeric
+
 ➏ );
 
 ➊ keywords CREATE and TABLE: Comma separated list of column names and data types in parentheses.
+
 ➋ bigserial: a datatype that autoincrements when a new row is created. This is our primary key.
+
 ➌ columns for teacher name and school are  data type varchar. The number in () is the max length.
+
 ➍ & ➎ are columns with date and numeric data types.
+
 ➏ We close the command with ;
 
 #### Populating a Table
@@ -125,15 +140,23 @@ We can add data to tables in multiple ways:
 #### Inserting Data into the Teachers Table
 
 ➊ INSERT INTO teachers (first_name, last_name, school, 			hire_date, salary)
+
 ➋ VALUES ('Janet', 'Smith', 'F.D. Roosevelt HS', '2011-10-30', 36200),
+
          ('Lee', 'Reynolds', 'F.D. Roosevelt HS', '1993-05-22', 65000),
+
          ('Samuel', 'Cole', 'Myers Middle School', '2005-08-01', 43500),
+
          ('Samantha', 'Bush', 'Myers Middle School', '2011-10-30', 36200),
+
          ('Betty', 'Diaz', 'Myers Middle School', '2005-08-30', 43500),
+
          ('Kathleen', 'Roush', 'F.D. Roosevelt HS', '2010-10-22', 38500); ➌
 
 ➊ keywords INSERT and INTO identify the table into which the data will be put
+
 ➋ keyword VALUES identifies the data to be inserted.
+
 ➌ The command is terminated with the ;
 
 #### What happens when things go wrong?
@@ -158,5 +181,11 @@ LINE 5:     ('Samuel', 'Cole', 'Myers Middle School', '2005-08-01', 43...
 - However, there are some "good practice" principles"
   - Uppercase SQL keywords, such as SELECT
   - Uppercase data type names, such as TEXT and INTEGER (Less strict)
-  - `lowercase_and_underscores` for object names, such as tables and columns 
+  - `lowercase_and_underscores` for object names, such as tables and columns
   - Indent clauses and code blocks using either spaces or tabs
+
+### Data Exploration with SELECT
+
+`SELECT * FROM teachers;`
+
+![](https://joy3luo.github.io/mathnotes/pics/databaseinst123/ch2 1.png)
