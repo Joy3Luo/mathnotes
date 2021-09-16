@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Data- Database
+title: Data - Database
 date: 2021-09-01 12:18 +0800
 tags: [Data]
 toc:  true
