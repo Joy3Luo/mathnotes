@@ -32,4 +32,92 @@ math: true
   </script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML-full"></script>  
 
 
-## <font color= 977FD7>Gauss–Hermite quadrature</font>
+### Conditional-Probabiity-Bayes-Total-Probability
+
+(1)If A and B are independent (first outcome does not affect second outcome):
+
+P(A ^ B) = P(A) * P(B)
+
+P(B|A) = P(B)
+
+Coin tosses are independent.
+
+**Conditional Probabiity: **
+
+P(A|B) = P(A ^ B) / P(B)
+
+P(A|B) = conditional probability of A, given B has occurred.<br/>
+P(A^B) = unconditional probability that even A and event B both occur.<br/>
+P(B) = the (unconditional probability that event B occurs)
+
+**Example:**
+A jar contains 6 red marbles and 4 black marbles. Two marbles are drawn without replacement from the jar. What is the probability the first and second marbles are black.
+
+Solution: <br/>
+Let A = event that the first marble is black. <br/>
+Let B = event that the second marble is black.<br/>
+
+In the beginning, 4/10 are black P(A).<br/>
+After first selection, 3/9 are black P(B|A).<br/>
+
+P(A^B) = P(A) P(B|A) = 4/10 * 3/9 = 12/90 = 2/15.
+
+**Conditional -> Bayes Theorem**
+
+P(A ^ B) = P(A|B) P(B) Multiplicative Rule<br/>
+
+P(A ^ B) = P(B ^ A) Commutativity<br/>
+
+P(A ^ B) = P(A|B) P(B)<br/>
+P(B ^ A) = P(B|A) P(A)<br/>
+
+**Bayes Theorem:**
+P(A|B) = P(B|A) P(A) / P(B)
+
+
+(2)
+
+Law of total probability<br/>
+
+A partition of the sample space S is a collection of disjoint events B1,B2..Bk whose union is S. Such a partition divides any set A into disjoint parts.
+
+Suppose we have a partition B1, B2..BK then any event A is a union of its parts:
+
+A = (A ^ B1) V (A ^ B2) V … (A ^BK)
+
+P(A) = P(A ^ B1) + (A ^ B2) + … (A ^BK)
+
+P(A) = P(A|B1) P(B1) + P(A|B2) P(B2) + … P(A|BK)P(K) (Apply Multiplicative Rule)
+
+
+Example 1:
+
+What is the probability the second card in the deck is an ace? (We don’t know what the first card is.)
+
+A1 = The first card is an ace.<br/>
+A1c = The first card is not an ace.<br/>
+A2|A1 = Second card is an Ace given first card is an ace.<br/>
+A2|A1c = Second card is an Ace given first card is not an ace.<br/>
+
+P(A2) = P(A2|A1)P(A1) + P(A2|A1c)P(A1c)<br/>
+P(A) = (3/51 * 4/52)  +  (4/51 * 48/52)<br/>
+P(A) = (3*4) + (4*48) / (51*52)<br/>
+P(A) = (3+48)*4 / 51*52<br/>
+P(A) = 51*4 / 51*52<br/>
+P(A) = 4/52<br/>
+
+Example 2:
+
+Suppose we have two hats: <br/>
+Hat1: 4 red balls and 6 green balls<br/>
+Hat2: 6 red balls and 4 green balls<br/>
+
+We toss a fair coin, if heads, pick a random ball from the first hat.<br/>
+If tails, pick a random ball from the 2nd hat.
+
+What is the probability of getting the red ball?
+
+
+P(Red) = P(Red|H) P(H) + P(Red|T) P(T)<br/>
+P(Red) = 4/10 * 1/2 + 6/10 * 1/2<br/>
+P(Red) = 4/20 + 6/20 = 10/20 = 1/2<br/>
