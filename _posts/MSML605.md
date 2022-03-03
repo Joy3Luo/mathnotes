@@ -1,10 +1,26 @@
-Computing Systems for Machine Learning
+---
+layout: post
+title: Computing Systems for Machine Learning
+date: 2021-09-02 12:18 +0800
+tags: [Programming]
+toc:  true
+---
 
-Chapter 1 Introduction
+<!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG0XJZG53F"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
+    gtag('config', 'G-TG0XJZG53F');
+  </script>
+
+### Chapter 1 Introduction
+
+skipped :3
 
 ### Chapter 2 Python Fundamentals
-
 
 #### Syntax
 
@@ -1497,6 +1513,317 @@ True
 
 When you create two lists, you get two distinct objects, even if they have the same elements
 
+```py
+>>> a = [1,2,3]
+>>> b = [1,2,3]
+>>> a is b
+False
+
+>>> b = a
+>>> b is a
+True
+
+>>> b[0] =  17
+>>> a
+[17, 2, 3]
+```
+
+##### List Arguments
+
+When you pass a list to a function, the function gets a reference to the list
+If the function modifies a list parameter, the caller sees the change
+Some operations modify lists and other operations create new lists
+append() method modifies a list, but the + operator creates a new list
+
+```py
+t1 = [1,2]
+t1.append(3)
+t1
+```
+
+The difference is important when you write functions that are supposed to modify lists
+
+```py
+>>> t3 = t1 +[4]
+>>> t3
+[1, 2, 3, 4]
+```
+
+The slice operator creates a new list and the assignment makes t refer to it
+
+```py
+def bad_delete_head(t):
+  t = t[1:]
+t1 = [1,2,3]
+bad_delete_head(t1)
+t1
+
+output:
+[1, 2, 3]
+```
+
+None of that has any effect on the list passed as an argument
+
+If we want to slice a list we can return it
+The list leaves the original list unmodified
+
+```py
+def tail(t):
+  return(t[1:])
+t1 = [1, 2, 3]
+t2 = tail(t1)
+print(t1)
+print(t2)
+
+output:
+[1, 2, 3]
+[2, 3]
+```
+
+##### List Operations
+
+ append
+ insert
+ index
+ count
+ sort
+ reverse
+ remove
+ pop
+ extend
+
+ Indexing e.g., L[i]
+ Slicing e.g., L[1:5]
+ Concatenation e.g., L + L
+ Repetition e.g., L * 5
+ Membership test e.g., ‘a’ in L
+ Length e.g., len(L)
+
+##### List Comprehension
+
+ List comprehensions offer a succinct way to create lists based on existing lists
+ When using list comprehensions, lists can be built by leveraging any iterable, including strings and tuples
+ Syntactically, list comprehensions consist of an iterable containing an expression followed by a for clause
+ General Syntax
+`[<output value> <iterator> <conditional stmt>]`
+
+##### Squaring Numbers
+
+Creating a list of squares of numbers from 1 to 5, without and with list comprehension
+
+```py
+squares = []
+for i in range(1,6):
+  squares.append(i**2)
+squares
+
+output:
+[1, 4, 9, 16, 25]
+```
+
+```py
+[x**2 for x in range(1,6)]
+
+output:
+[1, 4, 9, 16, 25]
+```
+Even numbers
+
+```py
+[x**2 for x in range(1,6) if x%2 == 0]
+
+output:
+[4, 16]
+```
+
+Odd numbers
+
+```py
+[x**2 for x in range(1,6) if x%2]
+
+output:
+[1, 9, 25]
+```
+
+##### Using if-else Conditionals
+
+Make the values between 5 and 10 negative (both included)
+
+```py
+a = [3,4,5,6,7,8,9,10,1,12,13,14,15]
+[-val if 5<=val <=10 else val for val in a]
+
+output:
+[3, 4, -5, -6, -7, -8, -9, -10, 1, 12, 13, 14, 15]
+```
+
+##### 2D List Creation w/out List Comprehension
+
+```py
+import random
+
+data = []
+for i in range(5):
+  row = []
+  for j in range(5):
+    row.append(random.randint(1,10))
+  data.append(row)
+
+data
+
+output:
+[[2, 4, 8, 1, 5],
+ [10, 1, 2, 8, 9],
+ [7, 4, 1, 8, 2],
+ [4, 2, 6, 2, 3],
+ [10, 9, 7, 4, 10]]
+```
+
+##### 2D List Creation w/ List Comprehension
+
+```py
+import random
+
+datal =
+```
+
+#####
+
+
+
+```py
+
+```
+
+#####
+
+
+
+```py
+
+```
+
+#####
+
+
+
+```py
+
+```
+
+#####
+
+
+
+```py
+
+```
+
+#####
+
+
+
+```py
+
+```
+
+#####
+
+
+
+```py
+
+```
+
+#####
+
+
+
+```py
+
+```
+
+#####
+
+
+
+```py
+
+```
+
+#####
+
+
+
+```py
+
+```
+
+#####
+
+
+
+```py
+
+```
+
+#####
+
+
+
+```py
+
+```
+
+#####
+
+
+
+```py
+
+```
+
+#####
+
+
+
+```py
+
+```
+
+#####
+
+
+
+```py
+
+```
+
+#####
+
+
+
+```py
+
+```
+
+#####
+
+
+
+```py
+
+```
+
+#####
+
+
+
+```py
+
+```
+
+#####
 
 
 
