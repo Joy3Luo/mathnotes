@@ -1266,12 +1266,113 @@ cheeses = [“Cheddar”, “Mozzarella”, “Blue”]
 “Brie” in cheeses   # False
 ```
 
-#####
+##### Traversing a List
 
-
+The most common way is with a ‘for’ loop
+Syntax is the same as for strings
+This works well if you only need to read the elements
 
 ```py
+cheeses = [“Cheddar”, “Mozzarella”, “Blue”]
+for cheese in cheeses:
+    print(cheese)
+```
 
+If you want to write or update the elements, you need the indices
+Common way is to combine functions ‘range’ and ‘len'
+This loop traverses the list and updates each element
+
+```py
+for i in range(len(numbers)):
+    numbers[i] = numbers[i] * 2
+```
+
+##### Nested Lists
+
+A list can contain another list
+`[‘spam’, 1, [‘Brie’, 5, 3.2], 2, [2, 5, 6]]`
+
+Each internal list still counts as a single element
+
+##### List Operations
+
+‘+’ operator concatenates lists
+
+```py
+>>> a = [1, 2, 3]
+>>> b = [4, 5, 6]
+>>> c = a + b
+>>> print(c)
+[1, 2, 3, 4, 5, 6]
+```
+
+‘*’ operator repeats a list a given number of times
+
+```py
+>>> [0] * 4
+[0, 0, 0, 0]
+>>> [1, 2, 3] * 3
+[1, 2, 3, 1, 2, 3, 1, 2, 3]
+```
+
+##### List Slices
+
+Slice operator also works on lists
+
+```py
+>>> t = [‘a’, ‘b’, ‘c’, ‘d’, ‘e’, ‘f’]
+>>> t[1:3]
+[‘b’, ‘c’]
+>>> t[:4]
+[‘a’, ‘b’, ‘c’, ‘d’]
+>>> t[3:]
+[‘d’, ‘e’, ‘f’]
+```
+
+If you omit the first index, the slice starts at the beginning
+If you omit the second, the slice goes to the end
+If you omit both, the slice is a copy of the whole list
+
+```py
+>>> t[:]
+[‘a’, ‘b’, ‘c’, ‘d’, ‘e’, ‘f’]
+```
+
+##### append() Method
+
+Python provides methods that operate on lists
+append adds a new element to the end of a list
+
+```py
+>>> t = [‘a’, ‘b’, ‘c’]
+>>> t.append(‘d’)
+>>> print(t)
+[‘a’, ‘b’, ‘c’, ‘d’]
+```
+
+##### extend() Method
+
+extend takes a list as an argument and appends all of the elements
+t2 is unmodified
+
+```py
+>>> t1 = [‘a’, ‘b’, ‘c’]
+>>> t2 = [‘d’, ‘e’]
+>>> t1.extend(t2)       # append list t2 to t1
+>>> print(t1)
+[‘a’, ‘b’, ‘c’, ‘d’, ‘e’]
+```
+
+##### sort() Method
+
+sort arranges the elements of the list from low to high
+List methods are all void; they modify the list and return None
+
+```py
+>>> t = [‘d’, ‘b’, ‘c’, ‘a’, ‘e’]
+>>> t.sort()
+>>> print(t)
+[‘a’, ‘b’, ‘c’, ‘d’, ‘e’]
 ```
 
 #####
@@ -1279,138 +1380,123 @@ cheeses = [“Cheddar”, “Mozzarella”, “Blue”]
 
 
 ```py
-
+# Create a list t, 1,5,6,7
+t = [1,5,6,7]
+# Print t
+print (t)
+# copy t to r list
+r = t[:]
+# not r = t, will only create another pointer to the list
+# print r
+print (r)
+# Modify 2nd element of r
+r[1] = 4
+# print r
+print (r)
+# print t
+print (t)
+# What do you notice?
+# t[1] and r[1] are different
+r = t[:]
 ```
 
-#####
+##### Deleting Elements
 
-
+pop() - takes the last element
 
 ```py
-
+ >>> t = ['a', 'b', 'c']
+ >>> x  = t.pop()
+ >>> x
+ 'c'
 ```
 
-#####
+pop() modifies the list and returns the element that was removed
 
+`t.pop(0)` removes the first element
 
+del statement also deletes elements, when you don’t need them
+`del t[1]`
+
+##### remove() Method
+
+If you know the element you want to remove (but not the index), use remove():
 
 ```py
-
+t = ['a', 'b', 'c']
+t.remove('b')
 ```
 
-#####
-
-
+The return value from remove is None
+To remove more than one element, use del statement
 
 ```py
-
+t = [‘a’, ‘b’, ‘c’, ‘d’, ‘e’]
+del t[1:5]
 ```
 
-#####
+##### Strings vs. Lists
 
-
+ A string is a sequence of characters
+ A list is a sequence of values
+ A list of characters is not the same as a string
+ A string is immutable whereas a list is mutable
 
 ```py
-
+>>> s = 'spam'
+>>> t = list(s)
+>>> print(t)
+['s','p','a','m']
 ```
 
-#####
+##### split() Method
 
-
+split() method takes a string and parses its words to form a list of strings
 
 ```py
-
+>>> s = 'This is an ML class'
+>>> t = s.split()
+>>> print(t)
+['This', 'is', 'an', 'ML', 'class']
 ```
 
-#####
+##### Delimiter
 
-
+A delimiter specifies which characters to use as word boundaries while splitting
 
 ```py
-
+>>> s = 'spam-spam-spam'
+>>> t = s.split('-')
+>>> t
+['spam', 'spam', 'spam']
 ```
 
-#####
+##### join() Method
 
-
+join() is the inverse of split()
+It takes a list of strings and concatenates the elements to form a single string
 
 ```py
-
+>>> t = ['This', 'is', 'an', 'ML', 'class']
+>>> delimiter = ' '
+>>> delimiter.join(t)
+'This is an ML class'
 ```
 
-#####
+##### Objects and Values
 
-
+a and b both refer to a string, but we don’t know whether they refer to the same string
+To determine, we can use the ‘is’ operator
 
 ```py
-
+>>> a = ‘banana’
+>>> b = ‘banana’
+>>> a is b
+True
 ```
 
-#####
+When you create two lists, you get two distinct objects, even if they have the same elements
 
-
-
-```py
-
-```
-
-#####
-
-
-
-```py
-
-```
-
-#####
-
-
-
-```py
-
-```
-
-#####
-
-
-
-```py
-
-```
-
-#####
-
-
-
-```py
-
-```
-
-#####
-
-
-
-```py
-
-```
-
-#####
-
-
-
-```py
-
-```
-
-#####
-
-
-
-```py
-
-```
-
-#####
 
 
 
