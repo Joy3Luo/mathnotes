@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Programming - Programming Foundations with JavaScript
-date: 2021-06-01 12:18 +0800
+date: 2020-06-01 12:18 +0800
 tags: [Programming]
 toc:  true
 ---
