@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Homework - Computational Methods HW4
+title: Computational Methods HW4
 date: 2020-10-12 23:18 +0800
-tags: [Homework]
+tags: [UMD]
 ---
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
