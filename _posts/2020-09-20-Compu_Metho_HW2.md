@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Homework - Computational Methods HW2
+title: Computational Methods HW2
 date: 2020-09-20 23:18 +0800
-tags: [Homework]
+tags: [UMD]
 ---
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -14,7 +14,7 @@ tags: [Homework]
 
     gtag('config', 'G-TG0XJZG53F');
   </script>
-  
+
 ```matlab
 %% AMSC 460 - Computational Methods Fall 2020
 
