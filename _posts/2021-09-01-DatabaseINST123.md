@@ -73,7 +73,7 @@ Conceptual	Physical   [Logical]
 
 Entity		🡪  Table 🡪   [Relation]
 
-Instance	🡪  Row* 	🡪   [Tuple]
+Instance	🡪  Row 	🡪   [Tuple]
 
 Attribute	🡪  Column	🡪  [Attribute]
 
@@ -104,23 +104,16 @@ The semi-colon ***is not*** required at the end of every command
     - A data type (e.g., text, integer, decimal, date)
 
 To create a `teachers` table in the `analysis` database
-
+```
 ➊ CREATE TABLE teachers (		
-
     ➋ id bigserial,
-
     ➌ first_name varchar(25),
-
        last_name varchar(50),
-
        school varchar(50),
-
     ➍ hire_date date,
-
     ➎ salary numeric
-
 ➏ );
-
+```
 ➊ keywords CREATE and TABLE: Comma separated list of column names and data types in parentheses.
 
 ➋ bigserial: a datatype that autoincrements when a new row is created. This is our primary key.
@@ -138,20 +131,15 @@ We can add data to tables in multiple ways:
 - Using an interface application to insert new rows
 
 #### Inserting Data into the Teachers Table
-
-➊ INSERT INTO teachers (first_name, last_name, school, 			hire_date, salary)
-
+```
+➊ INSERT INTO teachers (first_name, last_name, school, hire_date, salary)
 ➋ VALUES ('Janet', 'Smith', 'F.D. Roosevelt HS', '2011-10-30', 36200),
-
          ('Lee', 'Reynolds', 'F.D. Roosevelt HS', '1993-05-22', 65000),
-
          ('Samuel', 'Cole', 'Myers Middle School', '2005-08-01', 43500),
-
          ('Samantha', 'Bush', 'Myers Middle School', '2011-10-30', 36200),
-
          ('Betty', 'Diaz', 'Myers Middle School', '2005-08-30', 43500),
-
          ('Kathleen', 'Roush', 'F.D. Roosevelt HS', '2010-10-22', 38500); ➌
+```
 
 ➊ keywords INSERT and INTO identify the table into which the data will be put
 
@@ -160,6 +148,7 @@ We can add data to tables in multiple ways:
 ➌ The command is terminated with the ;
 
 #### What happens when things go wrong?
+
 Computers do EXACTLY what they are told to do!
 - This is true whether what we told them is what we meant or not.
 - Computers are literal and unforgiving of our mistakes.
@@ -194,7 +183,7 @@ Querying a Subset of Columns
 
 ```
 SELECT last_name, first_name, salary 	
-  FROM teachers;
+FROM teachers;
 ```
 
 ![](https://joy3luo.github.io/mathnotes/pics/databaseinst123/ch2%202.png)
@@ -203,7 +192,7 @@ Using DISTINCT to Find Unique Values
 
 ```
 SELECT DISTINCT school
-  FROM teachers;
+FROM teachers;
 ```
 
 ![](https://joy3luo.github.io/mathnotes/pics/databaseinst123/ch2%203.png)
@@ -211,7 +200,7 @@ SELECT DISTINCT school
 Using DISTINCT on Multiple Columns
 ```
 SELECT DISTINCT school, salary
-  FROM teachers;
+FROM teachers;
 ```
 ![](https://joy3luo.github.io/mathnotes/pics/databaseinst123/ch2%204.png)
 
@@ -219,8 +208,8 @@ Sorting Data with ORDER BY
 
 ```
 SELECT first_name, last_name, salary
-  FROM teachers
-  ORDER BY salary DESC;
+FROM teachers
+ORDER BY salary DESC;
 ```
 
 ![](https://joy3luo.github.io/mathnotes/pics/databaseinst123/ch2%205.png)
@@ -229,8 +218,8 @@ ORDER BY with Multiple Columns
 
 ```
 SELECT last_name, school, hire_date
-  FROM teachers
-  ORDER BY school ASC, hire_date DESC;
+FROM teachers
+ORDER BY school ASC, hire_date DESC;
 ```
 
 ![](https://joy3luo.github.io/mathnotes/pics/databaseinst123/ch2%206.png)
@@ -239,8 +228,8 @@ Filtering Rows with WHERE
 
 ```
 SELECT last_name, school, hire_date
-  FROM teachers
-  WHERE school = 'Myers Middle School';
+FROM teachers
+WHERE school = 'Myers Middle School';
 ```
 
 ![](https://joy3luo.github.io/mathnotes/pics/databaseinst123/ch2%207.png)
@@ -253,24 +242,24 @@ Comparison and Matching Operators in PostgreSQL
 
 ```
 SELECT first_name, last_name, school
-  FROM teachers
-  WHERE first_name = 'Janet';
+FROM teachers
+WHERE first_name = 'Janet';
 
 SELECT school
-  FROM teachers
-  WHERE school != 'F.D. Roosevelt HS';
+FROM teachers
+WHERE school != 'F.D. Roosevelt HS';
 
 SELECT first_name, last_name, hire_date
-  FROM teachers
-  WHERE hire_date < '2000-01-01';
+FROM teachers
+WHERE hire_date < '2000-01-01';
 
 SELECT first_name, last_name, salary
-  FROM teachers
-  WHERE salary >= 43500;
+FROM teachers
+WHERE salary >= 43500;
 
 SELECT first_name, last_name, school, salary
-  FROM teachers
-  WHERE salary BETWEEN 40000 AND 65000;
+FROM teachers
+WHERE salary BETWEEN 40000 AND 65000;
 ```
 
 #### Using LIKE and ILIKE with WHERE
@@ -298,52 +287,125 @@ LIKE '%ake'
 The ILIKE operator
 ```
 SELECT first_name
-  FROM teachers
-  WHERE first_name LIKE 'sam%';
+FROM teachers
+WHERE first_name LIKE 'sam%';
 
 SELECT first_name
-  FROM teachers
-  WHERE first_name ILIKE 'sam%';
+FROM teachers
+WHERE first_name ILIKE 'sam%';
 ```
 
 #### Examples with AND and OR
 ```
 SELECT * FROM teachers
-  WHERE school = 'Myers Middle School'
-    AND salary < 40000;
+WHERE school = 'Myers Middle School'
+AND salary < 40000;
 
 SELECT * FROM teachers
-  WHERE last_name = 'Cole'
-    OR last_name = 'Bush';
+WHERE last_name = 'Cole'
+OR last_name = 'Bush';
 
 SELECT * FROM teachers
-  WHERE school = 'F.D. Roosevelt HS'
-  AND
-  (salary < 38000 OR salary > 40000);
+WHERE school = 'F.D. Roosevelt HS'
+AND (salary < 38000 OR salary > 40000);
 ```
 
 #### Putting It All Together
 General syntax:
-
+```
 SELECT column_names
-
-  FROM table_name
-
-  WHERE criteria
-
-  ORDER BY column_names;
-
+FROM table_name
+WHERE criteria
+ORDER BY column_names;
+```
 
 Example:
 ```
-SELECT first_name, last_name,
-        school, hire_date, salary
-  FROM teachers
-  WHERE school LIKE '%Roos%'
-  ORDER BY hire_date DESC;
+SELECT first_name, last_name,school, hire_date, salary
+FROM teachers
+WHERE school LIKE '%Roos%'
+ORDER BY hire_date DESC;
 ```
 
 ![](https://joy3luo.github.io/mathnotes/pics/databaseinst123/ch2%209.png)
+
+### Data Types
+
+#### Understanding Data Types & Their Importance
+
+“It’s important to understand data types because storing data in the appropriate format is fundamental to building usable databases and performing accurate analysis.”
+
+Data type choice determines how data is saved and structured.
+- Determines the type of data and variety of data (e.g., smallint vs mediumint)
+- Size of the data type limits what we can store
+
+#### Most Used Data Types
+- Characters: Any character or symbol
+- Numbers: Includes whole numbers (integers) and decimals (fixed and float)
+- Dates and Times: Temporal Information
+
+#### Characters
+
+CHAR(n): Fixed length specified by n
+
+VARCHAR(n): Variable length with maximum length = n
+
+TEXT (or VARCHAR w/o n): Arbitrarily long string (Not part of standard SQL)
+
+- Benefits of using CHAR/VARCHAR to store numeric values such as zip codes, telephone numbers, SSN, etc.
+- Leading zeros won’t be stripped; can include non-digit characters
+
+```
+CREATE TABLE char_data_types（
+    varchar_column carchar(10),
+    char_column char(10),
+    text_column (text));
+```
+
+#### Numeric Data Types
+
+Numeric data types allow mathematical calculations. This is different than numbers that you store as strings in Character data types.
+
+NOTE: Numbers stored as characters sort differently than those stored in number data types.
+
+Integers: Whole numbers, both positive and negative
+
+Decimals: Fixed point, Floating point
+
+```
+TYPE        BYTES    RANGE	    
+---------   ------   ----------
+BIGINT      8        -9223372036854775808 TO +9223372036854775807
+INTEGER	    4        -2147483648 TO +2147483647
+SMALLINT    2        -32768 TO +32767
+```
+
+- The difference between each type is the maximum size of the numbers they can hold.
+- BIGINT: must be used when working with numbers larger than
+~2.1 billion.
+- INTEGER: does not take as much space as BIGINT. This can be a huge savings when working with millions of data rows.
+- If you try to insert a value that is too large for the type, you will get an “out of range” error.
+
+
+Auto-Incrementing Integers
+
+```
+TYPE        BYTES    RANGE	    
+---------   ------   ----------
+BIGSERIAL   8        1 TO 9223372036854775807
+SERIAL	    4        1 TO 2147483647
+SMALLSERIAL 2        1 TO 32767
+```
+
+- BIGSERIAL, SERIAL, and SMALLSERIAL are not true data types. They are a special implementation of  the INT data types, (BIGINT, INTEGER, and SMALLINT, respectively).
+- When you create a column and specify the data type as a serial type, PostgreSQL will auto-increment the value every time you insert a new row.
+- Auto-incrementing begins at 1
+- For example, the “id” column in the teachers table was an auto-incrementing integer.
+- NOTE: If a row is deleted the autoincrement value is NOT reused
+
+
+
+
 
 
 
