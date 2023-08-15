@@ -22,8 +22,6 @@ I always enjoy learning more, so I keep taking online courses. I have earned tho
 ![Programming for Everybody](https://joy3luo.github.io/mathnotes/pics/certificates/Programming_for_Everybody.png)
 
 
-![Programming for Everybody](https://joy3luo.github.io/mathnotes/pics/certificates/Programming_for_Everybody.png)
-
 ![Python Data Structures](https://joy3luo.github.io/mathnotes/pics/certificates/Python_Data_Structures.png)
 
 
