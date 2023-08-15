@@ -11,3 +11,20 @@ I received my Master's degree in Machine Learning and I have my Bachelor's degre
 
 
 Hope you will find something interesting here, I bet you will ^ - ^
+
+I always enjoy learning more, so I keep taking online courses. I have earned those certificates:
+
+![Supervised Machine Learning: Regression and Classification](https://joy3luo.github.io/mathnotes/pics/certificates/Supervised_Machine_Learning_Regression.png)
+
+![Advanced Learning Algorithms](https://joy3luo.github.io/mathnotes/pics/certificates/Advanced_Learning_Algorithms.png)
+
+
+![Programming for Everybody](https://joy3luo.github.io/mathnotes/pics/certificates/Programming_for_Everybody.png)
+
+
+![Programming for Everybody](https://joy3luo.github.io/mathnotes/pics/certificates/Programming_for_Everybody.png)
+
+![Python Data Structures](https://joy3luo.github.io/mathnotes/pics/certificates/Python_Data_Structures.png)
+
+
+![Programming Foundations: Fundamentals](https://joy3luo.github.io/mathnotes/pics/certificates/Programming_Foundations.png)
