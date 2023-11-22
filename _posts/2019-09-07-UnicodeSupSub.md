@@ -2,7 +2,7 @@
 layout: post
 title: Unicode - Superscript and Subscript Characters
 date: 2019-09-07 23:18 +0800
-tags: [Others]
+tags: [Other]
 ---
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
