@@ -632,7 +632,7 @@ cars = pd.DataFrame(my_dict)
 print(cars)
 ```
 ```
-country  drives_right  cars_per_cap
+         country  drives_right  cars_per_cap
 0  United States          True           809
 1      Australia         False           731
 2          Japan         False           588
@@ -674,7 +674,7 @@ cars.index = row_labels
 print(cars)
 ```
 ```
-country  drives_right  cars_per_cap
+         country  drives_right  cars_per_cap
 0  United States          True           809
 1      Australia         False           731
 2          Japan         False           588
@@ -683,7 +683,7 @@ country  drives_right  cars_per_cap
 5        Morocco          True            70
 6          Egypt          True            45
 
-  country  drives_right  cars_per_cap
+           country  drives_right  cars_per_cap
 US   United States          True           809
 AUS      Australia         False           731
 JPN          Japan         False           588
@@ -716,7 +716,7 @@ cars = pd.read_csv('cars.csv')
 print(cars)
 ```
 ```
-Unnamed: 0  cars_per_cap        country  drives_right
+  Unnamed: 0  cars_per_cap        country  drives_right
 0         US           809  United States          True
 1        AUS           731      Australia         False
 2        JPN           588          Japan         False
@@ -726,147 +726,370 @@ Unnamed: 0  cars_per_cap        country  drives_right
 6         EG            45          Egypt          True
 ```
 ---
-###
+### CSV to DataFrame (2)
 
+Your read_csv() call to import the CSV data didn't generate an error, but the output is not entirely what we wanted. The row labels were imported as another column without a name.
+
+Remember index_col, an argument of read_csv(), that you can use to specify which column in the CSV file should be used as a row label? Well, that's exactly what you need here!
+
+Python code that solves the previous exercise is already included; can you make the appropriate changes to fix the data import?
 
 **_Instructions:_**
-*
-*
-*
+* Run the code with Run Code and assert that the first column should actually be used as row labels.
+* Specify the index_col argument inside pd.read_csv(): set it to 0, so that the first column is used as row labels.
 
 ```py
+# Import pandas as pd
+import pandas as pd
 
+# Fix import by including index_col
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Print out cars
+print(cars)
 ```
 ```
-
+     cars_per_cap        country  drives_right
+US            809  United States          True
+AUS           731      Australia         False
+JPN           588          Japan         False
+IN             18          India         False
+RU            200         Russia          True
+MOR            70        Morocco          True
+EG             45          Egypt          True
 ```
 ---
 
-###
+### Square Brackets (1)
 
+In the video, you saw that you can index and select Pandas DataFrames in many different ways. The simplest, but not the most powerful way, is to use square brackets.
+
+In the sample code, the same cars data is imported from a CSV files as a Pandas DataFrame. To select only the cars_per_cap column from cars, you can use:
+
+```
+cars['cars_per_cap']
+cars[['cars_per_cap']]
+```
+
+The single bracket version gives a Pandas Series, the double bracket version gives a Pandas DataFrame.
 
 **_Instructions:_**
-*
-*
-*
+* Use single square brackets to print out the country column of cars as a Pandas Series.
+* Use double square brackets to print out the country column of cars as a Pandas DataFrame.
+* Use double square brackets to print out a DataFrame with both the country and drives_right columns of cars, in this order.
 
 ```py
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
 
+# Print out country column as Pandas Series
+print(cars['country'])
+
+# Print out country column as Pandas DataFrame
+print(cars[['country']])
+
+# Print out DataFrame with country and drives_right columns
+print(cars[['country', 'drives_right']])
 ```
 ```
-
+US     United States
+AUS        Australia
+JPN            Japan
+IN             India
+RU            Russia
+MOR          Morocco
+EG             Egypt
+Name: country, dtype: object
+           country
+US   United States
+AUS      Australia
+JPN          Japan
+IN           India
+RU          Russia
+MOR        Morocco
+EG           Egypt
+           country  drives_right
+US   United States          True
+AUS      Australia         False
+JPN          Japan         False
+IN           India         False
+RU          Russia          True
+MOR        Morocco          True
+EG           Egypt          True
 ```
 ---
 
-###
+### Square Brackets (2)
 
+Square brackets can do more than just selecting columns. You can also use them to get rows, or observations, from a DataFrame. The following call selects the first five rows from the cars DataFrame:
+
+`cars[0:5]`
+The result is another DataFrame containing only the rows you specified.
+
+Pay attention: You can only select rows using square brackets if you specify a slice, like 0:4. Also, you're using the integer indexes of the rows here, not the row labels!
 
 **_Instructions:_**
-*
-*
-*
+* Select the first 3 observations from cars and print them out.
+* Select the fourth, fifth and sixth observation, corresponding to row indexes 3, 4 and 5, and print them out.
 
 ```py
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
 
+# Print out first 3 observations
+print(cars[0:3])
+
+# Print out fourth, fifth and sixth observation
+print(cars[3:6])
 ```
 ```
-
+      cars_per_cap        country  drives_right
+US            809  United States          True
+AUS           731      Australia         False
+JPN           588          Japan         False
+     cars_per_cap  country  drives_right
+IN             18    India         False
+RU            200   Russia          True
+MOR            70  Morocco          True
 ```
 ---
 
-###
+### loc and iloc (1)
 
+With loc and iloc you can do practically any data selection operation on DataFrames you can think of. loc is label-based, which means that you have to specify rows and columns based on their row and column labels. iloc is integer index based, so you have to specify rows and columns by their integer index like you did in the previous exercise.
+
+Try out the following commands in the IPython Shell to experiment with loc and iloc to select observations. Each pair of commands here gives the same result.
+
+```
+cars.loc['RU']
+cars.iloc[4]
+
+cars.loc[['RU']]
+cars.iloc[[4]]
+
+cars.loc[['RU', 'AUS']]
+cars.iloc[[4, 1]]
+```
+
+As before, code is included that imports the cars data as a Pandas DataFrame.
 
 **_Instructions:_**
-*
-*
-*
+* Use loc or iloc to select the observation corresponding to Japan as a Series. The label of this row is JPN, the index is 2. Make sure to print the resulting Series.
+* Use loc or iloc to select the observations for Australia and Egypt as a DataFrame. You can find out about the labels/indexes of these rows by inspecting cars in the IPython Shell. Make sure to print the resulting DataFrame.
 
 ```py
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
 
+# Print out observation for Japan
+print(cars.loc['JPN'])
+
+# Print out observations for Australia and Egypt
+print(cars.loc[['AUS','EG']])
 ```
 ```
-
+cars_per_cap      588
+country         Japan
+drives_right    False
+Name: JPN, dtype: object
+     cars_per_cap    country  drives_right
+AUS           731  Australia         False
+EG             45      Egypt          True
 ```
 ---
 
-###
+### loc and iloc (2)
 
+loc and iloc also allow you to select both rows and columns from a DataFrame. To experiment, try out the following commands in the IPython Shell. Again, paired commands produce the same result.
+
+```
+cars.loc['IN', 'cars_per_cap']
+cars.iloc[3, 0]
+
+cars.loc[['IN', 'RU'], 'cars_per_cap']
+cars.iloc[[3, 4], 0]
+
+cars.loc[['IN', 'RU'], ['cars_per_cap', 'country']]
+cars.iloc[[3, 4], [0, 1]]
+```
 
 **_Instructions:_**
-*
-*
-*
+* Print out the drives_right value of the row corresponding to Morocco (its row label is MOR)
+* Print out a sub-DataFrame, containing the observations for Russia and Morocco and the columns country and drives_right.
 
 ```py
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
 
+# Print out drives_right value of Morocco
+print(cars.loc['MOR','drives_right'])
+
+# Print sub-DataFrame
+print(cars.loc[['RU','MOR'],['country','drives_right']])
 ```
 ```
-
+True
+     country  drives_right
+RU    Russia          True
+MOR  Morocco          True
 ```
 ---
 
-###
+### loc and iloc (3)
 
+It's also possible to select only columns with loc and iloc. In both cases, you simply put a slice going from beginning to end in front of the comma:
+```
+cars.loc[:, 'country']
+cars.iloc[:, 1]
+
+cars.loc[:, ['country','drives_right']]
+cars.iloc[:, [1, 2]]
+```
 
 **_Instructions:_**
-*
-*
-*
+* Print out the drives_right column as a Series using loc or iloc.
+* Print out the drives_right column as a DataFrame using loc or iloc.
+* Print out both the cars_per_cap and drives_right column as a DataFrame using loc or iloc.
 
 ```py
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
 
+# Print out drives_right column as Series
+print(cars.loc[:,'drives_right'])
+
+# Print out drives_right column as DataFrame
+print(cars.loc[:,['drives_right']])
+
+# Print out cars_per_cap and drives_right as DataFrame
+print(cars.loc[:,['cars_per_cap','drives_right']])
 ```
 ```
+US      True
+AUS    False
+JPN    False
+IN     False
+RU      True
+MOR     True
+EG      True
+Name: drives_right, dtype: bool
+     drives_right
+US           True
+AUS         False
+JPN         False
+IN          False
+RU           True
+MOR          True
+EG           True
+     cars_per_cap  drives_right
+US            809          True
+AUS           731         False
+JPN           588         False
+IN             18         False
+RU            200          True
+MOR            70          True
+EG             45          True
+```
+---
+## Logic, Control Flow and Filtering
+---
+### Equality
 
+To check if two Python values, or variables, are equal you can use ==. To check for inequality, you need !=. As a refresher, have a look at the following examples that all result in True. Feel free to try them out in the IPython Shell.
+```
+2 == (1 + 1)
+"intermediate" != "python"
+True != False
+"Python" != "python"
+```
+When you write these comparisons in a script, you will need to wrap a print() function around them to see the output.
+
+**_Instructions:_**
+* In the editor on the right, write code to see if True equals False.
+* Write Python code to check if -5 * 15 is not equal to 75.
+* Ask Python whether the strings "pyscript" and "PyScript" are equal.
+
+```py
+# Comparison of booleans
+True == False
+
+# Comparison of integers
+-5 * 15 != 75
+
+# Comparison of strings
+"pyscript" == "PyScript"
+
+# Compare a boolean with an integer
+True == 1
+```
+```
+True
 ```
 ---
 
-###
+### Greater and less than
 
+In the video, Hugo also talked about the less than and greater than signs, < and > in Python. You can combine them with an equals sign: <= and >=. Pay attention: <= is valid syntax, but =< is not.
+
+All Python expressions in the following code chunk evaluate to True:
+```
+3 < 4
+3 <= 4
+"alpha" <= "beta"
+```
+Remember that for string comparison, Python determines the relationship based on alphabetical order.
 
 **_Instructions:_**
-*
-*
-*
+* Write Python expressions, wrapped in a print() function, to check.
 
 ```py
+# Comparison of integers
+x = -3 * 6
+print(x >= -10)
 
+# Comparison of strings
+y = "test"
+print("test" <= y)
+
+# Comparison of booleans
+print(True > False)
 ```
 ```
-
+False
+True
+True
 ```
 ---
 
-###
+### Compare arrays
 
+Out of the box, you can also use comparison operators with NumPy arrays.
 
-**_Instructions:_**
-*
-*
-*
-
-```py
-
-```
-```
-
-```
----
-
-###
-
+Remember areas, the list of area measurements for different rooms in your house from Introduction to Python? This time there's two NumPy arrays: my_house and your_house. They both contain the areas for the kitchen, living room, bedroom and bathroom in the same order, so you can compare them.
 
 **_Instructions:_**
-*
-*
-*
+* Using comparison operators, generate boolean arrays that answer the following questions
 
 ```py
+# Create arrays
+import numpy as np
+my_house = np.array([18.0, 20.0, 10.75, 9.50])
+your_house = np.array([14.0, 24.0, 14.25, 9.0])
 
+# my_house greater than or equal to 18
+print(my_house >= 18)
+
+# my_house less than your_house
+print(my_house < your_house)
 ```
 ```
-
+[ True  True False False]
+[False  True  True False]
 ```
 ---
 
