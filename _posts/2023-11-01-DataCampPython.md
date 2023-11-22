@@ -1093,272 +1093,581 @@ print(my_house < your_house)
 ```
 ---
 
-###
+### and, or, not (1)
 
+A boolean is either 1 or 0, True or False. With boolean operators such as and, or and not, you can combine these booleans to perform more advanced queries on your data.
+
+In the sample code, two variables are defined: my_kitchen and your_kitchen, representing areas.
 
 **_Instructions:_**
-*
-*
-*
+* Write Python expressions, wrapped in a print() function
 
 ```py
+# Define variables
+my_kitchen = 18.0
+your_kitchen = 14.0
 
+# my_kitchen bigger than 10 and smaller than 18?
+print(my_kitchen > 10 and my_kitchen < 18)
+
+# my_kitchen smaller than 14 or bigger than 17?
+print(my_kitchen < 14 or my_kitchen > 17)
+
+# Double my_kitchen smaller than triple your_kitchen?
+print(my_kitchen*2 < your_kitchen *3)
 ```
 ```
-
+False
+True
+True
 ```
 ---
 
-###
+### Boolean operators with NumPy
 
+Before, the operational operators like < and >= worked with NumPy arrays out of the box. Unfortunately, this is not true for the boolean operators and, or, and not.
 
+To use these operators with NumPy, you will need np.logical_and(), np.logical_or() and np.logical_not(). Here's an example on the my_house and your_house arrays from before to give you an idea:
+```
+np.logical_and(my_house > 13,
+               your_house < 15)
+```
 **_Instructions:_**
-*
-*
-*
+* Generate boolean arrays that answer the following questions:
+* Which areas in my_house are greater than 18.5 or smaller than 10?
+* Which areas are smaller than 11 in both my_house and your_house? Make sure to wrap both commands in print() statement, so that you can inspect the output.
 
 ```py
+# Create arrays
+import numpy as np
+my_house = np.array([18.0, 20.0, 10.75, 9.50])
+your_house = np.array([14.0, 24.0, 14.25, 9.0])
 
+# my_house greater than 18.5 or smaller than 10
+print(np.logical_or(my_house >18 , my_house < 10))
+
+# Both my_house and your_house smaller than 11
+print(np.logical_and(my_house<11 , your_house<11))
 ```
 ```
-
+[False  True False  True]
+[False False False  True]
 ```
 ---
 
-###
+### if
 
+It's time to take a closer look around in your house.
+
+Two variables are defined in the sample code: room, a string that tells you which room of the house we're looking at, and area, the area of that room.
 
 **_Instructions:_**
-*
-*
-*
+* Examine the if statement that prints out "looking around in the kitchen." if room equals "kit".
+* Write another if statement that prints out "big place!" if area is greater than 15.
 
 ```py
+# Define variables
+room = "kit"
+area = 14.0
 
-```
-```
+# if statement for room
+if room == "kit" :
+    print("looking around in the kitchen.")
 
+# if statement for area
+if area > 15:
+    print('big place!')
 ```
 ---
 
-###
+### Add else
 
+In the script, the if construct for room has been extended with an else statement so that "looking around elsewhere." is printed if the condition room == "kit" evaluates to False.
+
+Can you do a similar thing to add more functionality to the if construct for area?
 
 **_Instructions:_**
-*
-*
-*
+* Add an else statement to the second control structure so that "pretty small." is printed out if area > 15 evaluates to False.
 
 ```py
+# Define variables
+room = "kit"
+area = 14.0
 
-```
-```
+# if-else construct for room
+if room == "kit" :
+    print("looking around in the kitchen.")
+else :
+    print("looking around elsewhere.")
 
+# if-else construct for area
+if area > 15 :
+    print("big place!")
+else:
+    print('pretty small.')
 ```
 ---
 
-###
+### Customize further: elif
 
+It's also possible to have a look around in the bedroom. The sample code contains an elif part that checks if room equals "bed". In that case, "looking around in the bedroom." is printed out.
+
+It's up to you now! Make a similar addition to the second control structure to further customize the messages for different values of area.
 
 **_Instructions:_**
-*
-*
-*
+* Add an elif to the second control structure such that "medium size, nice!" is printed out if area is greater than 10.
 
 ```py
+# Define variables
+room = "bed"
+area = 14.0
 
-```
-```
+# if-elif-else construct for room
+if room == "kit" :
+    print("looking around in the kitchen.")
+elif room == "bed":
+    print("looking around in the bedroom.")
+else :
+    print("looking around elsewhere.")
 
+# if-elif-else construct for area
+if area > 15 :
+    print("big place!")
+elif area > 10:
+    print('medium size, nice!')
+else :
+    print("pretty small.")
 ```
 ---
 
-###
+### Driving right (1)
 
+Remember that cars dataset, containing the cars per 1000 people (cars_per_cap) and whether people drive right (drives_right) for different countries (country)? The code that imports this data in CSV format into Python as a DataFrame is included in the script.
+
+In the video, you saw a step-by-step approach to filter observations from a DataFrame based on boolean arrays. Let's start simple and try to find all observations in cars where drives_right is True.
+
+drives_right is a boolean column, so you'll have to extract it as a Series and then use this boolean Series to select observations from cars.
 
 **_Instructions:_**
-*
-*
-*
+* Extract the drives_right column as a Pandas Series and store it as dr.
+* Use dr, a boolean Series, to subset the cars DataFrame. Store the resulting selection in sel.
+* Print sel, and assert that drives_right is True for all observations.
 
 ```py
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
 
+# Extract drives_right column as Series: dr
+dr = cars['drives_right']
+
+# Use dr to subset cars: sel
+sel = cars[dr]
+
+# Print sel
+print(sel)
 ```
 ```
-
+     cars_per_cap        country  drives_right
+US            809  United States          True
+RU            200         Russia          True
+MOR            70        Morocco          True
+EG             45          Egypt          True
 ```
 ---
 
-###
+### Driving right (2)
 
+The code in the previous example worked fine, but you actually unnecessarily created a new variable dr. You can achieve the same result without this intermediate variable. Put the code that computes dr straight into the square brackets that select observations from cars.
 
 **_Instructions:_**
-*
-*
-*
+* Convert the code to a one-liner that calculates the variable sel as before.
 
 ```py
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
 
+# Convert code to a one-liner
+sel = cars[cars['drives_right']]
+
+# Print sel
+print(sel)
 ```
 ```
-
+     cars_per_cap        country  drives_right
+US            809  United States          True
+RU            200         Russia          True
+MOR            70        Morocco          True
+EG             45          Egypt          True
 ```
 ---
 
-###
+### Cars per capita (1)
 
+Let's stick to the cars data some more. This time you want to find out which countries have a high cars per capita figure. In other words, in which countries do many people have a car, or maybe multiple cars.
+
+Similar to the previous example, you'll want to build up a boolean Series, that you can then use to subset the cars DataFrame to select certain observations. If you want to do this in a one-liner, that's perfectly fine!
 
 **_Instructions:_**
-*
-*
-*
+* Select the cars_per_cap column from cars as a Pandas Series and store it as cpc.
+* Use cpc in combination with a comparison operator and 500. You want to end up with a boolean Series that's True if the corresponding country has a cars_per_cap of more than 500 and False otherwise. Store this boolean Series as many_cars.
+* Use many_cars to subset cars, similar to what you did before. Store the result as car_maniac.
 
 ```py
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
 
+# Create car_maniac: observations that have a cars_per_cap over 500
+car_maniac = cars[cars['cars_per_cap'] > 500]
+
+# Print car_maniac
+print(car_maniac)
 ```
 ```
-
+     cars_per_cap        country  drives_right
+US            809  United States          True
+AUS           731      Australia         False
+JPN           588          Japan         False
 ```
 ---
 
-###
+### Cars per capita (2)
 
+Remember about np.logical_and(), np.logical_or() and np.logical_not(), the NumPy variants of the and, or and not operators? You can also use them on Pandas Series to do more advanced filtering operations.
+
+Take this example that selects the observations that have a cars_per_cap between 10 and 80. Try out these lines of code step by step to see what's happening.
+
+```
+cpc = cars['cars_per_cap']
+between = np.logical_and(cpc > 10, cpc < 80)
+medium = cars[between]
+```
 
 **_Instructions:_**
-*
-*
-*
+* Use the code sample provided to create a DataFrame medium, that includes all the observations of cars that have a cars_per_cap between 100 and 500.
 
 ```py
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
 
+# Import numpy, you'll need this
+import numpy as np
+
+# Create medium: observations with cars_per_cap between 100 and 500
+medium = cars[np.logical_and(cars['cars_per_cap'] >= 100, cars['cars_per_cap'] <= 500)]
+
+# Print medium
+print(medium)
 ```
 ```
-
+    cars_per_cap country  drives_right
+RU           200  Russia          True
 ```
 ---
 
-###
+## Loops
+
+### Basic while loop
+
+Below you can find the example from the video where the error variable, initially equal to 50.0, is divided by 4 and printed out on every run:
+
+```
+error = 50.0
+while error > 1 :
+    error = error / 4
+    print(error)
+```
+
+This example will come in handy, because it's time to build a while loop yourself! We're going to code a while loop that implements a very basic control system for an inverted pendulum. If there's an offset from standing perfectly straight, the while loop will incrementally fix this offset.
+
+Note that if your while loop takes too long to run, you might have made a mistake. In particular, remember to indent the contents of the loop using four spaces or auto-indentation!
 
 
 **_Instructions:_**
-*
-*
-*
+* Create the variable offset with an initial value of 8.
+* Code a while loop that keeps running as long as offset is not equal to 0. Inside the while loop:
+  * Print out the sentence "correcting...".
+  * Next, decrease the value of offset by 1. You can do this with offset = offset - 1.
+  * Finally, still within your loop, print out offset so you can see how it changes.
 
 ```py
+# Initialize offset
+offset = 8
 
+# Code the while loop
+while offset != 0:
+    print("correcting...")
+    offset = offset - 1
+    print(offset)
 ```
 ```
-
+correcting...
+7
+correcting...
+6
+correcting...
+5
+correcting...
+4
+correcting...
+3
+correcting...
+2
+correcting...
+1
+correcting...
+0
 ```
 ---
 
-###
+### Add conditionals
 
+The while loop that corrects the offset is a good start, but what if offset is negative? You can try to run the following code where offset is initialized to -6:
+
+```
+# Initialize offset
+offset = -6
+
+# Code the while loop
+while offset != 0 :
+    print("correcting...")
+    offset = offset - 1
+    print(offset)
+```
+
+but your session will be disconnected. The while loop will never stop running, because offset will be further decreased on every run. offset != 0 will never become False and the while loop continues forever.
+
+Fix things by putting an if-else statement inside the while loop. If your code is still taking too long to run, you probably made a mistake!
 
 **_Instructions:_**
-*
-*
-*
+* Inside the while loop, complete the if-else statement:
+  * If offset is greater than zero, you should decrease offset by 1.
+  * Else, you should increase offset by 1.
 
 ```py
+# Initialize offset
+offset = -6
 
+# Code the while loop
+while offset != 0 :
+    print("correcting...")
+    if offset > 0 :
+      offset = offset -1
+    else :
+      offset = offset +1    
+    print(offset)
 ```
 ```
-
+correcting...
+-5
+correcting...
+-4
+correcting...
+-3
+correcting...
+-2
+correcting...
+-1
+correcting...
+0
 ```
 ---
 
-###
+### Loop over a list
 
+Have another look at the for loop that Hugo showed in the video:
+
+```
+fam = [1.73, 1.68, 1.71, 1.89]
+for height in fam :
+    print(height)
+```
+
+As usual, you simply have to indent the code with 4 spaces to tell Python which code should be executed in the for loop.
+
+The areas variable, containing the area of different rooms in your house, is already defined.
 
 **_Instructions:_**
-*
-*
-*
+* Write a for loop that iterates over all elements of the areas list and prints out every element separately.
 
 ```py
+# areas list
+areas = [11.25, 18.0, 20.0, 10.75, 9.50]
 
+# Code the for loop
+for i in areas:
+    print(i)
 ```
 ```
-
+11.25
+18.0
+20.0
+10.75
+9.5
 ```
 ---
 
-###
+### Indexes and values (1)
 
+Using a for loop to iterate over a list only gives you access to every list element in each run, one after the other. If you also want to access the index information, so where the list element you're iterating over is located, you can use enumerate().
+
+As an example, have a look at how the for loop from the video was converted:
+
+```
+fam = [1.73, 1.68, 1.71, 1.89]
+for index, height in enumerate(fam) :
+    print("person " + str(index) + ": " + str(height))
+```
 
 **_Instructions:_**
-*
-*
-*
+* Adapt the for loop in the sample code to use enumerate() and use two iterator variables.
+* Update the print() statement so that on each run, a line of the form "room x: y" should be printed, where x is the index of the list element and y is the actual list element, i.e. the area. Make sure to print out this exact string, with the correct spacing.
 
 ```py
+# areas list
+areas = [11.25, 18.0, 20.0, 10.75, 9.50]
 
+# Change for loop to use enumerate() and update print()
+for i, a in enumerate(areas) :
+    print('room ' + str(i) + ': ' + str(a)  )
 ```
 ```
-
+room 0: 11.25
+room 1: 18.0
+room 2: 20.0
+room 3: 10.75
+room 4: 9.5
 ```
 ---
 
-###
+### Indexes and values (2)
 
+For non-programmer folks, room 0: 11.25 is strange. Wouldn't it be better if the count started at 1?
 
 **_Instructions:_**
-*
-*
-*
+* Adapt the print() function in the for loop so that the first printout becomes "room 1: 11.25", the second one "room 2: 18.0" and so on.
 
 ```py
+# areas list
+areas = [11.25, 18.0, 20.0, 10.75, 9.50]
 
+# Code the for loop
+for index, area in enumerate(areas, start = 1) :
+    print("room " + str(index) + ": " + str(area))
 ```
 ```
-
+room 1: 11.25
+room 2: 18.0
+room 3: 20.0
+room 4: 10.75
+room 5: 9.5
 ```
 ---
 
-###
+### Loop over list of lists
 
+Remember the house variable from the Intro to Python course? Have a look at its definition in the script. It's basically a list of lists, where each sublist contains the name and area of a room in your house.
+
+It's up to you to build a for loop from scratch this time!
 
 **_Instructions:_**
-*
-*
-*
+* Write a for loop that goes through each sublist of house and prints out the x is y sqm, where x is the name of the room and y is the area of the room.
 
 ```py
+# house list of lists
+house = [["hallway", 11.25],
+         ["kitchen", 18.0],
+         ["living room", 20.0],
+         ["bedroom", 10.75],
+         ["bathroom", 9.50]]
 
+# Build a for loop from scratch
+for key, value in house:
+    print("the " + str(key) + " is " + str(value) + ' sqm')
 ```
 ```
-
+the hallway is 11.25 sqm
+the kitchen is 18.0 sqm
+the living room is 20.0 sqm
+the bedroom is 10.75 sqm
+the bathroom is 9.5 sqm
 ```
 ---
 
-###
+### Loop over dictionary
 
+In Python 3, you need the items() method to loop over a dictionary:
+
+```
+world = { "afghanistan":30.55,
+          "albania":2.77,
+          "algeria":39.21 }
+
+for key, value in world.items() :
+    print(key + " -- " + str(value))
+```
+
+Remember the europe dictionary that contained the names of some European countries as key and their capitals as corresponding value? Go ahead and write a loop to iterate over it!
 
 **_Instructions:_**
-*
-*
-*
+* Write a for loop that goes through each key:value pair of europe. On each iteration, "the capital of x is y" should be printed out, where x is the key and y is the value of the pair.
 
 ```py
+# Definition of dictionary
+europe = {'spain':'madrid', 'france':'paris', 'germany':'berlin',
+          'norway':'oslo', 'italy':'rome', 'poland':'warsaw', 'austria':'vienna' }
 
+# Iterate over europe
+for key, value in europe.items():
+    print('the capital of '+ str(key) + 'is ' + str(value))
 ```
 ```
-
+the capital of spainis madrid
+the capital of franceis paris
+the capital of germanyis berlin
+the capital of norwayis oslo
+the capital of italyis rome
+the capital of polandis warsaw
+the capital of austriais vienna
 ```
 ---
 
-###
+### Loop over NumPy array
 
+If you're dealing with a 1D NumPy array, looping over all elements can be as simple as:
+```
+for x in my_array :
+    ...
+```
+
+If you're dealing with a 2D NumPy array, it's more complicated. A 2D array is built up of multiple 1D arrays. To explicitly iterate over all separate elements of a multi-dimensional array, you'll need this syntax:
+
+```
+for x in np.nditer(my_array) :
+    ...
+```
+
+Two NumPy arrays that you might recognize from the intro course are available in your Python session: np_height, a NumPy array containing the heights of Major League Baseball players, and np_baseball, a 2D NumPy array that contains both the heights (first column) and weights (second column) of those players.
 
 **_Instructions:_**
-*
-*
-*
+* Import the numpy package under the local alias np.
+* Write a for loop that iterates over all elements in np_height and prints out "x inches" for each element, where x is the value in the array.
+* Write a for loop that visits every element of the np_baseball array and prints it out.
 
 ```py
+# Import numpy as np
+import numpy as np
 
+# For loop over np_height
+for i in np_height:
+    print(str(i)+ ' inches')
+
+# For loop over np_baseball
+for i in np.nditer(np_baseball):
+    print(i)
 ```
 ```
 
