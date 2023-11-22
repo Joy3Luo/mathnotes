@@ -30,12 +30,10 @@ toc:  true
       }});
   </script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML-full"></script>  
 
-## DataCamp - Intermediate Python
-
-### Matplotlib
+## Matplotlib
 
 ---
-#### **Line plot (1)**
+### Line plot (1)
 
 With matplotlib, you can create a bunch of different plots in Python. The most basic plot is the line plot. A general recipe is given here.
 
@@ -69,7 +67,7 @@ plt.show()
 ```
 ---
 
-#### **Line plot (3)**
+### Line plot (3)
 
 Now that you've built your first line plot, let's start working on the data that professor Hans Rosling used to build his beautiful bubble chart. It was collected in 2007. Two lists are available for you:
 
@@ -95,7 +93,7 @@ plt.show()
 ```
 ---
 
-#### **Scatter Plot (1)**
+### Scatter Plot (1)
 
 When you have a time scale along the horizontal axis, the line plot is your friend. But in many other cases, when you're trying to assess if there's a correlation between two variables, for example, the scatter plot is the better choice. Below is an example of how to build a scatter plot.
 
@@ -127,81 +125,18 @@ plt.show()
 ---
 
 
-#### ** **
+###
 
 
 
-> **_Instructions:_**
-> *
-> *
-> *
-
-```py
-
-
-
-```
----
-
-
-#### ** **
-
-
-
-> **_Instructions:_**
-> *
-> *
-> *
+**_Instructions:_**
+*
+*
+*
 
 ```py
 
 
 
 ```
----
-
-
-#### ** **
-
-
-
-> **_Instructions:_**
-> *
-> *
-> *
-
-```py
-
-
-
-```
----
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-**Instructions**
-
-It works with almost all markdown flavours (the below blank line matters).
-
 ---
