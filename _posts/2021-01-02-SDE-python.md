@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Programming - python
+title: Python - python
 date: 2021-01-02 12:18 +0800
-tags: [Programming]
+tags: [python]
 toc:  true
 ---
 

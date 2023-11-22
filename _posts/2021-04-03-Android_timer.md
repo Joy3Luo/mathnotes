@@ -2,7 +2,7 @@
 layout: post
 title: Android App - Timer
 date: 2021-04-02 23:18 +0800
-tags: [Apps]
+tags: [other]
 math: true
 ---
 
