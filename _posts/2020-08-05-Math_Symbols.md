@@ -2,7 +2,7 @@
 layout: post
 title: Math Symbols
 date: 2020-08-05 23:18 +0800
-tags: [Other]
+tags: [other]
 math: true
 toc:  true
 ---

@@ -2,7 +2,7 @@
 layout: post
 title: DataCamp Data Manipulation with pandas
 date: 2023-11-15 11:18 +0800
-tags: [Python]
+tags: [python]
 toc:  true
 ---
 

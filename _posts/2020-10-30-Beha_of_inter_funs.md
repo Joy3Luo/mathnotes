@@ -2,7 +2,7 @@
 layout: post
 title: MatLab - Behavior of interpolating functions
 date: 2020-10-30 23:18 +0800
-tags: [MatLab]
+tags: [matlab]
 ---
 
 <!-- Global site tag (gtag.js) - Google Analytics -->

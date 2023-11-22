@@ -2,7 +2,7 @@
 layout: post
 title: Java - Programming Foundations with JavaScript
 date: 2020-06-01 12:18 +0800
-tags: [Java]
+tags: [java]
 toc:  true
 ---
 

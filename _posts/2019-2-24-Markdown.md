@@ -2,7 +2,7 @@
 layout: post
 title: Markdown - Customizing Text
 date: 2019-09-24 23:18 +0800
-tags: [Markdown]
+tags: [markdown]
 ---
 
 <!-- Global site tag (gtag.js) - Google Analytics -->

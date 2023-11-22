@@ -2,7 +2,7 @@
 layout: post
 title: Animation of bisection method In MatLab
 date: 2020-09-09 23:18 +0800
-tags: [MatLab]
+tags: [matlab]
 ---
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
