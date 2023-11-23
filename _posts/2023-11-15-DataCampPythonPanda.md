@@ -744,117 +744,357 @@ print(sales_1_1[["date", "weekly_sales", "cum_weekly_sales", "cum_max_sales"]])
 11 2011-01-07      15984.24         281901.06       57258.43
 ```
 ---
-###
+### Dropping duplicates
 
-
+Removing duplicates is an essential skill to get accurate counts because often, you don't want to count the same thing multiple times. In this exercise, you'll create some new DataFrames using unique values from sales.
 
 **_Instructions:_**
-*
-*
-*
+* Remove rows of sales with duplicate pairs of store and type and save as store_types and print the head.
+* Remove rows of sales with duplicate pairs of store and department and save as store_depts and print the head.
+* Subset the rows that are holiday weeks using the is_holiday column, and drop the duplicate dates, saving as holiday_dates.
+* Select the date column of holiday_dates, and print.
 
 ```py
+# Drop duplicate store/type combinations
+store_types = sales.drop_duplicates(subset = ['store','type'])
+print(store_types.head())
 
+# Drop duplicate store/department combinations
+store_depts = sales.drop_duplicates(subset=['store','department'])
+print(store_depts.head())
+
+# Subset the rows where is_holiday is True and drop duplicate dates
+holiday_dates = sales[sales['is_holiday'] == True].drop_duplicates(subset = 'date')
+
+# Print date col of holiday_dates
+print(holiday_dates['date'])
 ```
 ```
-
+store type  department       date  weekly_sales  is_holiday  temperature_c  fuel_price_usd_per_l  unemployment
+0         1    A           1 2010-02-05      24924.50       False          5.728                 0.679         8.106
+901       2    A           1 2010-02-05      35034.06       False          4.550                 0.679         8.324
+1798      4    A           1 2010-02-05      38724.42       False          6.533                 0.686         8.623
+2699      6    A           1 2010-02-05      25619.00       False          4.683                 0.679         7.259
+3593     10    B           1 2010-02-05      40212.84       False         12.411                 0.782         9.765
+store type  department       date  weekly_sales  is_holiday  temperature_c  fuel_price_usd_per_l  unemployment
+0       1    A           1 2010-02-05      24924.50       False          5.728                 0.679         8.106
+12      1    A           2 2010-02-05      50605.27       False          5.728                 0.679         8.106
+24      1    A           3 2010-02-05      13740.12       False          5.728                 0.679         8.106
+36      1    A           4 2010-02-05      39954.04       False          5.728                 0.679         8.106
+48      1    A           5 2010-02-05      32229.38       False          5.728                 0.679         8.106
+498    2010-09-10
+691    2011-11-25
+2315   2010-02-12
+6735   2012-09-07
+6810   2010-12-31
+6815   2012-02-10
+6820   2011-09-09
+Name: date, dtype: datetime64[ns]
 ```
 ---
-###
+### Counting categorical variables
 
+Counting is a great way to get an overview of your data and to spot curiosities that you might not notice otherwise. In this exercise, you'll count the number of each type of store and the number of each department number using the DataFrames you created in the previous exercise:
 
+```
+# Drop duplicate store/type combinations
+store_types = sales.drop_duplicates(subset=["store", "type"])
+
+# Drop duplicate store/department combinations
+store_depts = sales.drop_duplicates(subset=["store", "department"])
+```
+
+The store_types and store_depts DataFrames you created in the last exercise are available, and pandas is imported as pd.
 
 **_Instructions:_**
-*
-*
-*
+* Count the number of stores of each store type in store_types.
+* Count the proportion of stores of each store type in store_types.
+* Count the number of different departments in store_depts, sorting the counts in descending order.
+* Count the proportion of different departments in store_depts, sorting the proportions in descending order.
 
 ```py
+# Count the number of stores of each type
+store_counts = store_types['type'].value_counts()
+print(store_counts)
 
+# Get the proportion of stores of each type
+store_props = store_types['type'].value_counts(normalize = True)
+print(store_props)
+
+# Count the number of each department number and sort
+dept_counts_sorted = store_depts['department'].value_counts(sort = True)
+print(dept_counts_sorted)
+
+# Get the proportion of departments of each number and sort
+dept_props_sorted = store_depts['department'].value_counts(sort=True, normalize=True)
+print(dept_props_sorted)
 ```
 ```
-
+A    11
+B     1
+Name: type, dtype: int64
+A    0.917
+B    0.083
+Name: type, dtype: float64
+1     12
+55    12
+72    12
+71    12
+67    12
+      ..
+37    10
+48     8
+50     6
+39     4
+43     2
+Name: department, Length: 80, dtype: int64
+1     0.013
+55    0.013
+72    0.013
+71    0.013
+67    0.013
+      ...  
+37    0.011
+48    0.009
+50    0.006
+39    0.004
+43    0.002
+Name: department, Length: 80, dtype: float64
 ```
 ---
-###
+### What percent of sales occurred at each store type?
 
+While .groupby() is useful, you can calculate grouped summary statistics without it.
 
+Walmart distinguishes three types of stores: "supercenters," "discount stores," and "neighborhood markets," encoded in this dataset as type "A," "B," and "C." In this exercise, you'll calculate the total sales made at each store type, without using .groupby(). You can then use these numbers to see what proportion of Walmart's total sales were made at each type.
 
 **_Instructions:_**
-*
-*
-*
+* Calculate the total weekly_sales over the whole dataset.
+* Subset for type "A" stores, and calculate their total weekly sales.
+* Do the same for type "B" and type "C" stores.
+* Combine the A/B/C results into a list, and divide by sales_all to get the proportion of sales by type.
 
 ```py
+# Calc total weekly sales
+sales_all = sales["weekly_sales"].sum()
 
+# Subset for type A stores, calc total weekly sales
+sales_A = sales[sales["type"] == "A"]["weekly_sales"].sum()
+
+# Subset for type B stores, calc total weekly sales
+sales_B = sales[sales["type"] == "B"]["weekly_sales"].sum()
+
+# Subset for type C stores, calc total weekly sales
+sales_C = sales[sales["type"] == "C"]["weekly_sales"].sum()
+
+# Get proportion for each type
+sales_propn_by_type = [sales_A, sales_B, sales_C] /sales_all
+print(sales_propn_by_type)
 ```
 ```
-
+<script.py> output:
+    [0.9097747 0.0902253 0.       ]
 ```
 ---
-###
+### Calculations with .groupby()
 
-
+The .groupby() method makes life much easier. In this exercise, you'll perform the same calculations as last time, except you'll use the .groupby() method. You'll also perform calculations on data grouped by two variables to see if sales differ by store type depending on if it's a holiday week or not.
 
 **_Instructions:_**
-*
-*
-*
+* Group sales by "type", take the sum of "weekly_sales", and store as sales_by_type.
+* Calculate the proportion of sales at each store type by dividing by the sum of sales_by_type. Assign to sales_propn_by_type
 
 ```py
+# Group by type; calc total weekly sales
+sales_by_type = sales.groupby("type")["weekly_sales"].sum()
 
+# Get proportion for each type
+sales_propn_by_type = sales_by_type / sum(sales_by_type)
+print(sales_propn_by_type)
 ```
 ```
+type
+A    0.91
+B    0.09
+Name: weekly_sales, dtype: float64
+```
+**_Instructions:_**
+* Group sales by "type" and "is_holiday", take the sum of weekly_sales, and store as sales_by_type_is_holiday.
 
+```py
+# Group by type and is_holiday; calc total weekly sales
+sales_by_type_is_holiday = sales.groupby(["type",'is_holiday'])["weekly_sales"].sum()
+print(sales_by_type_is_holiday)
+```
+```
+<script.py> output:
+    type  is_holiday
+    A     False         2.337e+08
+          True          2.360e+04
+    B     False         2.318e+07
+          True          1.621e+03
+    Name: weekly_sales, dtype: float64
 ```
 ---
-###
+### Multiple grouped summaries
 
-
+Earlier in this chapter, you saw that the .agg() method is useful to compute multiple statistics on multiple variables. It also works with grouped data. NumPy, which is imported as np, has many different summary statistics functions, including: np.min, np.max, np.mean, and np.median.
 
 **_Instructions:_**
-*
-*
-*
+* Import numpy with the alias np.
+* Get the min, max, mean, and median of weekly_sales for each store type using .groupby() and .agg(). Store this as sales_stats. Make sure to use numpy functions!
+* Get the min, max, mean, and median of unemployment and fuel_price_usd_per_l for each store type. Store this as unemp_fuel_stats.
 
 ```py
+# Import numpy with the alias np
+import numpy as np
 
+# For each store type, aggregate weekly_sales: get min, max, mean, and median
+sales_stats = sales.groupby('type')['weekly_sales'].agg([np.min,np.max,np.mean, np.median])
+
+# Print sales_stats
+print(sales_stats)
+
+# For each store type, aggregate unemployment and fuel_price_usd_per_l: get min, max, mean, and median
+unemp_fuel_stats = sales.groupby('type')[['unemployment','fuel_price_usd_per_l']].agg([np.min,np.max,np.mean, np.median])
+
+# Print unemp_fuel_stats
+print(unemp_fuel_stats)
 ```
 ```
-
+<script.py> output:
+            amin       amax       mean    median
+    type                                        
+    A    -1098.0  293966.05  23674.667  11943.92
+    B     -798.0  232558.51  25696.678  13336.08
+         unemployment                      fuel_price_usd_per_l                     
+                 amin   amax   mean median                 amin   amax   mean median
+    type                                                                            
+    A           3.879  8.992  7.973  8.067                0.664  1.107  0.745  0.735
+    B           7.170  9.765  9.279  9.199                0.760  1.108  0.806  0.803
 ```
 ---
-###
+### Pivoting on one variable
 
+Pivot tables are the standard way of aggregating data in spreadsheets.
 
+In pandas, pivot tables are essentially another way of performing grouped calculations. That is, the .pivot_table() method is an alternative to .groupby().
+
+In this exercise, you'll perform calculations using .pivot_table() to replicate the calculations you performed in the last lesson using .groupby().
 
 **_Instructions:_**
-*
-*
-*
+* Get the mean weekly_sales by type using .pivot_table() and store as mean_sales_by_type
 
 ```py
+# Pivot for mean weekly_sales for each store type
+mean_sales_by_type = sales.pivot_table(values = 'weekly_sales', index = 'type')
 
+# Print mean_sales_by_type
+print(mean_sales_by_type)
 ```
 ```
+weekly_sales
+type              
+A        23674.667
+B        25696.678
+```
+**_Instructions:_**
+* Get the mean and median (using NumPy functions) of weekly_sales by type using .pivot_table() and store as mean_med_sales_by_type.
 
+```py
+# Import NumPy as np
+import numpy as np
+
+# Pivot for mean and median weekly_sales for each store type
+mean_med_sales_by_type = sales.pivot_table(values='weekly_sales', index='type', aggfunc=[np.mean, np.median])
+
+# Print mean_med_sales_by_type
+print(mean_med_sales_by_type)
+```
+```
+mean       median
+weekly_sales weekly_sales
+type                          
+A       23674.667     11943.92
+B       25696.678     13336.08
+```
+**_Instructions:_**
+* Get the mean of weekly_sales by type and is_holiday using .pivot_table() and store as mean_sales_by_type_holiday.
+
+```py
+# Pivot for mean weekly_sales by store type and holiday
+mean_sales_by_type_holiday = sales.pivot_table(values = 'weekly_sales', index='type', columns='is_holiday')
+
+# Print mean_sales_by_type_holiday
+print(mean_sales_by_type_holiday)
+```
+```
+is_holiday      False     True
+type                          
+A           23768.584  590.045
+B           25751.981  810.705
 ```
 ---
-###
+### Fill in missing values and sum values with pivot tables
 
+The .pivot_table() method has several useful arguments, including fill_value and margins.
 
+* fill_value replaces missing values with a real value (known as imputation). What to replace missing values with is a topic big enough to have its own course (Dealing with Missing Data in Python), but the simplest thing to do is to substitute a dummy value.
+
+* margins is a shortcut for when you pivoted by two variables, but also wanted to pivot by each of those variables separately: it gives the row and column totals of the pivot table contents.
+
+In this exercise, you'll practice using these arguments to up your pivot table skills, which will help you crunch numbers more efficiently!
 
 **_Instructions:_**
-*
-*
-*
+* Print the mean weekly_sales by department and type, filling in any missing values with 0.
 
 ```py
+# Print mean weekly_sales by department and type; fill missing values with 0
+print(sales.pivot_table(values='weekly_sales',index='department',columns='type',fill_value=0))
+```
+```
+type                 A           B
+department                        
+1            30961.725   44050.627
+2            67600.159  112958.527
+3            17160.003   30580.655
+4            44285.399   51219.654
+5            34821.011   63236.875
+...                ...         ...
+95          123933.787   77082.102
+96           21367.043    9528.538
+97           28471.267    5828.873
+98           12875.423     217.428
+99             379.124       0.000
 
+[80 rows x 2 columns]
 ```
-```
+**_Instructions:_**
+* Print the mean weekly_sales by department and type, filling in any missing values with 0 and summing all rows and columns.
 
+```py
+# Print the mean weekly_sales by department and type; fill missing values with 0s; sum all rows and cols
+print(sales.pivot_table(values="weekly_sales", index="department", columns="type", fill_value=0,margins =True))
 ```
+```
+type                A           B        All
+department                                  
+1           30961.725   44050.627  32052.467
+2           67600.159  112958.527  71380.023
+3           17160.003   30580.655  18278.391
+4           44285.399   51219.654  44863.254
+5           34821.011   63236.875  37189.000
+...               ...         ...        ...
+96          21367.043    9528.538  20337.608
+97          28471.267    5828.873  26584.401
+98          12875.423     217.428  11820.590
+99            379.124       0.000    379.124
+All         23674.667   25696.678  23843.950
+
+[81 rows x 3 columns]
+```
+---
+## Slicing and Indexing DataFrames
 ---
 ###
 
