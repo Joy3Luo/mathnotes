@@ -1096,46 +1096,162 @@ All         23674.667   25696.678  23843.950
 ---
 ## Slicing and Indexing DataFrames
 ---
-###
+### Setting and removing indexes
 
+pandas allows you to designate columns as an index. This enables cleaner code when taking subsets (as well as providing more efficient lookup under some circumstances).
 
+In this chapter, you'll be exploring temperatures, a DataFrame of average temperatures in cities around the world. pandas is loaded as pd.
 
 **_Instructions:_**
-*
-*
-*
+* Set the index of temperatures to "city", assigning to temperatures_ind.
+* Reset the index of temperatures_ind, keeping its contents.
+* Reset the index of temperatures_ind, dropping its contents.
 
 ```py
+# Look at temperatures
+print(temperatures)
 
+# Set the index of temperatures to city
+temperatures_ind = temperatures.set_index('city')
+
+# Look at temperatures_ind
+print(temperatures_ind)
+
+# Reset the temperatures_ind index, keeping its contents
+print(temperatures_ind.reset_index())
+
+# Reset the temperatures_ind index, dropping its contents
+print(temperatures_ind.reset_index(drop=True))
 ```
 ```
+            date     city        country  avg_temp_c
+0     2000-01-01  Abidjan  Côte D'Ivoire      27.293
+1     2000-02-01  Abidjan  Côte D'Ivoire      27.685
+2     2000-03-01  Abidjan  Côte D'Ivoire      29.061
+3     2000-04-01  Abidjan  Côte D'Ivoire      28.162
+4     2000-05-01  Abidjan  Côte D'Ivoire      27.547
+...          ...      ...            ...         ...
+16495 2013-05-01     Xian          China      18.979
+16496 2013-06-01     Xian          China      23.522
+16497 2013-07-01     Xian          China      25.251
+16498 2013-08-01     Xian          China      24.528
+16499 2013-09-01     Xian          China         NaN
 
+[16500 rows x 4 columns]
+              date        country  avg_temp_c
+city                                         
+Abidjan 2000-01-01  Côte D'Ivoire      27.293
+Abidjan 2000-02-01  Côte D'Ivoire      27.685
+Abidjan 2000-03-01  Côte D'Ivoire      29.061
+Abidjan 2000-04-01  Côte D'Ivoire      28.162
+Abidjan 2000-05-01  Côte D'Ivoire      27.547
+...            ...            ...         ...
+Xian    2013-05-01          China      18.979
+Xian    2013-06-01          China      23.522
+Xian    2013-07-01          China      25.251
+Xian    2013-08-01          China      24.528
+Xian    2013-09-01          China         NaN
+
+[16500 rows x 3 columns]
+          city       date        country  avg_temp_c
+0      Abidjan 2000-01-01  Côte D'Ivoire      27.293
+1      Abidjan 2000-02-01  Côte D'Ivoire      27.685
+2      Abidjan 2000-03-01  Côte D'Ivoire      29.061
+3      Abidjan 2000-04-01  Côte D'Ivoire      28.162
+4      Abidjan 2000-05-01  Côte D'Ivoire      27.547
+...        ...        ...            ...         ...
+16495     Xian 2013-05-01          China      18.979
+16496     Xian 2013-06-01          China      23.522
+16497     Xian 2013-07-01          China      25.251
+16498     Xian 2013-08-01          China      24.528
+16499     Xian 2013-09-01          China         NaN
+
+[16500 rows x 4 columns]
+            date        country  avg_temp_c
+0     2000-01-01  Côte D'Ivoire      27.293
+1     2000-02-01  Côte D'Ivoire      27.685
+2     2000-03-01  Côte D'Ivoire      29.061
+3     2000-04-01  Côte D'Ivoire      28.162
+4     2000-05-01  Côte D'Ivoire      27.547
+...          ...            ...         ...
+16495 2013-05-01          China      18.979
+16496 2013-06-01          China      23.522
+16497 2013-07-01          China      25.251
+16498 2013-08-01          China      24.528
+16499 2013-09-01          China         NaN
+
+[16500 rows x 3 columns]
 ```
 ---
-###
+### Subsetting with .loc[]
 
+The killer feature for indexes is .loc[]: a subsetting method that accepts index values. When you pass it a single argument, it will take a subset of rows.
 
+The code for subsetting using .loc[] can be easier to read than standard square bracket subsetting, which can make your code less burdensome to maintain.
+
+pandas is loaded as pd. temperatures and temperatures_ind are available; the latter is indexed by city.
 
 **_Instructions:_**
-*
-*
-*
+* Create a list called cities that contains "Moscow" and "Saint Petersburg".
+* Use [] subsetting to filter temperatures for rows where the city column takes a value in the cities list.
+* Use .loc[] subsetting to filter temperatures_ind for rows where the city is in the cities list.
 
 ```py
+# Make a list of cities to subset on
+cities = ["Moscow", "Saint Petersburg"]
 
+# Subset temperatures using square brackets
+print(temperatures[temperatures["city"].isin(cities)])
+
+# Subset temperatures_ind using .loc[]
+print(temperatures_ind.loc[cities])
 ```
 ```
+date              city country  avg_temp_c
+10725 2000-01-01            Moscow  Russia      -7.313
+10726 2000-02-01            Moscow  Russia      -3.551
+10727 2000-03-01            Moscow  Russia      -1.661
+10728 2000-04-01            Moscow  Russia      10.096
+10729 2000-05-01            Moscow  Russia      10.357
+...          ...               ...     ...         ...
+13360 2013-05-01  Saint Petersburg  Russia      12.355
+13361 2013-06-01  Saint Petersburg  Russia      17.185
+13362 2013-07-01  Saint Petersburg  Russia      17.234
+13363 2013-08-01  Saint Petersburg  Russia      17.153
+13364 2013-09-01  Saint Petersburg  Russia         NaN
 
+[330 rows x 4 columns]
+           date country  avg_temp_c
+city                                           
+Moscow           2000-01-01  Russia      -7.313
+Moscow           2000-02-01  Russia      -3.551
+Moscow           2000-03-01  Russia      -1.661
+Moscow           2000-04-01  Russia      10.096
+Moscow           2000-05-01  Russia      10.357
+...                     ...     ...         ...
+Saint Petersburg 2013-05-01  Russia      12.355
+Saint Petersburg 2013-06-01  Russia      17.185
+Saint Petersburg 2013-07-01  Russia      17.234
+Saint Petersburg 2013-08-01  Russia      17.153
+Saint Petersburg 2013-09-01  Russia         NaN
+
+[330 rows x 3 columns]
 ```
 ---
-###
+### Setting multi-level indexes
 
+Indexes can also be made out of multiple columns, forming a multi-level index (sometimes called a hierarchical index). There is a trade-off to using these.
 
+The benefit is that multi-level indexes make it more natural to reason about nested categorical variables. For example, in a clinical trial, you might have control and treatment groups. Then each test subject belongs to one or another group, and we can say that a test subject is nested inside the treatment group. Similarly, in the temperature dataset, the city is located in the country, so we can say a city is nested inside the country.
+
+The main downside is that the code for manipulating indexes is different from the code for manipulating columns, so you have to learn two syntaxes and keep track of how your data is represented.
+
+pandas is loaded as pd. temperatures is available.
 
 **_Instructions:_**
-*
-*
-*
+* Set the index of temperatures to the "country" and "city" columns, and assign this to temperatures_ind.
+* Specify two country/city pairs to keep: "Brazil"/"Rio De Janeiro" and "Pakistan"/"Lahore", assigning to rows_to_keep.
+* Print and subset temperatures_ind for rows_to_keep using .loc[].
 
 ```py
 
