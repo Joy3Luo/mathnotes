@@ -18,6 +18,13 @@ I always enjoy learning more, so I keep taking online courses. I have earned tho
 
 ![Advanced Learning Algorithms](https://joy3luo.github.io/mathnotes/pics/certificates/Advanced_Learning_Algorithms.png)
 
+![Data Manipulation with pandas](https://joy3luo.github.io/mathnotes/pics/certificates/Data_Manipulation_with_pandas.png)
+
+![Intermediate Python](https://joy3luo.github.io/mathnotes/pics/certificates/Intermediate_Python.png)
+
+![Intermediate SQL](https://joy3luo.github.io/mathnotes/pics/certificates/Intermediate_SQL.png)
+
+![Introduction to SQL](https://joy3luo.github.io/mathnotes/pics/certificates/Introduction_to_SQL.png)
 
 ![Programming for Everybody](https://joy3luo.github.io/mathnotes/pics/certificates/Programming_for_Everybody.png)
 
