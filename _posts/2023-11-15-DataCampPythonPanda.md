@@ -2159,3 +2159,14 @@ VIRGIN AMERICA             242          12017967          0.201
 DELTA AIR LINES           1591         197033215          0.081
 HAWAIIAN AIRLINES          122          16577572          0.074
 ```
+Wrap-up
+
+Congratulations! You’ve now covered the basics of using pandas.
+
+Recap
+
+In chapter 1, you saw how to subset and sort DataFrames and how to add new columns. In chapter 2, you saw several methods for aggregating and grouping data to calculate summary statistics. In chapter 3, you saw how using indexing and slicing allows for simpler subsetting. In chapter 4, you saw how to visualize a DataFrame, and how to read data from and write data to CSV files.
+
+Congratulations!
+
+Congratulations, and have fun learning!
