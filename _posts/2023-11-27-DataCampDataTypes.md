@@ -522,3 +522,171 @@ Foraging
 ---
 ## Numeric Data Types, Booleans, and Sets
 ---
+### Printing floats
+
+Scientific notation is a powerful tool for representing numbers, but it can be confusing to handle when trying to print float values. However, we can use the f strings we learned about previously to make sure we get them printed properly every time by using a format specifier. For example, if we wanted to format a variable in an f string as a float, we can use the f format specifier, such as: print(f"{some_variable:f}"). It also takes an operation precision on the float format specifier, for example, print(f"{some_variable:.4f}") would print four decimal places of precision.
+
+**_Instructions:_**
+* Print float1, float2, and float3 notice where the jump to scientific notation occurs.
+* Print float2 and float3 using the default float format specifier, and notice what happened to float3.
+* Print float3 with the float format specifier and a precision of 7.
+
+```py
+# Print floats 1, 2, and 3
+print(float1)
+print(float2)
+print(float3)
+
+# Print floats 2 and 3 using the f string formatter
+print(f"{float2:f}")
+print(f"{float3:f}")
+
+# Print float 3 with a 7 f string precision
+print(f"{float3:0.7f}")
+```
+```
+0.0001
+1e-05
+1e-07
+0.000010
+0.000000
+0.0000001
+```
+---
+### Division with integers and floats
+
+Python supports two different division operators: / and //. In Python 3, / will consistently return a float result, and // is floor division and will consistently return an integer result. Floor division is the same as doing math.floor(numerator/divisor), which returns the highest integer less than or equal to the result of the division operation. You can learn more about math.floor in the Python Docs.
+
+**_Instructions:_**
+* Print the result of 2/1 and 1/2.
+* Print the floored division result of 2//1 and 1//2.
+* Print the type of 2/1 and 2//1.
+
+```py
+# Print the result of 2/1 and 1/2
+print(2/1)
+print(1/2)
+
+# Print the floored division result of 2//1 and 1//2
+print(2//1)
+print(1//2)
+
+# Print the type of 2/1 and 2//1
+print(type(2/1))
+print(type(2//1))
+```
+```
+2.0
+0.5
+2
+0
+<class 'float'>
+<class 'int'>
+```
+---
+### More than just true and false
+
+Python has two boolean values available for you to use: True and False. Most commonly these boolean values are used to indicate that something is on or off, yes or no, or similar states. Additionally, many python types return "truthy" or "falsey" values depending on their condition when evaluated using the bool() function.
+
+**_Instructions:_**
+* Create an empty list called my_list
+* Print the truthiness of my_list.
+* Append the string 'cookies' to my_list
+* Print the truthiness of my_list.
+
+```py
+# Create an empty list
+my_list = []
+
+# Check the truthiness of my_list
+print(bool(my_list))
+
+# Append the string 'cookies' to my_list
+my_list.append('cookies')
+
+# Check the truthiness of my_list
+print(bool(my_list))
+```
+```
+False
+True
+```
+---
+### Comparisons
+
+Booleans and their truthiness are most often used in comparisions, and we use comparisions without even thinking about their underlying data type. To perform a comparision, we can use a comparision operator. Python supports the following comparision operators:
+
+```
+== equal to
+!= not equal to
+> greater than
+< less than
+>= greater than or equal to
+<= less than or equal to
+```
+
+For this exercise, we'll be using a subset of the Palmer Archipelago (Antarctica) penguin data set, named penguins, as a list of dictionaries with the keys of species, flipper_length, body_mass and sex.
+
+**_Instructions:_**
+* Use a for loop to iterate over the penguins list.
+* Check the penguin entry for a body_mass of more than 3300 grams.
+* Print the species and sex of the penguin if true.
+
+```py
+# Use a for loop to iterate over the penguins list
+for penguin in penguins:
+  # Check the penguin entry for a body mass of more than 3300 grams
+  if penguin["body_mass"] > 3300 :
+  	# Print the species and sex of the penguin if true
+    print(f"{penguin['species']} - {penguin['sex']}")
+```
+```
+Adlie - FEMALE
+Gentoo - FEMALE
+Adlie - MALE
+Gentoo - FEMALE
+Gentoo - FEMALE
+Chinstrap - FEMALE
+Adlie - MALE
+Chinstrap - FEMALE
+Chinstrap - FEMALE
+Adlie - FEMALE
+Gentoo - FEMALE
+Adlie - MALE
+Adlie - FEMALE
+Adlie - FEMALE
+Gentoo - .
+Gentoo - FEMALE
+Adlie - MALE
+Gentoo - MALE
+```
+---
+### Truthy, True, Falsey, and False
+
+While comparisons check for truthiness, something being truthy is not the same as it being True. The inverse of that statement is also true about falsey values and them not being False. So we need to be vigilent when we are checking is something is True or False vs truthy or falsey. In Python, we have the is operator to check if two things are identical. This time we'll be using a penguin details record dictionary which has the same keys as the prior exercise (species, flipper_length, body_mass, sex) with the tracked key that has a boolean value.
+
+We loaded a dictionary, penguin_305_details, with all the details of a singular penguin's data.
+
+**_Instructions:_**
+* Check the truthiness of penguin_305_details sex key. If true, check if sex is True and store it as sex_is_true. Print the sex key and sex_is_true.
+* Check the truthiness of penguin_305_details tracked key. If true, check if tracked is True and store it as tracked_is_true. Print the tracked key and tracked_is_true.
+
+```py
+# Check the truthiness of penguin_305_details sex key
+if penguin_305_details["sex"]:
+	# If true, check if sex is True and store it as sex_is_true
+    sex_is_true = penguin_305_details["sex"] is True
+    # Print the sex key's value and sex_is_true
+    print(f"{penguin_305_details['sex']}: {sex_is_true}")
+
+# Check the truthiness of penguin_305_details tracked key
+if penguin_305_details["tracked"]:
+	# If true, check if tracked is True and store it as tracked_is_true
+    tracked_is_true = penguin_305_details["tracked"] is True
+    # Print the tracked key and tracked_is_true
+    print(f"{penguin_305_details['tracked']}: {tracked_is_true}")
+```
+```
+FEMALE: False
+True: True
+```
