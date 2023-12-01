@@ -803,13 +803,138 @@ print(penguins_species_counts.most_common(3))
 [('Chinstrap', 7), ('Adlie', 7), ('Gentoo', 6)]
 ```
 ---
+### Creating dictionaries of an unknown structure
+
+Occasionally, you'll need a structure to hold nested data, and you may not be certain that the keys will all actually exist. This can be an issue if you're trying to append items to a list for that key. You might remember the NYC data that we explored in the video. In order to solve the problem with a regular dictionary, you'll need to test that the key exists in the dictionary, and if not, add it with an empty list.
+
+You'll be working with a list of entries that contains species, flipper length, body mass, and sex of the female penguins in our study. You're going to solve this same type of problem with a much easier solution in the next exercise.
+
+**_Instructions:_**
+* Create an empty dictionary called female_penguin_weights.
+* Iterate over weight_log, unpacking it into the variables species, sex, and body_mass.
+* Check to see if the species already exists in the female_penguin_weights dictionary. If it does not exist, create an empty list for the species key. Then, append a tuple consisting of sex and body_mass to the species key of the female_penguin_weights dictionary for all entries in the weight_log.
+* Print the female_penguin_weights for 'Adlie'.
+
+```py
+# Create an empty dictionary: female_penguin_weights
+female_penguin_weights = {}
+
+# Iterate over the weight_log entries
+for species, sex, body_mass in weight_log:
+    # Check to see if species is already in the dictionary
+    if species not in female_penguin_weights:
+        # Create an empty list for any missing species
+        female_penguin_weights[species] = []
+    # Append the sex and body_mass as a tuple to the species keys list
+    female_penguin_weights[species].append((sex,body_mass))
+
+# Print the weights for 'Adlie'
+print(female_penguin_weights['Adlie'])
+```
+```
+[('FEMALE', 3450.0), ('FEMALE', 3550.0), ('FEMALE', 3175.0)]
+```
+---
+### Safely appending to a key's value list
+
+Often when working with dictionaries, you will need to initialize a data type before you can use it. A prime example of this is a list, which has to be initialized on each key before you can append to that list.
+
+A defaultdict allows you to define what each uninitialized key will contain. When establishing a defaultdict, you pass it the type you want it to be, such as a list, tuple, set, int, string, dictionary or any other valid type object.
+
+You'll be working with the same weight log as last exercise, but with the male penguins in our study.
+
+**_Instructions:_**
+* Create a defaultdict with a default type of list called male_penguin_weights.
+* Iterate over the list weight_log, unpacking it into the variables species, sex, and body_mass, as you did in the previous exercise. Use species as the key of the male_penguin_weights dictionary and append body_mass to its value.
+* Print the first 2 items of the male_penguin_weights dictionary. You can use the .items() method for this. Remember to make it a list.
+
+```py
+# Import defaultdict
+from collections import defaultdict
+
+# Create a defaultdict with a default type of list: male_penguin_weights
+male_penguin_weights = defaultdict(list)
+
+# Iterate over the weight_log entries
+for species, sex, body_mass in weight_log:
+    # Use the species as the key, and append the body_mass to it
+    male_penguin_weights[species].append(body_mass)
+
+# Print the first 2 items of the male_penguin_weights dictionary
+print(list(male_penguin_weights.items())[:2])
+```
+```
+[('Gentoo', [5500.0, 5800.0, 5400.0, 5250.0, 4925.0]), ('Chinstrap', [4300.0, 4100.0, 4800.0, 3950.0, 3800.0, 4050.0])]
+```
+---
+### Creating namedtuples for storing data
+
+Often times when working with data, you will use a dictionary just so you can use key names to make reading the code and accessing the data easier to understand. Python has another container called a namedtuple that is a tuple, but has names for each position of the tuple. You create one by passing a name for the tuple type and a list of field names.
+
+For example, Cookie = namedtuple("Cookie", ['name', 'quantity']) will create a container, and you can create new ones of the type using Cookie('chocolate chip', 1) where you can access the name using the name attribute, and then get the quantity using the quantity attribute.
+
+In this exercise, you're going to restructure the penguin weight log data you've been working with into namedtuples for more descriptive code.
+
+**_Instructions:_**
+* Create a namedtuple called SpeciesDetails with a type name of SpeciesDetails and fields of 'species', 'sex', and 'body_mass'.
+* Create a list called labeled_entries.
+* Iterate over the weight_log list, unpacking it into species, sex, and body_mass, and create a new SpeciesDetails namedtuple instance for each entry and append it to labeled_entries.
+
+```py
+# Import namedtuple from collections
+from collections import namedtuple
+
+# Create the namedtuple: SpeciesDetails
+SpeciesDetails = namedtuple('SpeciesDetails', ['species', 'sex', 'body_mass'])
+
+# Create the empty list: labeled_entries
+labeled_entries = []
+
+# Iterate over the weight_log entries
+for species, sex, body_mass in weight_log:
+    # Append a new SpeciesDetails namedtuple instance for each entry to labeled_entries
+    labeled_entries.append(SpeciesDetails(species, sex, body_mass))
+
+print(labeled_entries[:5])
+```
+```
+[SpeciesDetails(species='Gentoo', sex='MALE', body_mass=5500.0), SpeciesDetails(species='Chinstrap', sex='MALE', body_mass=4300.0), SpeciesDetails(species='Adlie', sex='MALE', body_mass=3800.0), SpeciesDetails(species='Gentoo', sex='MALE', body_mass=5800.0), SpeciesDetails(species='Chinstrap', sex='MALE', body_mass=4100.0)]
+```
+---
+### Leveraging attributes on namedtuples
+
+Once you have a namedtuple, you can write more expressive code that is easier to understand. Remember, you can access the elements in the tuple by their name as an attribute. For example, you can access the species of the namedtuples in the previous exercise using the .species attribute.
+
+Here, you'll use the tuples you made in the previous exercise to see how this works.
+
+**_Instructions:_**
+* Iterate over the first twenty entryss in the labeled_entries list: If it is a Chinstrap species: Print the entry's sex and body_mass separated by a :.
+
+```py
+# Iterate over the first twenty entries in labeled_entries
+for entry in labeled_entries[:20]:
+    # if the entry's species equals Chinstrap
+    if entry.species == 'Chinstrap':
+      # Print each entry's sex and body_mass seperated by a colon
+      print(f'{entry.sex}:{entry.body_mass}')
+```
+```
+MALE:4300.0
+MALE:4100.0
+MALE:4800.0
+FEMALE:3800.0
+MALE:3950.0
+MALE:3800.0
+MALE:4050.0
+```
+---
 ###
 
 
 
 **_Instructions:_**
 *
-* 
+*
 *
 
 ```py
