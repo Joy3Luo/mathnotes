@@ -690,3 +690,468 @@ if penguin_305_details["tracked"]:
 FEMALE: False
 True: True
 ```
+---
+### Determining set differences
+
+Another way of comparing sets is to use the difference() method. It returns all the items found in one set but not another. It's important to remember the set you call the method on will be the one from which the items are returned. Unlike tuples, you can add() items to a set. A set will only add items that do not exist in the set.
+
+In this exercise, you'll explore what species had male subjects in our sample, but didn't have female subjects. The set male_penguin_species has been pre-loaded into your workspace.
+
+**_Instructions:_**
+* Use a list comprehension to iterate over each penguin in penguins saved as female_species_list: If the the sex of the penguin is 'FEMALE', return the species value.
+* Create a set using the female_species_list as female_penguin_species.
+* Find the difference between female_penguin_species and male_penguin_species. Store the result as differences.
+* Print the differences. This has been done for you, so hit 'Submit Answer' to see the result!
+
+```py
+# Use a list comprehension to iterate over each penguin in penguins saved as female_species_list
+# If the the sex of the penguin is 'FEMALE', return the species value
+female_species_list = [penguin["species"] for penguin in penguins if penguin["sex"] == 'FEMALE']
+
+# Create a set using the female_species_list as female_penguin_species
+female_penguin_species = set(female_species_list)
+
+# Find the difference between female_penguin_species and male_penguin_species. Store the result as differences
+differences = female_penguin_species.difference(male_penguin_species)
+
+# Print the differences
+print(differences)
+```
+```
+{'Chinstrap'}
+```
+---
+### Finding all the data and the overlapping data between sets
+
+Sets have several methods to combine, compare, and study them all based on mathematical set theory. The .union() method returns a set of all the elements found in the set you used the method on plus any sets passed as arguments to the method. You can also look for overlapping data in sets by using the .intersection() method on a set and passing another set as an argument. It will return an empty set if nothing matches.
+
+Your job in this exercise is to find the union and intersection in the species from male and female penguins. For this purpose, two sets have been pre-loaded into your workspace: female_penguin_species and male_penguin_species.
+
+**_Instructions:_**
+* Combine all the species in female_penguin_species and male_penguin_species by computing their union. Store the result as all_species.
+* Print the number of species in all_species. You can use the len() function to compute the number of species in all_species.
+* Find all the species that occur in both female_penguin_species and male_penguin_species by computing their intersection. Store the result as overlapping_species.
+* Print the number of species in overlapping_species.
+
+```py
+# Find the union: all_species
+all_species = female_penguin_species.union(male_penguin_species)
+
+# Print the count of names in all_species
+print(len(all_species))
+
+# Find the intersection: overlapping_species
+overlapping_species = female_penguin_species.intersection(male_penguin_species)
+
+# Print the count of species in overlapping_species
+print(len(overlapping_species))
+```
+```
+3
+2
+```
+---
+## Advanced Data Types
+---
+### Using Counter on lists
+
+Counter is a powerful tool for counting, validating, and learning more about the elements within a dataset that is found in the collections module. You pass an iterable (list, set, tuple) or a dictionary to the Counter. You can also use the Counter object similarly to a dictionary with key/value assignment, for example counter[key] = value.
+
+A common usage for Counter is checking data for consistency prior to using it, so let's do just that.
+
+**_Instructions:_**
+* Import the Counter object from collections.
+* Create a Counter of the penguins list called penguins_sex_counts; use a list comprehension to return the Sex of each penguin to the Counter.
+* Print the penguins_sex_counts.
+
+```py
+# Import the Counter object
+from collections import Counter
+
+# Create a Counter of the penguins sex using a list comp
+penguins_sex_counts = Counter([penguin["Sex"] for penguin in penguins])
+
+# Print the penguins_sex_counts
+print(penguins_sex_counts)
+```
+```
+Counter({'MALE': 15, 'FEMALE': 5})
+```
+---
+### Finding most common elements
+
+Another powerful usage of Counter is finding the most common elements in a list. This can be done with the .most_common() method.
+
+Practice using this now to find the most common species in a penguins list.
+
+**_Instructions:_**
+* Import the Counter object from collections.
+* Create a Counter of the penguins list called penguins_species_counts; use a list comprehension to return the Species of each penguin to the Counter.
+* Print the three most common species counts.
+
+```py
+# Import the Counter object
+from collections import Counter
+
+# Create a Counter of the penguins list: penguins_species_counts
+penguins_species_counts = Counter([penguin['Species'] for penguin in penguins])
+
+# Find the 3 most common species counts
+print(penguins_species_counts.most_common(3))
+```
+```
+[('Chinstrap', 7), ('Adlie', 7), ('Gentoo', 6)]
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+* 
+*
+
+```py
+
+```
+```
+
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+*
+*
+
+```py
+
+```
+```
+
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+*
+*
+
+```py
+
+```
+```
+
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+*
+*
+
+```py
+
+```
+```
+
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+*
+*
+
+```py
+
+```
+```
+
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+*
+*
+
+```py
+
+```
+```
+
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+*
+*
+
+```py
+
+```
+```
+
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+*
+*
+
+```py
+
+```
+```
+
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+*
+*
+
+```py
+
+```
+```
+
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+*
+*
+
+```py
+
+```
+```
+
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+*
+*
+
+```py
+
+```
+```
+
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+*
+*
+
+```py
+
+```
+```
+
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+*
+*
+
+```py
+
+```
+```
+
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+*
+*
+
+```py
+
+```
+```
+
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+*
+*
+
+```py
+
+```
+```
+
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+*
+*
+
+```py
+
+```
+```
+
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+*
+*
+
+```py
+
+```
+```
+
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+*
+*
+
+```py
+
+```
+```
+
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+*
+*
+
+```py
+
+```
+```
+
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+*
+*
+
+```py
+
+```
+```
+
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+*
+*
+
+```py
+
+```
+```
+
+```
+---
+###
+
+
+
+**_Instructions:_**
+*
+*
+*
+
+```py
+
+```
+```
+
+```
+---
