@@ -928,20 +928,31 @@ MALE:3800.0
 MALE:4050.0
 ```
 ---
-###
+### Creating a dataclass
 
-
+Dataclasses can provide even richer ways of storing and working with data. Previously we used a namedtuple on weight log entries to make a nice easy to use data structure. In this code, we're going to use a dataclass to do the same thing, but add a custom property to return the body mass to flipper length ratio. Dataclasses start with a collection of fields and their types. Then you define any properties, which are functions on the dataclass that operate on itself to return additional information about the data. For example, a person dataclass might have a property that calculates someone's current age based on their birthday and the current date.
 
 **_Instructions:_**
-*
-*
-*
+* Import dataclass from dataclasses.
+* Add the species (string), sex (string), body_mass (int), and flipper_length (int) fields to the dataclass.
+* Add a property (mass_to_flipper_length_ratio) that returns the body_mass divided by the flipper_length.
 
 ```py
+# Import dataclass
+from dataclasses import dataclass
 
-```
-```
+@dataclass
+class WeightEntry:
+    # Define the fields on the class
+    species: str
+    body_mass: int
+    flipper_length: int
+    sex: str
 
+    # Define a property that returns the body_mass / flipper_length
+    @property
+    def mass_to_flipper_length_ratio(self):
+        return self.body_mass / self.flipper_length
 ```
 ---
 ###
