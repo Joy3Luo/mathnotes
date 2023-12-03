@@ -20,6 +20,8 @@ I always enjoy learning more, so I keep taking online courses. I have earned tho
 
 ![Data Manipulation with pandas](https://joy3luo.github.io/mathnotes/pics/certificates/Data_Manipulation_with_pandas.png)
 
+![Data Types for Data Science in Python](https://joy3luo.github.io/mathnotes/pics/certificates/Data_Types.png)
+
 ![Intermediate Python](https://joy3luo.github.io/mathnotes/pics/certificates/Intermediate_Python.png)
 
 ![Intermediate SQL](https://joy3luo.github.io/mathnotes/pics/certificates/Intermediate_SQL.png)
