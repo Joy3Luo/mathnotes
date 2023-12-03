@@ -955,339 +955,57 @@ class WeightEntry:
         return self.body_mass / self.flipper_length
 ```
 ---
-###
+### Using dataclasses
 
+Let's put our WeightEntry dataclass we created in the prior exercise to use. We'll create an instance of the WeightEntry for each entry in the weight_log and then use the mass_to_flipper_length_ratio property we added to perform the calculation. Here is a reminder of our WeightEntry dataclass.
 
+```
+@dataclass
+class WeightEntry:
+    # Define the fields on the class
+    species: str
+    flipper_length: int
+    body_mass: int
+    sex: str
+
+    @property
+    def mass_to_flipper_length_ratio(self):
+        return self.body_mass / self.flipper_length
+```
 
 **_Instructions:_**
-*
-*
-*
+* Create an empty list called labeled_entries.
+* Iterate over the weight_log entries using tuple expansion to break out species, sex, flipper_length, body_mass. Append a new WeightEntry dataclass instance for each entry to labeled_entries.
+* Print a list of the first 5 mass_to_flipper_length_ratio values using a list comprehension.
 
 ```py
+# Create the empty list: labeled_entries
+labeled_entries = []
 
+# Iterate over the weight_log entries
+for species, sex, flipper_length, body_mass in weight_log:
+    # Append a new WeightEntry instance to labeled_entries
+    labeled_entries.append(WeightEntry(species, body_mass, flipper_length, sex))
+
+# Print a list of the first 5 mass_to_flipper_length_ratio values
+print([entry.mass_to_flipper_length_ratio for entry in labeled_entries[:5]])
 ```
 ```
-
-```
----
-###
-
-
-
-**_Instructions:_**
-*
-*
-*
-
-```py
-
-```
-```
-
+[23.91304347826087, 25.32751091703057, 24.0, 23.972602739726028, 20.476190476190474]
 ```
 ---
-###
+## Wrap-up
 
+Congratulations, you've completed the course! Let's take a quick look back at everything you've learned.
 
+In chapter one, we learned about the fundamental sequence types in Python. We learned to use list methods to add, find and remove items. Then we learned to use list comprehensions to perform operations on each item. For tuples, we learned how to unpack them and to be careful not to make new ones accidentally. We also learned about formatting strings, combining strings, and searching for string fragments in a string.
 
-**_Instructions:_**
-*
-*
-*
+Chapter two was focused entirely on dictionaries. We learned how to safely add, find, and remove items in a dictionary. Then, we covered how to use unpacking with the dot-items method to work with individual key and value pairs. Finally, we wrapped up the chapter covering how to handle nested data in dictionaries.
 
-```py
+Chapter three took us through numeric data types, booleans, and sets. We learned when to use integers, floats, and Decimals, along with some Python division guidelines. Next, we learned that booleans are about more than just True and False and explored what values can be Truthy and Falsey and how to use that with Python operators. Finally, we learned how to quickly find differences between two sets, overlapping data between two sets, and removing duplicates within a set.
 
-```
-```
+In the fourth chapter, we explored complex datatypes like Counters, defaultdicts, and namedtuples that can help handle particular situations or represent complex data.
 
-```
----
-###
+We also learned about dataclasses and how we can use them to model complex datatypes.
 
-
-
-**_Instructions:_**
-*
-*
-*
-
-```py
-
-```
-```
-
-```
----
-###
-
-
-
-**_Instructions:_**
-*
-*
-*
-
-```py
-
-```
-```
-
-```
----
-###
-
-
-
-**_Instructions:_**
-*
-*
-*
-
-```py
-
-```
-```
-
-```
----
-###
-
-
-
-**_Instructions:_**
-*
-*
-*
-
-```py
-
-```
-```
-
-```
----
-###
-
-
-
-**_Instructions:_**
-*
-*
-*
-
-```py
-
-```
-```
-
-```
----
-###
-
-
-
-**_Instructions:_**
-*
-*
-*
-
-```py
-
-```
-```
-
-```
----
-###
-
-
-
-**_Instructions:_**
-*
-*
-*
-
-```py
-
-```
-```
-
-```
----
-###
-
-
-
-**_Instructions:_**
-*
-*
-*
-
-```py
-
-```
-```
-
-```
----
-###
-
-
-
-**_Instructions:_**
-*
-*
-*
-
-```py
-
-```
-```
-
-```
----
-###
-
-
-
-**_Instructions:_**
-*
-*
-*
-
-```py
-
-```
-```
-
-```
----
-###
-
-
-
-**_Instructions:_**
-*
-*
-*
-
-```py
-
-```
-```
-
-```
----
-###
-
-
-
-**_Instructions:_**
-*
-*
-*
-
-```py
-
-```
-```
-
-```
----
-###
-
-
-
-**_Instructions:_**
-*
-*
-*
-
-```py
-
-```
-```
-
-```
----
-###
-
-
-
-**_Instructions:_**
-*
-*
-*
-
-```py
-
-```
-```
-
-```
----
-###
-
-
-
-**_Instructions:_**
-*
-*
-*
-
-```py
-
-```
-```
-
-```
----
-###
-
-
-
-**_Instructions:_**
-*
-*
-*
-
-```py
-
-```
-```
-
-```
----
-###
-
-
-
-**_Instructions:_**
-*
-*
-*
-
-```py
-
-```
-```
-
-```
----
-###
-
-
-
-**_Instructions:_**
-*
-*
-*
-
-```py
-
-```
-```
-
-```
----
+Again congratulations on completing the course. I hope you continue your data science education, and hopefully I'll see you again in a later class.
