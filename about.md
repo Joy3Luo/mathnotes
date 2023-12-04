@@ -18,6 +18,8 @@ I always enjoy learning more, so I keep taking online courses. I have earned tho
 
 ![Advanced Learning Algorithms](https://joy3luo.github.io/mathnotes/pics/certificates/Advanced_Learning_Algorithms.png)
 
+![Python Data Science Toolbox](https://joy3luo.github.io/mathnotes/pics/certificates/Data_Toolbox.png)
+
 ![Data Manipulation with pandas](https://joy3luo.github.io/mathnotes/pics/certificates/Data_Manipulation_with_pandas.png)
 
 ![Data Types for Data Science in Python](https://joy3luo.github.io/mathnotes/pics/certificates/Data_Types.png)
