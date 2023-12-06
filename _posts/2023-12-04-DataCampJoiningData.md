@@ -495,3 +495,81 @@ print(iron_1_and_2[m].head())
 5                         Raza   57452      Faran Tahir         NaN    NaN
 8                   Abu Bakaar  173810    Sayed Badreya         NaN    NaN
 ```
+---
+### Self join
+
+Merging a table to itself can be useful when you want to compare values in a column to other values in the same column. In this exercise, you will practice this by creating a table that for each movie will list the movie director and a member of the crew on one row. You have been given a table called crews, which has columns id, job, and name. First, merge the table to itself using the movie ID. This merge will give you a larger table where for each movie, every job is matched against each other. Then select only those rows with a director in the left table, and avoid having a row where the director's job is listed in both the left and right tables. This filtering will remove job combinations that aren't with the director.
+
+The crews table has been loaded for you.
+
+**_Instructions:_**
+* To a variable called crews_self_merged, merge the crews table to itself on the id column using an inner join, setting the suffixes to '_dir' and '_crew' for the left and right tables respectively.
+* Create a Boolean index, named boolean_filter, that selects rows from the left table with the job of 'Director' and avoids rows with the job of 'Director' in the right table.
+* Use the .head() method to print the first few rows of direct_crews.
+
+```py
+# Merge the crews table to itself
+crews_self_merged = crews.merge(crews, on='id', how='inner',
+                                suffixes=('_dir','_crew'))
+
+# Create a boolean index to select the appropriate rows
+boolean_filter = ((crews_self_merged['job_dir'] == 'Director') &
+                  (crews_self_merged['job_crew'] != 'Director'))
+direct_crews = crews_self_merged[boolean_filter]
+
+# Print the first few rows of direct_crews
+print(direct_crews.head())
+```
+```
+        id   job_dir       name_dir        job_crew          name_crew
+156  19995  Director  James Cameron          Editor  Stephen E. Rivkin
+157  19995  Director  James Cameron  Sound Designer  Christopher Boyes
+158  19995  Director  James Cameron         Casting          Mali Finn
+160  19995  Director  James Cameron          Writer      James Cameron
+161  19995  Director  James Cameron    Set Designer    Richard F. Mays
+```
+---
+### Index merge for movie ratings
+
+To practice merging on indexes, you will merge movies and a table called ratings that holds info about movie ratings. Make sure your merge returns all of the rows from the movies table and not all the rows of ratings table need to be included in the result.
+
+The movies and ratings tables have been loaded for you.
+
+**_Instructions:_**
+* Merge movies and ratings on the index and save to a variable called movies_ratings, ensuring that all of the rows from the movies table are returned.
+
+```py
+# Merge to the movies table the ratings table on the index
+movies_ratings = movies.merge(ratings, on = 'id', how = 'left')
+
+# Print the first few rows of movies_ratings
+print(movies_ratings.head())
+```
+```
+                      title  popularity release_date  vote_average  vote_count
+id                                                                            
+257            Oliver Twist      20.416   2005-09-23           6.7       274.0
+14290  Better Luck Tomorrow       3.877   2002-01-12           6.5        27.0
+38365             Grown Ups      38.864   2010-06-24           6.0      1705.0
+9672               Infamous       3.681   2006-11-16           6.4        60.0
+12819       Alpha and Omega      12.301   2010-09-17           5.3       124.0
+```
+---
+### Do sequels earn more?
+
+It is time to put together many of the aspects that you have learned in this chapter. In this exercise, you'll find out which movie sequels earned the most compared to the original movie. To answer this question, you will merge a modified version of the sequels and financials tables where their index is the movie ID. You will need to choose a merge type that will return all of the rows from the sequels table and not all the rows of financials table need to be included in the result. From there, you will join the resulting table to itself so that you can compare the revenue values of the original movie to the sequel. Next, you will calculate the difference between the two revenues and sort the resulting dataset.
+
+The sequels and financials tables have been provided.
+
+**_Instructions:_**
+* With the sequels table on the left, merge to it the financials table on index named id, ensuring that all the rows from the sequels are returned and some rows from the other table may not be returned, Save the results to sequels_fin.
+* Merge the sequels_fin table to itself with an inner join, where the left and right tables merge on sequel and id respectively with suffixes equal to ('_org','_seq'), saving to orig_seq.
+* Select the title_org, title_seq, and diff columns of orig_seq and save this as titles_diff.
+*
+
+```py
+
+```
+```
+
+```
