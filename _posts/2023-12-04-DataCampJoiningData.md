@@ -565,11 +565,155 @@ The sequels and financials tables have been provided.
 * With the sequels table on the left, merge to it the financials table on index named id, ensuring that all the rows from the sequels are returned and some rows from the other table may not be returned, Save the results to sequels_fin.
 * Merge the sequels_fin table to itself with an inner join, where the left and right tables merge on sequel and id respectively with suffixes equal to ('_org','_seq'), saving to orig_seq.
 * Select the title_org, title_seq, and diff columns of orig_seq and save this as titles_diff.
-*
+* Sort by titles_diff by diff in descending order and print the first few rows.
 
 ```py
+# Merge sequels and financials on index id
+sequels_fin = sequels.merge(financials, on='id', how='left')
 
+# Self merge with suffixes as inner join with left on sequel and right on id
+orig_seq = sequels_fin.merge(sequels_fin, how='inner', left_on='sequel',
+                             right_on='id', right_index=True,
+                             suffixes=('_org','_seq'))
+
+# Add calculation to subtract revenue_org from revenue_seq
+orig_seq['diff'] = orig_seq['revenue_seq'] - orig_seq['revenue_org']
+
+# Select the title_org, title_seq, and diff
+titles_diff = orig_seq[['title_org','title_seq','diff']]
+
+# Print the first rows of the sorted titles_diff
+print(titles_diff.sort_values('diff', ascending=False).head())
 ```
 ```
+               title_org        title_seq       diff
+id                                                  
+331    Jurassic Park III   Jurassic World  1.145e+09
+272        Batman Begins  The Dark Knight  6.303e+08
+10138         Iron Man 2       Iron Man 3  5.915e+08
+863          Toy Story 2      Toy Story 3  5.696e+08
+10764  Quantum of Solace          Skyfall  5.225e+08
+```
+---
+## Advanced Merging and Concatenating
+---
+### Performing an anti join
 
+In our music streaming company dataset, each customer is assigned an employee representative to assist them. In this exercise, filter the employee table by a table of top customers, returning only those employees who are not assigned to a customer. The results should resemble the results of an anti join. The company's leadership will assign these employees additional training so that they can work with high valued customers.
+
+The top_cust and employees tables have been provided for you.
+
+**_Instructions:_**
+* Merge employees and top_cust with a left join, setting indicator argument to True. Save the result to empl_cust.
+* Select the srid column of empl_cust and the rows where _merge is 'left_only'. Save the result to srid_list.
+* Subset the employees table and select those rows where the srid is in the variable srid_list and print the results.
+
+```py
+# Merge employees and top_cust
+empl_cust = employees.merge(top_cust, on='srid',
+                                 how='left', indicator=True)
+
+# Select the srid column where _merge is left_only
+srid_list = empl_cust.loc[empl_cust['_merge'] == 'left_only', 'srid']
+
+# Get employees not working with top customers
+print(employees[employees['srid'].isin(srid_list)])
+```
+```
+   srid     lname    fname            title  hire_date                    email
+0     1     Adams   Andrew  General Manager 2002-08-14   andrew@chinookcorp.com
+1     2   Edwards    Nancy    Sales Manager 2002-05-01    nancy@chinookcorp.com
+5     6  Mitchell  Michael       IT Manager 2003-10-17  michael@chinookcorp.com
+6     7      King   Robert         IT Staff 2004-01-02   robert@chinookcorp.com
+7     8  Callahan    Laura         IT Staff 2004-03-04    laura@chinookcorp.com
+```
+---
+### Subset the employees table and select those rows where the srid is in the variable srid_list and print the results.
+
+Some of the tracks that have generated the most significant amount of revenue are from TV-shows or are other non-musical audio. You have been given a table of invoices that include top revenue-generating items. Additionally, you have a table of non-musical tracks from the streaming service. In this exercise, you'll use a semi join to find the top revenue-generating non-musical tracks..
+
+The tables non_mus_tcks, top_invoices, and genres have been loaded for you.
+
+**_Instructions:_**
+* Merge non_mus_tcks and top_invoices on tid using an inner join. Save the result as tracks_invoices.
+* Use .isin() to subset the rows of non_mus_tck where tid is in the tid column of tracks_invoices. Save the result as top_tracks.
+* Group top_tracks by gid and count the tid rows. Save the result to cnt_by_gid.
+* Merge cnt_by_gid with the genres table on gid and print the result.
+
+```py
+# Merge the non_mus_tck and top_invoices tables on tid
+tracks_invoices = non_mus_tcks.merge(top_invoices, on = 'tid')
+
+# Use .isin() to subset non_mus_tcks to rows with tid in tracks_invoices
+top_tracks = non_mus_tcks[non_mus_tcks['tid'].isin(tracks_invoices['tid'])]
+
+# Group the top_tracks by gid and count the tid rows
+cnt_by_gid = top_tracks.groupby(['gid'], as_index=False).agg({'tid':'count'})
+
+# Merge the genres table to cnt_by_gid on gid and print
+print(cnt_by_gid.merge(genres, on = 'gid'))
+```
+```
+  gid  tid      name
+0   19    4  TV Shows
+1   21    2     Drama
+2   22    1    Comedy
+```
+---
+### Concatenation basics
+
+You have been given a few tables of data with musical track info for different albums from the metal band, Metallica. The track info comes from their Ride The Lightning, Master Of Puppets, and St. Anger albums. Try various features of the .concat() method by concatenating the tables vertically together in different ways.
+
+The tables tracks_master, tracks_ride, and tracks_st have loaded for you.
+
+**_Instructions:_**
+* Concatenate tracks_master, tracks_ride, and tracks_st, in that order, setting sort to True.
+
+```py
+# Concatenate the tracks
+tracks_from_albums = pd.concat([tracks_master,tracks_ride,tracks_st],
+                               sort=True)
+print(tracks_from_albums)
+```
+**_Instructions:_**
+* Concatenate tracks_master, tracks_ride, and tracks_st, where the index goes from 0 to n-1.
+
+```py
+# Concatenate the tracks so the index goes from 0 to n-1
+tracks_from_albums = pd.concat([tracks_master,tracks_ride,tracks_st],
+                               ignore_index=True,
+                               sort=True)
+print(tracks_from_albums)
+```
+**_Instructions:_**
+* Concatenate tracks_master, tracks_ride, and tracks_st, showing only columns that are in all tables.
+
+```py
+# Concatenate the tracks, show only columns names that are in all tables
+tracks_from_albums = pd.concat([tracks_master,tracks_ride,tracks_st],
+                               join = 'inner',
+                               sort=True)
+print(tracks_from_albums)
+```
+---
+### Concatenating with keys
+
+The leadership of the music streaming company has come to you and asked you for assistance in analyzing sales for a recent business quarter. They would like to know which month in the quarter saw the highest average invoice total. You have been given three tables with invoice data named inv_jul, inv_aug, and inv_sep. Concatenate these tables into one to create a graph of the average monthly invoice total.
+
+**_Instructions:_**
+* Concatenate the three tables together vertically in order with the oldest month first, adding '7Jul', '8Aug', and '9Sep' as keys for their respective months, and save to variable avg_inv_by_month.
+* Use the .agg() method to find the average of the total column from the grouped invoices.
+* Create a bar chart of avg_inv_by_month.
+
+```py
+# Concatenate the tables and add keys
+inv_jul_thr_sep = pd.concat([inv_jul, inv_aug, inv_sep],
+                            keys=['7Jul', '8Aug', '9Sep'])
+
+# Group the invoices by the index keys and find avg of the total column
+avg_inv_by_month = inv_jul_thr_sep.groupby(level=0).agg({'total':'mean'})
+
+# Bar plot of avg_inv_by_month
+avg_inv_by_month.plot(kind = 'bar')
+plt.show()
 ```
