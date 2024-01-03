@@ -36,7 +36,6 @@ Being able to combine and work with multiple datasets is an essential skill for 
 
 ![Joining Data with pandas](https://joy3luo.github.io/mathnotes/pics/certificates/Joining_Data.png)
 
-
 ## Data Merging Basics
 ---
 ### Your first inner join
