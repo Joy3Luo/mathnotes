@@ -43,6 +43,6 @@ For example, you’ll examine how alcohol use and student performance are relate
 
 By the end of this course, you’ll have the confidence to perform your own exploratory data analysis (EDA) in Python.You’ll be able to explain your findings visually to others and suggest the next steps for gathering insights from your data!
 
-## Writing your own functions
+## Getting to Know a Dataset
 ---
-### Write a simple function
+###
