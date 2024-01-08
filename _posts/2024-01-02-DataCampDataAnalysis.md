@@ -407,3 +407,55 @@ Red-eye flight                     1
 2 Long layover                     1
 Name: Additional_Info, dtype: int64
 ```
+---
+### Imputing missing plane prices
+
+Now there's just one column with missing values left!
+
+You've removed the "Additional_Info" column from planes—the last step is to impute the missing data in the "Price" column of the dataset.
+
+As a reminder, you generated this boxplot, which suggested that imputing the median price based on the "Airline" is a solid approach!
+
+**_Instructions:_**
+* Group planes by airline and calculate the median price.
+* Convert the grouped median prices to a dictionary.
+* Conditionally impute missing values for "Price" by mapping values in the "Airline column" based on prices_dict. Check for remaining missing values.
+
+```py
+# Calculate median plane ticket prices by Airline
+airline_prices = planes.groupby("Airline")["Price"].median()
+
+print(airline_prices)
+
+# Convert to a dictionary
+prices_dict = airline_prices.to_dict()
+
+# Map the dictionary to the missing values
+planes["Price"] = planes["Price"].fillna(planes["Airline"].map(prices_dict))
+
+# Check for missing values
+print(planes.isna().sum())
+```
+```
+Airline
+Air Asia              5192.0
+Air India             9443.0
+GoAir                 5003.5
+IndiGo                5054.0
+Jet Airways          11507.0
+Multiple carriers    10197.0
+SpiceJet              3873.0
+Vistara               8028.0
+Name: Price, dtype: float64
+Airline            0
+Date_of_Journey    0
+Source             0
+Destination        0
+Route              0
+Dep_Time           0
+Arrival_Time       0
+Duration           0
+Total_Stops        0
+Price              0
+dtype: int64
+```
