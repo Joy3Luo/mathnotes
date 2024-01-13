@@ -459,3 +459,252 @@ Total_Stops        0
 Price              0
 dtype: int64
 ```
+---
+### Finding the number of unique values
+
+You would like to practice some of the categorical data manipulation and analysis skills that you've just seen. To help identify which data could be reformatted to extract value, you are going to find out which non-numeric columns in the planes dataset have a large number of unique values.
+
+**_Instructions:_**
+* Filter planes for columns that are of "object" data type.
+* Loop through the columns in the dataset.
+* Add the column iterator to the print statement, then call the function to return the number of unique values in the column.
+
+```py
+# Filter the DataFrame for object columns
+non_numeric = planes.select_dtypes("object")
+
+# Loop through columns
+for col in non_numeric.columns:
+
+  # Print the number of unique values
+  print(f"Number of unique values in {col} column: ", non_numeric[col].unique())
+```
+---
+### Flight duration categories
+
+As you saw, there are 362 unique values in the "Duration" column of planes. Calling planes["Duration"].head(), we see the following values:
+```
+0        19h
+1     5h 25m
+2     4h 45m
+3     2h 25m
+4    15h 30m
+Name: Duration, dtype: object
+```
+
+Looks like this won't be simple to convert to numbers. However, you could categorize flights by duration and examine the frequency of different flight lengths!
+
+You'll create a "Duration_Category" column in the planes DataFrame. Before you can do this you'll need to create a list of the values you would like to insert into the DataFrame, followed by the existing values that these should be created from.
+
+**_Instructions:_**
+* Create a list of categories containing "Short-haul", "Medium", and "Long-haul".
+* Create short_flights, a string to capture values of "0h", "1h", "2h", "3h", or "4h" taking care to avoid values such as "10h".
+* Create medium_flights to capture any values between five and nine hours. Create long_flights to capture any values from 10 hours to 16 hours inclusive.
+
+```py
+# Create a list of categories
+flight_categories = ["Short-haul", "Medium", "Long-haul"]
+
+# Create short-haul values
+short_flights = "^0h|^1h|^2h|^3h|^4h"
+
+# Create medium-haul values
+medium_flights = "^5h|^6h|^7h|^8h|^9h"
+
+# Create long-haul values
+long_flights = "10h|11h|12h|13h|14h|15h|16h"
+```
+---
+### Adding duration categories
+
+Now that you've set up the categories and values you want to capture, it's time to build a new column to analyze the frequency of flights by duration!
+
+The variables flight_categories, short_flights, medium_flights, and long_flights that you previously created are available to you.
+
+**_Instructions:_**
+* Create conditions, a list containing subsets of planes["Duration"] based on short_flights, medium_flights, and long_flights.
+* Create the "Duration_Category" column by calling a function that accepts your conditions list and flight_categories, setting values not found to "Extreme duration".
+* Create a plot showing the count of each category.
+
+```py
+# Create conditions for values in flight_categories to be created
+conditions = [
+    (planes["Duration"].str.contains(short_flights)),
+    (planes["Duration"].str.contains(medium_flights)),
+    (planes["Duration"].str.contains(long_flights))
+]
+
+# Apply the conditions list to the flight_categories
+planes["Duration_Category"] = np.select(conditions, flight_categories,default="Extreme duration")
+
+# Plot the counts of each category
+sns.countplot(data=planes, x="Duration_Category")
+plt.show()
+```
+---
+### Flight duration
+
+You would like to analyze the duration of flights, but unfortunately, the "Duration" column in the planes DataFrame currently contains string values.
+
+You'll need to clean the column and convert it to the correct data type for analysis.
+
+**_Instructions:_**
+* Print the first five values of the "Duration" column.
+* Remove "h" from the column.
+* Convert the column to float data type. Plot a histogram of "Duration" values.
+
+```py
+# Preview the column
+print(planes["Duration"].head())
+
+# Remove the string character
+planes["Duration"] = planes["Duration"].str.replace("h", "")
+
+# Convert to float data type
+planes["Duration"] = planes["Duration"].astype(float)
+
+# Plot a histogram
+sns.histplot(data = planes, x = "Duration")
+plt.show()
+```
+---
+### Adding descriptive statistics
+
+Now "Duration" and "Price" both contain numeric values in the planes DataFrame, you would like to calculate summary statistics for them that are conditional on values in other columns.
+
+**_Instructions:_**
+* Add a column to planes containing the standard deviation of "Price" based on "Airline".
+
+```py
+# Price standard deviation by Airline
+planes["airline_price_st_dev"] = planes.groupby("Airline")["Price"].transform(lambda x: x.std())
+
+print(planes[["Airline", "airline_price_st_dev"]].value_counts())
+```
+```
+Airline            airline_price_st_dev
+Jet Airways        4230.749                3685
+IndiGo             2266.754                1981
+Air India          3865.872                1686
+Multiple carriers  3763.675                1148
+SpiceJet           1790.852                 787
+Vistara            2864.268                 455
+Air Asia           2016.739                 309
+GoAir              2790.815                 182
+dtype: int64
+```
+
+**_Instructions:_**
+* Calculate the median for "Duration" by "Airline", storing it as a column called "airline_median_duration".
+
+```py
+# Median Duration by Airline
+planes["airline_median_duration"] = planes.groupby("Airline")["Duration"].transform(lambda x: x.median())
+
+print(planes[["Airline","airline_median_duration"]].value_counts())
+```
+```
+Airline            airline_median_duration
+Jet Airways        13.333                     3685
+IndiGo             2.917                      1981
+Air India          15.917                     1686
+Multiple carriers  10.250                     1148
+SpiceJet           2.500                       787
+Vistara            3.167                       455
+Air Asia           2.833                       309
+GoAir              5.167                       182
+dtype: int64
+```
+
+**_Instructions:_**
+* Find the mean "Price" by "Destination", saving it as a column called "price_destination_mean".
+
+```py
+# Mean Price by Destination
+planes["price_destination_mean"] = planes.groupby("Destination")["Price"].transform(lambda x: x.mean())
+
+print(planes[["Destination","price_destination_mean"]].value_counts())
+```
+```
+Destination  price_destination_mean
+Cochin       10506.993                 4391
+Banglore     9132.225                  2773
+Delhi        5157.794                  1219
+New Delhi    11738.589                  888
+Hyderabad    5025.210                   673
+Kolkata      4801.490                   369
+dtype: int64
+```
+---
+### Identifying outliers
+
+You've proven that you recognize what to do when presented with outliers, but can you identify them using visualizations?
+
+Try to figure out if there are outliers in the "Price" or "Duration" columns of the planes DataFrame.
+
+matplotlib.pyplot and seaborn have been imported for you as plt and sns respectively.
+
+**_Instructions:_**
+* Plot the distribution of "Price" column from planes.
+* Display the descriptive statistics for flight duration.
+*
+
+```py
+# Plot a histogram of flight prices
+sns.histplot(data=planes, x="Price")
+plt.show()
+
+# Display descriptive statistics for flight duration
+print(planes["Duration"].describe())
+```
+```
+count    10446.000
+mean        10.724
+std          8.472
+min          0.083
+25%          2.833
+50%          8.667
+75%         15.500
+max         47.667
+Name: Duration, dtype: float64
+```
+---
+### Removing outliers
+
+While removing outliers isn't always the way to go, for your analysis, you've decided that you will only include flights where the "Price" is not an outlier.
+
+Therefore, you need to find the upper threshold and then use it to remove values above this from the planes DataFrame.
+
+**_Instructions:_**
+* Find the 75th and 25th percentiles, saving as price_seventy_fifth and price_twenty_fifth respectively.
+* Calculate the IQR, storing it as prices_iqr.
+* Calculate the upper and lower outlier thresholds. Remove the outliers from planes.
+
+```py
+# Find the 75th and 25th percentiles
+price_seventy_fifth = planes["Price"].quantile(0.75)
+price_twenty_fifth = planes["Price"].quantile(0.25)
+
+# Calculate iqr
+prices_iqr = price_upper_perc - price_lower_perc
+
+# Calculate the thresholds
+upper = price_seventy_fifth + (1.5 * prices_iqr)
+lower = price_twenty_fifth - (1.5 * prices_iqr)
+
+# Subset the data
+planes = planes[(planes["Price"] > lower) & (planes["Price"] < upper)]
+
+print(planes["Price"].describe())
+```
+```
+count     9959.000
+mean      8875.161
+std       4057.202
+min       1759.000
+25%       5228.000
+50%       8283.000
+75%      12284.000
+max      23001.000
+Name: Price, dtype: float64
+```
