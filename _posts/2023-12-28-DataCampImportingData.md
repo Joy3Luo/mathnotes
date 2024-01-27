@@ -32,7 +32,7 @@ toc:  true
 
 **Course Description**
 
-As a data scientist, you will need to clean data, wrangle and munge it, visualize it, build predictive models, and interpret these models. Before you can do so, however, you will need to know how to get data into Python. In this course, you'll learn the many ways to import data into Python: from flat files such as .txt and .csv; from files native to other software such as Excel spreadsheets, Stata, SAS, and MATLAB files; and from relational databases such as SQLite and PostgreSQL.
+As a data scientist, you will need to clean data, wrangle and munge it, visualize it, build predictive models, and interpret these models. Before you can do so, however, you will need to know how to get data into Python. In this course, you'll learn the many ways to import data into Python: from flat files such as .txt and .csv; from files native to other software such as Excel spreadsheets, Stata, SAS, and MATLAB files; and from relational databases such as SQLite and PostgreSQL. In this course, you'll extend this knowledge base by learning to import data from the web and by pulling data from Application Programming Interfaces— APIs—such as the Twitter streaming API, which allows us to stream real-time tweets.
 
 ![Introduction to Importing Data in Python](https://joy3luo.github.io/mathnotes/pics/certificates/Importing_Data.png)
 
@@ -1145,4 +1145,388 @@ df = pd.read_sql_query(
 
 # Print head of DataFrame
 print(df.head())
+```
+---
+## Importing data from the Internet
+---
+### Importing flat files from the web: your turn!
+
+You are about to import your first file from the web! The flat file you will import will be 'winequality-red.csv' from the University of California, Irvine's Machine Learning repository. The flat file contains tabular data of physiochemical properties of red wine, such as pH, alcohol content and citric acid content, along with wine quality rating.
+
+The URL of the file is
+'https://assets.datacamp.com/production/course_1606/datasets/winequality-red.csv'
+
+After you import it, you'll check your working directory to confirm that it is there and then you'll load it into a pandas DataFrame.
+
+**_Instructions:_**
+* Import the function urlretrieve from the subpackage urllib.request.
+* Assign the URL of the file to the variable url. Use the function urlretrieve() to save the file locally as 'winequality-red.csv'.
+* Execute the remaining code to load 'winequality-red.csv' in a pandas DataFrame and to print its head to the shell.
+
+```py
+# Import package
+from urllib.request import urlretrieve
+
+# Import pandas
+import pandas as pd
+
+# Assign url of file: url
+url = 'https://assets.datacamp.com/production/course_1606/datasets/winequality-red.csv'
+
+# Save file locally
+urlretrieve(url, 'winequality-red.csv')
+
+# Read file into a DataFrame and print its head
+df = pd.read_csv('winequality-red.csv', sep=';')
+print(df.head())
+```
+```
+   fixed acidity  volatile acidity  citric acid  residual sugar  chlorides  ...  density    pH  sulphates  alcohol  quality
+0            7.4              0.70         0.00             1.9      0.076  ...    0.998  3.51       0.56      9.4        5
+1            7.8              0.88         0.00             2.6      0.098  ...    0.997  3.20       0.68      9.8        5
+2            7.8              0.76         0.04             2.3      0.092  ...    0.997  3.26       0.65      9.8        5
+3           11.2              0.28         0.56             1.9      0.075  ...    0.998  3.16       0.58      9.8        6
+4            7.4              0.70         0.00             1.9      0.076  ...    0.998  3.51       0.56      9.4        5
+
+[5 rows x 12 columns]
+```
+---
+### Opening and reading flat files from the web
+
+You have just imported a file from the web, saved it locally and loaded it into a DataFrame. If you just wanted to load a file from the web into a DataFrame without first saving it locally, you can do that easily using pandas. In particular, you can use the function pd.read_csv() with the URL as the first argument and the separator sep as the second argument.
+
+**_Instructions:_**
+* Assign the URL of the file to the variable url.
+* Read file into a DataFrame df using pd.read_csv(), recalling that the separator in the file is ';'.
+* Print the head of the DataFrame df. Execute the rest of the code to plot histogram of the first feature in the DataFrame df.
+
+```py
+# Import packages
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Assign url of file: url
+url = 'https://assets.datacamp.com/production/course_1606/datasets/winequality-red.csv'
+
+# Read file into a DataFrame: df
+df = pd.read_csv(url,';')
+
+# Print the head of the DataFrame
+print(df.head())
+
+# Plot first column of df
+df.iloc[:, 0].hist()
+plt.xlabel('fixed acidity (g(tartaric acid)/dm$^3$)')
+plt.ylabel('count')
+plt.show()
+```
+```
+fixed acidity  volatile acidity  citric acid  residual sugar  chlorides  ...  density    pH  sulphates  alcohol  quality
+0            7.4              0.70         0.00             1.9      0.076  ...    0.998  3.51       0.56      9.4        5
+1            7.8              0.88         0.00             2.6      0.098  ...    0.997  3.20       0.68      9.8        5
+2            7.8              0.76         0.04             2.3      0.092  ...    0.997  3.26       0.65      9.8        5
+3           11.2              0.28         0.56             1.9      0.075  ...    0.998  3.16       0.58      9.8        6
+4            7.4              0.70         0.00             1.9      0.076  ...    0.998  3.51       0.56      9.4        5
+
+[5 rows x 12 columns]
+```
+---
+### Importing non-flat files from the web
+
+Congrats! You've just loaded a flat file from the web into a DataFrame without first saving it locally using the pandas function pd.read_csv(). This function is super cool because it has close relatives that allow you to load all types of files, not only flat ones. In this interactive exercise, you'll use pd.read_excel() to import an Excel spreadsheet.
+
+The URL of the spreadsheet is
+
+'https://assets.datacamp.com/course/importing_data_into_r/latitude.xls'
+
+Your job is to use pd.read_excel() to read in all of its sheets, print the sheet names and then print the head of the first sheet using its name, not its index.
+
+Note that the output of pd.read_excel() is a Python dictionary with sheet names as keys and corresponding DataFrames as corresponding values.
+
+**_Instructions:_**
+* Assign the URL of the file to the variable url. Read the file in url into a dictionary xls using pd.read_excel() recalling that, in order to import all sheets you need to pass None to the argument sheet_name.
+* Print the names of the sheets in the Excel spreadsheet; these will be the keys of the dictionary xls.
+* Print the head of the first sheet using the sheet name, not the index of the sheet! The sheet name is '1700'
+
+```py
+# Import package
+import pandas as pd
+
+# Assign url of file: url
+url = 'https://assets.datacamp.com/course/importing_data_into_r/latitude.xls'
+
+
+# Read in all sheets of Excel file: xls
+xls = pd.read_excel(url,sheet_name=None)
+
+# Print the sheetnames to the shell
+print(xls.keys())
+
+# Print the head of the first sheet (using its name, NOT its index)
+print(xls['1700'].head())
+```
+```
+dict_keys(['1700', '1900'])
+
+                 country    1700
+0            Afghanistan  34.565
+1  Akrotiri and Dhekelia  34.617
+2                Albania  41.312
+3                Algeria  36.720
+4         American Samoa -14.307
+```
+---
+### Performing HTTP requests in Python using urllib
+
+Now that you know the basics behind HTTP GET requests, it's time to perform some of your own. In this interactive exercise, you will ping our very own DataCamp servers to perform a GET request to extract information from the first coding exercise of this course, "https://campus.datacamp.com/courses/1606/4135?ex=2".
+
+In the next exercise, you'll extract the HTML itself. Right now, however, you are going to package and send the request and then catch the response.
+
+**_Instructions:_**
+* Import the functions urlopen and Request from the subpackage urllib.request.
+* Package the request to the url "https://campus.datacamp.com/courses/1606/4135?ex=2" using the function Request() and assign it to request.
+* Send the request and catch the response in the variable response with the function urlopen().
+* Run the rest of the code to see the datatype of response and to close the connection!
+
+```py
+# Import packages
+from urllib.request import urlopen, Request
+
+# Specify the url
+url = "https://campus.datacamp.com/courses/1606/4135?ex=2"
+
+# This packages the request: request
+request = Request(url)
+
+# Sends the request and catches the response: response
+response = urlopen(request)
+
+# Print the datatype of response
+print(type(response))
+
+# Be polite and close the response!
+response.close()
+
+```
+---
+### Printing HTTP request results in Python using urllib
+
+You have just packaged and sent a GET request to "https://campus.datacamp.com/courses/1606/4135?ex=2" and then caught the response. You saw that such a response is a http.client.HTTPResponse object. The question remains: what can you do with this response?
+
+Well, as it came from an HTML page, you could read it to extract the HTML and, in fact, such a http.client.HTTPResponse object has an associated read() method. In this exercise, you'll build on your previous great work to extract the response and print the HTML.
+
+**_Instructions:_**
+* Send the request and catch the response in the variable response with the function urlopen(), as in the previous exercise.
+* Extract the response using the read() method and store the result in the variable html.
+* Hit submit to perform all of the above and to close the response: be tidy!
+
+```py
+# Import packages
+from urllib.request import urlopen, Request
+
+# Specify the url
+url = "https://campus.datacamp.com/courses/1606/4135?ex=2"
+
+# This packages the request
+request = Request(url)
+
+# Sends the request and catches the response: response
+response = urlopen(request)
+
+# Extract the response: html
+html = response.read()
+
+# Print the html
+print(html)
+
+# Be polite and close the response!
+response.close()
+```
+---
+### Performing HTTP requests in Python using requests
+
+Now that you've got your head and hands around making HTTP requests using the urllib package, you're going to figure out how to do the same using the higher-level requests library. You'll once again be pinging DataCamp servers for their "http://www.datacamp.com/teach/documentation" page.
+
+Note that unlike in the previous exercises using urllib, you don't have to close the connection when using requests!
+
+**_Instructions:_**
+* Import the package requests. Assign the URL of interest to the variable url.
+* Package the request to the URL, send the request and catch the response with a single function requests.get(), assigning the response to the variable r.
+* Use the text attribute of the object r to return the HTML of the webpage as a string; store the result in a variable text. Hit submit to print the HTML of the webpage.
+
+```py
+# Import package
+import requests
+
+# Specify the url: url
+url = "http://www.datacamp.com/teach/documentation"
+
+# Packages the request, send the request and catch the response: r
+r = requests.get(url)
+
+# Extract the response: text
+text = r.text
+
+# Print the html
+print(text)
+```
+---
+### Parsing HTML with BeautifulSoup
+
+In this interactive exercise, you'll learn how to use the BeautifulSoup package to parse, prettify and extract information from HTML. You'll scrape the data from the webpage of Guido van Rossum, Python's very own Benevolent Dictator for Life. In the following exercises, you'll prettify the HTML and then extract the text and the hyperlinks.
+
+The URL of interest is url = 'https://www.python.org/~guido/'.
+
+**_Instructions:_**
+* Import the function BeautifulSoup from the package bs4.
+* Assign the URL of interest to the variable url.
+* Package the request to the URL, send the request and catch the response with a single function requests.get(), assigning the response to the variable r.
+* Use the text attribute of the object r to return the HTML of the webpage as a string; store the result in a variable html_doc.
+* Create a BeautifulSoup object soup from the resulting HTML using the function BeautifulSoup().
+* Use the method prettify() on soup and assign the result to pretty_soup.
+
+```py
+# Import packages
+import requests
+from bs4 import BeautifulSoup
+
+# Specify url: url
+url = 'https://www.python.org/~guido/'
+
+# Package the request, send the request and catch the response: r
+r = requests.get(url)
+
+# Extracts the response as html: html_doc
+html_doc = r.text
+
+# Create a BeautifulSoup object from the HTML: soup
+soup = BeautifulSoup(html_doc)
+
+# Prettify the BeautifulSoup object: pretty_soup
+pretty_soup = soup.prettify()
+
+# Print the response
+print(pretty_soup)
+```
+---
+### Turning a webpage into data using BeautifulSoup: getting the text
+
+As promised, in the following exercises, you'll learn the basics of extracting information from HTML soup. In this exercise, you'll figure out how to extract the text from the BDFL's webpage, along with printing the webpage's title.
+
+**_Instructions:_**
+* In the sample code, the HTML response object html_doc has already been created: your first task is to Soupify it using the function BeautifulSoup() and to assign the resulting soup to the variable soup.
+* Extract the title from the HTML soup soup using the attribute title and assign the result to guido_title.
+* Print the title of Guido's webpage to the shell using the print() function.
+* Extract the text from the HTML soup soup using the method get_text() and assign to guido_text.
+
+```py
+# Import packages
+import requests
+from bs4 import BeautifulSoup
+
+# Specify url: url
+url = 'https://www.python.org/~guido/'
+
+# Package the request, send the request and catch the response: r
+r = requests.get(url)
+
+# Extract the response as html: html_doc
+html_doc = r.text
+
+# Create a BeautifulSoup object from the HTML: soup
+soup = BeautifulSoup(html_doc)
+
+# Get the title of Guido's webpage: guido_title
+guido_title = soup.title
+
+# Print the title of Guido's webpage to the shell
+print(guido_title)
+
+# Get Guido's text: guido_text
+guido_text = soup.text
+
+# Print Guido's text to the shell
+print(guido_text)
+```
+---
+### Turning a webpage into data using BeautifulSoup: getting the hyperlinks
+
+In this exercise, you'll figure out how to extract the URLs of the hyperlinks from the BDFL's webpage. In the process, you'll become close friends with the soup method find_all().
+
+**_Instructions:_**
+* Use the method find_all() to find all hyperlinks in soup, remembering that hyperlinks are defined by the HTML tag \<a\> but passed to find_all() without angle brackets; store the result in the variable a_tags.
+* The variable a_tags is a results set: your job now is to enumerate over it, using a for loop and to print the actual URLs of the hyperlinks; to do this, for every element link in a_tags, you want to print() link.get('href').
+
+```py
+# Import packages
+import requests
+from bs4 import BeautifulSoup
+
+# Specify url
+url = 'https://www.python.org/~guido/'
+
+# Package the request, send the request and catch the response: r
+r = requests.get(url)
+
+# Extracts the response as html: html_doc
+html_doc = r.text
+
+# create a BeautifulSoup object from the HTML: soup
+soup = BeautifulSoup(html_doc)
+
+# Print the title of Guido's webpage
+print(soup.title)
+
+# Find all 'a' tags (which define hyperlinks): a_tags
+a_tags = soup.find_all('a')
+
+# Print the URLs to the shell
+for link in a_tags:
+    print(link.get('href'))
+```
+```
+<title>Guido's Personal Home Page</title>
+pics.html
+pics.html
+http://www.washingtonpost.com/wp-srv/business/longterm/microsoft/stories/1998/raymond120398.htm
+images/df20000406.jpg
+http://neopythonic.blogspot.com/2016/04/kings-day-speech.html
+http://www.python.org
+Resume.html
+Publications.html
+bio.html
+http://legacy.python.org/doc/essays/
+http://legacy.python.org/doc/essays/ppt/
+interviews.html
+pics.html
+http://neopythonic.blogspot.com
+http://www.artima.com/weblogs/index.jsp?blogger=12088
+https://twitter.com/gvanrossum
+Resume.html
+https://docs.python.org
+https://github.com/python/cpython/issues
+https://discuss.python.org
+guido.au
+http://legacy.python.org/doc/essays/
+images/license.jpg
+http://www.cnpbagwell.com/audio-faq
+http://sox.sourceforge.net/
+images/internetdog.gif
+```
+---
+## Introduction to APIs and JSONs
+---
+### Loading and exploring a JSON
+
+Now that you know what a JSON is, you'll load one into your Python environment and explore it yourself. Here, you'll load the JSON 'a_movie.json' into the variable json_data, which will be a dictionary. You'll then explore the JSON contents by printing the key-value pairs of json_data to the shell.
+
+**_Instructions:_**
+* Load the JSON 'a_movie.json' into the variable json_data within the context provided by the with statement. To do so, use the function json.load() within the context manager.
+* Use a for loop to print all key-value pairs in the dictionary json_data. Recall that you can access a value in a dictionary using the syntax: dictionary[key].
+
+```py
+
+```
+```
+
 ```
