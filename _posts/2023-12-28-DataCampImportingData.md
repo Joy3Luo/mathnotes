@@ -1525,8 +1525,39 @@ Now that you know what a JSON is, you'll load one into your Python environment a
 * Use a for loop to print all key-value pairs in the dictionary json_data. Recall that you can access a value in a dictionary using the syntax: dictionary[key].
 
 ```py
+# Load JSON: json_data
+with open("a_movie.json") as json_file:
+    json_data = json.load(json_file)
 
+# Print each key-value pair in json_data
+for k in json_data.keys():
+    print(k + ': ', json_data[k])
 ```
 ```
-
+<script.py> output:
+    Title:  The Social Network
+    Year:  2010
+    Rated:  PG-13
+    Released:  01 Oct 2010
+    Runtime:  120 min
+    Genre:  Biography, Drama
+    Director:  David Fincher
+    Writer:  Aaron Sorkin, Ben Mezrich
+    Actors:  Jesse Eisenberg, Andrew Garfield, Justin Timberlake
+    Plot:  As Harvard student Mark Zuckerberg creates the social networking site that would become known as Facebook, he is sued by the twins who claimed he stole their idea and by the co-founder who was later squeezed out of the business.
+    Language:  English, French
+    Country:  United States
+    Awards:  Won 3 Oscars. 173 wins & 186 nominations total
+    Poster:  https://m.media-amazon.com/images/M/MV5BOGUyZDUxZjEtMmIzMC00MzlmLTg4MGItZWJmMzBhZjE0Mjc1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg
+    Ratings:  [{'Source': 'Internet Movie Database', 'Value': '7.8/10'}, {'Source': 'Rotten Tomatoes', 'Value': '96%'}, {'Source': 'Metacritic', 'Value': '95/100'}]
+    Metascore:  95
+    imdbRating:  7.8
+    imdbVotes:  748,405
+    imdbID:  tt1285016
+    Type:  movie
+    DVD:  05 Jun 2012
+    BoxOffice:  $96,962,694
+    Production:  N/A
+    Website:  N/A
+    Response:  True
 ```
