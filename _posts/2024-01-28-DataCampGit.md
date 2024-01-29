@@ -889,3 +889,185 @@ nothing to commit, working tree clean
 ## Git workflows
 ---
 ### Configuring Git
+
+**Levels of settings**
+
+git config --list
+
+Git has three levels of settings:
+
+1. --local: settings for one specific project
+
+2. --global: settings for all of our projects
+
+3. --system: settings for every users on this computer
+
+**What can we configure?**
+
+```
+$git config --list
+user.email=repl@datacamp.com
+user.name=Rep Loop
+core.editor=nano
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+```
+
+user.email and user.name are needed by some commands, so setting these saves time!
+
+user.email and user.name are global settings
+
+**Changing our settings**
+
+```
+git config --global setting value
+```
+
+Change email address to johnsmith@datacamp.com:
+```
+git config --global user.email johnsmith@datacamp.com
+```
+
+Change username to John Smith:
+```
+git config --global user.name 'John Smith'
+```
+
+If we don't use '' and our user.name has a space: Git would save user.name as John
+
+**Using an alias**
+
+Set up an alias through global settings
+
+Typically used to shorten a command
+
+To create an alias for committing files by executing ci:
+
+```
+git config --global alias.ci 'commit -m'
+```
+
+Again, we use '' so Git processes characters after the space
+
+We can now commit files by executing:
+
+```
+git ci
+```
+
+**Creating a custom alias**
+
+We can create an alias for any command
+
+If we often unstage files:
+
+```
+git config --global alias.unstage 'reset HEAD'
+```
+
+Be careful not to overwrite existing commands!
+
+**Tracking aliases***
+
+```
+.gitconfig filegit config --global --list
+```
+Output format: alias.aliasname=command
+
+```
+alias.ci=commit -m
+alias.unstage=reset HEAD
+```
+
+**Ignoring specific files**
+
+```
+nano .gitignore
+```
+
+```
+*.log
+```
+
+* = Wildcard
+
+Commonly ignored files: APIs, credentials, system files, software dependencies
+
+---
+### Modifying your email address in Git
+
+Updating your configuration settings with Git can save you time, particularly where some commands require your credentials to verify access to repositories.
+
+In this exercise, you'll configure your email settings.
+
+
+**_Instructions:_**
+* Display all settings.
+* Change the email address to I_love_Git@datacamp.com.
+* Check the global settings to see if the update has been made.
+
+```
+$ git config --listuser.email=repl@datacamp.com
+user.name=Rep Loopcore.editor=nano
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+$ git config --global user.email I_love_Git@datacamp.com
+$ git config --global --list
+user.email=I_love_Git@datacamp.com
+user.name=Rep Loop
+core.editor=nano
+```
+---
+### Creating an alias
+
+As you work with Git more regularly, you will likely notice that you are performing certain tasks repetitively.
+
+In this case, you have noticed that you are often checking which files have been modified and where you are in the workflow.
+
+Therefore, you will change the command used to check the state of files to an alias, allowing you to save time.
+
+**_Instructions:_**
+* Create an alias for the global command used to check the state of files, calling it st.
+* Run the new alias command to confirm it works.
+
+```
+$ git config --global alias.st 'status'
+$ git st
+On branch main
+nothing to commit, working tree clean
+```
+---
+## Branches
+
+**Identifying branches**
+
+```
+$ git branch  
+  alter-report-title  
+  main
+* summary-statistics
+```
+
+* = current branch
+
+**Creating a new branch**
+
+```
+$ git checkout -b report
+Switched to a new branch 'report'
+$ git branch
+  alter-report-title
+  main
+  summary-statistics
+* report
+```
+
+The difference between branches
+
+```
+git diff main summary-statistics
+```
