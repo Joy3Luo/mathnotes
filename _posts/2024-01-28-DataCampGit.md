@@ -1071,3 +1071,43 @@ The difference between branches
 ```
 git diff main summary-statistics
 ```
+---
+### Creating new branches
+
+You have some more content to add to summary_statistics.csv for the mh_survey project, and then you'll be moving on to the report phase. Therefore, you would like to make a new branch called report where you can work on the project report.
+
+The branch needs to be created from the summary-statistics branch, in which you are currently located.
+
+Your task is to finish working on the summary statistics file, make a commit, then create the report branch.
+
+**_Instructions:_**
+* Edit summary_statistics.txt and add the following text: "Mean age is 32 years old, with a standard deviation of 6.72"
+* Add summary_statistics.txt to the staging area.
+* Make a commit with the log message "Adding age summary statistics".
+* Create a new branch called report.
+
+```
+$ nano summary_statistics.txt
+$ ^C
+$ git add summary_statistics.txt
+$ git commit -m "Adding age summary statistics"
+bash: agit: command not found
+$ git checkout -b report
+A       summary_statistics.txt
+Switched to a new branch 'report'
+```
+---
+### Comparing branches
+
+If you're working across multiple branches then you may want to compare the state of repos between branches from time to time.
+
+You are in the mh_survey repository and would like to compare two branches.
+
+**_Instructions:_**
+* Execute a command to compare the alter-report-title and summary-statistics branches.
+
+```
+$ git diff alter-report-title summary-statistics
+```
+---
+### Working with branches
