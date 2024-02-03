@@ -34,6 +34,8 @@ toc:  true
 
 This course introduces learners to version control using Git. You will discover the importance of version control when working on data science projects and explore how you can use Git to track files, compare differences, modify and save files, undo changes, and allow collaborative development through the use of branches. You will gain an introduction to the structure of a repository, how to create new repositories and clone existing ones, and show how Git stores data. By working through typical data science tasks, you will gain the skills to handle conflicting files.
 
+![Introduction to Git](https://joy3luo.github.io/mathnotes/pics/certificates/Introduction_to_Git.png)
+
 ## Introduction to Git
 ---
 ### Introduction toversion control withGit
@@ -1111,3 +1113,530 @@ $ git diff alter-report-title summary-statistics
 ```
 ---
 ### Working with branches
+
+
+**How do we switch branches?**
+
+git checkout -b new_branch to create a new branch
+
+```
+git checkout debugging
+git branch
+```
+```
+* debugging
+  main
+  summary-statistics
+```
+
+**Merging branches**
+
+```
+git merge source destination
+```
+
+To merge summary-statistics into main
+```
+git merge summary-statistics main
+```
+---
+### Switching branches
+
+You have previously created a new branch called report.
+
+Now it's time to switch into this new branch and edit report.md with some of your findings.
+
+**_Instructions:_**
+* Switch to the report branch.
+* Add "80% of participants were male, compared to the industry average of 67%." to the end of report.md.
+* Place report.md into the staging area.
+* Make a commit with the log message "Add gender summary in report".
+
+```
+$ git checkout reportSwitched to branch 'report'
+$ echo "80% of participants were male, compared to the industry averageof 67%." >> report.md
+$ git add report.md
+$ git commit -m "Add gender summary in report"
+bash: agit: command not found
+```
+---
+### Merging two branches
+
+You've updated the project report in the report branch, and now need to merge it into main to keep it accurate and up to date.
+
+**_Instructions:_**
+* Merge the report branch into the main branch.
+
+```
+$ git merge report mainUpdating 7f71ead..51e95af
+Fast-forward report.md | 1 +
+ 1 file changed, 1 insertion(+)
+```
+---
+### Handling conflict
+
+**What is a conflict?**
+
+```
+A) Write report.
+B) Submit report.
+```
+```
+git add todo.txt
+git commit -m "Add todo list"
+```
+```
+git checkout -b update
+```
+```
+A) Write report.
+B) Submit report.
+C) Submit expenses.
+```
+```
+git add todo.txt
+git commit -m "Reminder to submit expenses"
+git checkout main
+```
+```
+C) Submit expenses.
+```
+
+**Conflict**
+
+Main branch todo.txt
+
+```
+C) Submit expenses.
+```
+
+Update branch todo.txt
+
+```
+A) Write report.
+B) Submit report.
+C) Submit expenses.
+```
+
+**Attempting to merge a conflict**
+```
+git merge update main
+```
+```
+CONFLICT (add/add): Merge conflict in todo.txt
+Auto-merging todo.txt
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+**Git conflicts**
+```
+nano todo.txt
+```
+```
+<<<<<<< HEAD
+=======
+A) Write report.
+B) Submit report.
+>>>>>>> update
+C) Submit expenses.
+```
+
+**Merging the branches**
+
+```
+git add todo.txt
+git commit -m "Resolving todo.txt conflict"
+git merge update main
+```
+```
+Already up to date.
+```
+
+Large conflicts can be quite intimidating!
+
+---
+##Collaborating with Git
+---
+### Creating repos
+
+**Creating a new repo**
+```
+git init mental-health-workspace
+cd mental-health-workspace
+git status
+```
+```
+On branch main
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+```
+
+**Converting a project**
+
+```
+git init
+```
+```
+Initialized empty Git repository in /home/repl/mental-health-workspace/.
+```
+
+**What is being tracked?**
+
+```
+git status
+```
+```
+On branch main
+
+No commits yet
+
+Untracked files:
+    (use "git add <file>..." to include what will be committed)   
+
+         data/        
+         report.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
+---
+### Setting up a new repo
+
+You have finished working on the mh_survey project, and just in time too! You've been assigned to work with a colleague on a new research project investigating the relationship between anxiety and the number of different computer systems used in a workplace.
+
+You decide to get a head start by creating a new Git repo along with a to-do list.
+
+**_Instructions:_**
+* Create a Git repo called anxiety_workplace in your current directory.
+* Move into the new anxiety_workplace directory.
+* Create a file called todo.txt containing the following text: "TODO: Recap on existing research.".
+
+```
+$ git init anxiety_workplace
+Initialized empty Git repository in /home/repl/projects/anxiety_workplace/.git/
+$ cd anxiety_workplace
+$ echo "TODO: Recap on existing research." > todo.txt
+```
+---
+### Converting an existing project
+
+Imagine you've been working on the mental health survey project, but are only now learning about the benefits of Git!
+
+You want to convert your project into a Git repo so you can track your files moving forward.
+
+You're inside the mh_survey directory.
+
+**_Instructions:_**
+* Turn your project into a Git repo.
+
+```
+$ git init
+Initialized empty Git repository in /home/repl/mh_survey/.git/
+```
+---
+### Working withremotes
+
+**Cloning locally**
+```
+git clone path-to-project-directory
+```
+```
+git clone /home/john/repo
+```
+```
+git clone /home/john/repo new_repo
+```
+
+**Cloning a remote**
+
+Remote repos are stored in an online hosting service e.g., GitHub, Bitbucket, or Gitlab
+
+If we have an account: we can clone a remote repo on to our local computer
+
+```
+git clone [URL]
+```
+```
+git clone https://github.com/datacamp/project
+```
+
+**Identifying a remote**
+
+When cloning a repo: Git remembers where the original was
+
+Git stores a remote tag in the new repo's configuration
+
+```
+git remote
+```
+```
+datacamp
+```
+
+**Getting more information**
+```
+git remote -v
+```
+```
+datacamp     https://github.com/datacamp/project (fetch)
+datacamp     https://github.com/datacamp/project (pul
+```
+
+**Creating a remote**
+
+When cloning, Git will automatically name the remote origin
+```
+git remote add name URL
+```
+```
+git remote add george https://github.com/george_datacamp/repo
+```
+Defining remote names is useful for merging branches
+
+---
+### Cloning a repo
+
+Your colleague has been working on the new anxiety in the workplace project and is ready to hand it over to you.
+
+They tell you that all of their work is in a repo in /home/john/repo.
+
+Use a single command to clone this repo inside your projects directory, where you are currently located, naming it as john_anxiety_project.
+
+**_Instructions:_**
+* Clone /home/john/repo, naming the cloned repo as john_anxiety_project.
+
+```
+$ git clone /home/john/repo john_anxiety_project
+```
+---
+### Defining and identifying remotes
+
+Now that you have cloned John's repo locally, you decide you want to name the remote as john to serve as a shortcut when working between branches going forward.
+
+**_Instructions:_**
+* Add the name john for the /home/john/repo repo.
+* List all remotes including their URL(s).
+
+```
+$ git remote add john /home/john/repo
+$ git remote -v
+```
+---
+### Gathering from aremote
+
+**Fetching from a remote**
+```
+git fetch origin main
+```
+```
+From https://github.com/datacamp/project
+ * branch                main     -> FETCH_HEAD
+```
+
+**Synchronizing content**
+```
+git merge origin main
+```
+```
+Updating 9dcf4e5..887da2d
+Fast-forward
+ data/mental_health_survey.csv | 3 +++
+ report.md                     | 1 +
+ 2 files changed, 4 insertions (+)
+```
+
+**Pulling from a remote**
+
+remote is often ahead of local repos
+
+fetch and merge is a common workflow
+
+Git simplifies this process for us!
+
+```
+git pull origin main
+```
+```
+From https://github.com/datacamp/project
+ * branch                main     -> FETCH_HEAD
+Updating 9dcf4e5..887da2d
+Fast-forward
+ data/mental_health_survey.csv | 3 +++
+ report.md                     | 1 +
+ 2 files changed, 4 insertions (+)
+```
+
+**Pulling with unsaved local changes**
+```
+git pull origin
+```
+```
+Updating 9dcf4e5..887da2d
+error: Your local changes to the following files would be overwritten by merge:
+        report.md
+Please commit your changes or stash them before you merge.
+Aborting
+```
+Important to save locally before pulling from a remote
+---
+### Fetching from a remote
+
+If you are not sure how the contents of a remote repo compare to your local repo, then you can gather the remote contents from a specific branch and then compare them to your local branch.
+
+Your colleague John has set up a remote repo so that his work is backed up in the cloud and accessible to others.
+
+**_Instructions:_**
+* Run a command to find out the name(s) of remote repos linked to your project.
+* Gather contents from the remote origin repo into your local main branch.
+* Compare the remote repo with your local main branch.
+
+```
+$ git remoteorigin
+$ git fetch origin mainFrom /home/john/repo
+ * branch            main       -> FETCH_HEAD
+$ git diff origin main
+diff --git a/protocol.md b/protocol.md
+deleted file mode 100644
+index 656fa14..0000000
+--- a/protocol.md
++++ /dev/null
+@@ -1,2 +0,0 @@
+-Eligibility criteria:
+-18-67 years old
+```
+---
+### Pulling from a remote
+
+Fetching is useful, but if you want to bring your local repo's main branch in line with a remote repo, origin, this is possible with a single command!
+
+In this exercise, you'll work on a file while synchronizing between local and remote repos.
+
+**_Instructions:_**
+* Use a single command to fetch and merge the origin repo into your local main branch.
+* Append "No existing mental health diagnosis." to the end of protocol.md.
+* Add protocol.md to the staging area.
+* Make a commit with the log message "Updating eligibility criteria".
+
+```
+$ git pull origin main
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0)
+Unpacking objects: 100% (3/3), done.
+From /home/john/repo
+ * branch            main       -> FETCH_HEAD
+   ebcea98..29c1160  main       -> origin/main
+Updating ebcea98..29c1160
+Fast-forward
+ protocol.md | 2 ++
+ 1 file changed, 2 insertions(+)
+ create mode 100644 protocol.md
+$ echo "No existing mental health diagnosis." >> protocol.md
+$ git add protocol.md
+$ git commit -m "Updating eligibility criteria"
+[main 09f7797] Updating eligibility criteria
+ 1 file changed, 1 insertion(+)
+```
+---
+### Pushing to a remote
+
+**git push**
+
+Save changes locally first!
+```
+git push remote local_branch
+```
+
+Push intoremotefromlocal_branch
+```
+git push origin main
+```
+
+**Avoid leaving a message**
+```
+git pull --no-edit origin main
+```
+
+**Pushing to the remote**
+```
+git push origin main
+```
+```
+Counting objects: 3, done.
+Delta compression using up to 8 threads.
+Compressing objects: 10% (3/3), done.
+Writing objects: 100% (3/3), 325 bytes | 325.00 KiB/s, done.
+To https://github.com/datacamp/project
+    01384d2..0a1dbf6  main -> main
+```
+---
+### Pushing to a remote repo
+
+You've noticed that the budget tracker has some errors, so you decide this needs to be added to the issue_log.txt file, along with adding an action to report.md.
+
+You want to push the updated files to John's remote repo called origin so he is aware of the issue and the next steps.
+
+**_Instructions:_**
+* Add the two updated files to the staging area.
+* Save changes with the log message "Budget inaccuracy added to the issue log and report".
+* Update the origin remote with changes made in your local main branch.
+
+```
+$ git add .
+$ git commit -m "Budget inaccuracy added to the issue log and report"
+[main a10e07e] Budget inaccuracy added to the issue log and report
+ 2 files changed, 4 insertions(+)
+ create mode 100644 issue_log.txt
+$ git push origin main
+Counting objects: 4, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 525 bytes | 525.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+To /home/john/repo
+   29c1160..a10e07e  main -> main
+```
+---
+### Handling push conflicts
+
+Remote repos enable collaboration in Git, but it is important to regularly synchronize your local repo.
+
+In this exercise, you'll see what happens when they aren't aligned, and how to deal with this scenario.
+
+**_Instructions:_**
+* Send changes in the local repo's main branch to the remote repo called origin.
+* Pull origin into the local main branch, entering a message of your choice inside the text editor.
+* Try again to update the remote with changes made in the local main.
+
+```
+$ git push origin main
+To /home/john/repo
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to '/home/john/repo'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+$ git pull --no-edit origin main
+remote: Counting objects: 4, done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 4 (delta 1), reused 0 (delta 0)
+Unpacking objects: 100% (4/4), done.
+From /home/john/repo
+ * branch            main       -> FETCH_HEAD
+   a10e07e..4a14a72  main       -> origin/main
+Updating a10e07e..4a14a72
+Fast-forward
+ issue_log.txt | 2 --
+ proposal.md   | 2 ++
+ report.md     | 2 --
+ 3 files changed, 2 insertions(+), 4 deletions(-)
+ delete mode 100644 issue_log.txt
+ create mode 100644 proposal.md
+$ git push origin main
+Everything up-to-date
+```
+---
+Congratulations!

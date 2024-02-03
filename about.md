@@ -30,10 +30,10 @@ I always enjoy learning more, so I keep taking online courses. I have earned tho
 
 ![Introduction to SQL](https://joy3luo.github.io/mathnotes/pics/certificates/Introduction_to_SQL.png)
 
+![Introduction to Git](https://joy3luo.github.io/mathnotes/pics/certificates/Introduction_to_Git.png)
+
 ![Programming for Everybody](https://joy3luo.github.io/mathnotes/pics/certificates/Programming_for_Everybody.png)
 
-
 ![Python Data Structures](https://joy3luo.github.io/mathnotes/pics/certificates/Python_Data_Structures.png)
-
 
 ![Programming Foundations: Fundamentals](https://joy3luo.github.io/mathnotes/pics/certificates/Programming_Foundations.png)
