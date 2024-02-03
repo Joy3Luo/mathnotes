@@ -108,19 +108,24 @@ ride_sharing['duration_time'] = ride_sharing['duration_trim'].astype('int')
 # Write an assert statement making sure of conversion
 assert ride_sharing['duration_time'].dtype == 'int'
 
-# Print formed columns and calculate average ride duration 
+# Print formed columns and calculate average ride duration
 print(ride_sharing[['duration','duration_trim','duration_time']])
 print(ride_sharing['duration_time'].mean())
 ```
 ---
-###
+### Tire size constraints
 
+In this lesson, you're going to build on top of the work you've been doing with the ride_sharing DataFrame. You'll be working with the tire_sizes column which contains data on each bike's tire size.
 
+Bicycle tire sizes could be either 26″, 27″ or 29″ and are here correctly stored as a categorical value. In an effort to cut maintenance costs, the ride sharing provider decided to set the maximum tire size to be 27″.
+
+In this exercise, you will make sure the tire_sizes column has the correct range by first converting it to an integer, then setting and testing the new upper limit of 27″ for tire sizes.
 
 **_Instructions:_**
-*
-*
-*
+* Convert the tire_sizes column from category to 'int'.
+* Use .loc[] to set all values of tire_sizes above 27 to 27.
+* Reconvert back tire_sizes to 'category' from int.
+* Print the description of the tire_sizes.
 
 ```py
 
