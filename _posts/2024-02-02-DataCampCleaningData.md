@@ -434,3 +434,67 @@ You are tasked with understanding the average account size and how investments v
 * Find the rows of acct_cur in banking that are equal to 'euro' and store them in the variable acct_eu.
 * Find all the rows of acct_amount in banking that fit the acct_eu condition, and convert them to USD by multiplying them with 1.1.
 * Find all the rows of acct_cur in banking that fit the acct_eu condition, set them to 'dollar'.
+
+```py
+# Find values of acct_cur that are equal to 'euro'
+acct_eu = banking['acct_cur'] == 'euro'
+
+# Convert acct_amount where it is in euro to dollars
+banking.loc[acct_eu, 'acct_amount'] = banking.loc[acct_eu, 'acct_amount'] * 1.1
+
+# Unify acct_cur column by changing 'euro' values to 'dollar'
+banking.loc[acct_eu, 'acct_cur'] = 'dollar'
+
+# Assert that only dollar currency remains
+assert banking['acct_cur'].unique() == 'dollar'
+```
+---
+### Uniform dates
+
+After having unified the currencies of your different account amounts, you want to add a temporal dimension to your analysis and see how customers have been investing their money given the size of their account over each year. The account_opened column represents when customers opened their accounts and is a good proxy for segmenting customer activity and investment over time.
+
+However, since this data was consolidated from multiple sources, you need to make sure that all dates are of the same format. You will do so by converting this column into a datetime object, while making sure that the format is inferred and potentially incorrect formats are set to missing. The banking DataFrame is in your environment and pandas was imported as pd.
+
+**_Instructions:_**
+* Print the header of account_opened from the banking DataFrame and take a look at the different results.
+* Convert the account_opened column to datetime, while making sure the date format is inferred and that erroneous formats that raise error return a missing value.
+* Extract the year from the amended account_opened column and assign it to the acct_year column.
+* Print the newly created acct_year column.
+
+```py
+# Print the header of account_opend
+print(banking['account_opened'].head())
+
+# Convert account_opened to datetime
+banking['account_opened'] = pd.to_datetime(banking['account_opened'],
+                                           # Infer datetime format
+                                           infer_datetime_format = True,
+                                           # Return missing value for error
+                                           errors = 'coerce')
+
+# Get year of account opened
+banking['acct_year'] = banking['account_opened'].dt.strftime('%Y')
+
+# Print acct_year
+print(banking['acct_year'])
+```
+```
+0          2018-03-05
+1            21-01-18
+2    January 26, 2018
+3            21-14-17
+4            05-06-17
+Name: account_opened, dtype: object
+0     2018
+1     2018
+2     2018
+3      NaN
+4     2017
+      ...
+92    2017
+93    2018
+94    2018
+95    2017
+96    2017
+Name: acct_year, Length: 97, dtype: object
+```
