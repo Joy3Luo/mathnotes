@@ -422,6 +422,15 @@ assert airlines_survey['survey_response'].str.len().min() > 40
 print(airlines_survey['survey_response'])
 ```
 ---
-##Advanced data problems
+## Advanced data problems
 ---
-###
+### Uniform currencies
+
+In this exercise and throughout this chapter, you will be working with a retail banking dataset stored in the banking DataFrame. The dataset contains data on the amount of money stored in accounts (acct_amount), their currency (acct_cur), amount invested (inv_amount), account opening date (account_opened), and last transaction date (last_transaction) that were consolidated from American and European branches.
+
+You are tasked with understanding the average account size and how investments vary by the size of account, however in order to produce this analysis accurately, you first need to unify the currency amount into dollars. The pandas package has been imported as pd, and the banking DataFrame is in your environment.
+
+**_Instructions:_**
+* Find the rows of acct_cur in banking that are equal to 'euro' and store them in the variable acct_eu.
+* Find all the rows of acct_amount in banking that fit the acct_eu condition, and convert them to USD by multiplying them with 1.1.
+* Find all the rows of acct_cur in banking that fit the acct_eu condition, set them to 'dollar'.
