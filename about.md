@@ -32,6 +32,8 @@ I always enjoy learning more, so I keep taking online courses. I have earned tho
 
 ![Introduction to Git](https://joy3luo.github.io/mathnotes/pics/certificates/Introduction_to_Git.png)
 
+![Introduction to Tableau](https://joy3luo.github.io/mathnotes/pics/certificates/Introduction_to_Tableau.png)
+
 ![Programming for Everybody](https://joy3luo.github.io/mathnotes/pics/certificates/Programming_for_Everybody.png)
 
 ![Python Data Structures](https://joy3luo.github.io/mathnotes/pics/certificates/Python_Data_Structures.png)
