@@ -498,3 +498,140 @@ Name: account_opened, dtype: object
 96    2017
 Name: acct_year, Length: 97, dtype: object
 ```
+---
+### How's our data integrity?
+
+New data has been merged into the banking DataFrame that contains details on how investments in the inv_amount column are allocated across four different funds A, B, C and D.
+
+Furthermore, the age and birthdays of customers are now stored in the age and birth_date columns respectively.
+
+You want to understand how customers of different age groups invest. However, you want to first make sure the data you're analyzing is correct. You will do so by cross field checking values of inv_amount and age against the amount invested in different funds and customers' birthdays. Both pandas and datetime have been imported as pd and dt respectively.
+
+**_Instructions:_**
+* Find the rows where the sum of all rows of the fund_columns in banking are equal to the inv_amount column. Store the values of banking with consistent inv_amount in consistent_inv, and those with inconsistent ones in inconsistent_inv.
+* Store today's date into today, and manually calculate customers' ages and store them in ages_manual. Find all rows of banking where the age column is equal to ages_manual and then filter banking into consistent_ages and inconsistent_ages.
+
+```py
+# Store fund columns to sum against
+fund_columns = ['fund_A', 'fund_B', 'fund_C', 'fund_D']
+
+# Find rows where fund_columns row sum == inv_amount
+inv_equ = banking[fund_columns].sum(axis=1) == banking['inv_amount']
+
+# Store consistent and inconsistent data
+consistent_inv = banking[inv_equ]
+inconsistent_inv = banking[~inv_equ]
+
+# Store consistent and inconsistent data
+print("Number of inconsistent investments: ", inconsistent_inv.shape[0])
+```
+```
+<script.py> output:
+    Number of inconsistent investments:  8
+```
+
+**_Instructions:_**
+* Find the rows where the sum of all rows of the fund_columns in banking are equal to the inv_amount column. Store the values of banking with consistent inv_amount in consistent_inv, and those with inconsistent ones in inconsistent_inv.
+
+```py
+# Store today's date and find ages
+today = dt.date.today()
+ages_manual = today.year - banking['birth_date'].dt.year
+
+# Find rows where age column == ages_manual
+age_equ = banking['age'] == ages_manual
+
+# Store consistent and inconsistent data
+consistent_ages = banking[age_equ]
+inconsistent_ages = banking[~age_equ]
+
+# Store consistent and inconsistent data
+print("Number of inconsistent ages: ", inconsistent_ages.shape[0])
+```
+```
+<script.py> output:
+    Number of inconsistent ages:  4
+```
+---
+### Missing investors
+
+Dealing with missing data is one of the most common tasks in data science. There are a variety of types of missingness, as well as a variety of types of solutions to missing data.
+
+You just received a new version of the banking DataFrame containing data on the amount held and invested for new and existing customers. However, there are rows with missing inv_amount values.
+
+You know for a fact that most customers below 25 do not have investment accounts yet, and suspect it could be driving the missingness. The pandas, missingno and matplotlib.pyplot packages have been imported as pd, msno and plt respectively. The banking DataFrame is in your environment.
+
+**_Instructions:_**
+* Print the number of missing values by column in the banking DataFrame.
+* Plot and show the missingness matrix of banking with the msno.matrix() function.
+
+```py
+# Print number of missing values in banking
+print(banking.isna().sum())
+
+# Visualize missingness matrix
+msno.matrix(banking)
+plt.show()
+```
+```
+cust_id              0
+age                  0
+acct_amount          0
+inv_amount          13
+account_opened       0
+last_transaction     0
+dtype: int64
+```
+
+**_Instructions:_**
+* Isolate the values of banking missing values of inv_amount into missing_investors and with non-missing inv_amount values into investors.
+* Sort the banking DataFrame by the age column and plot the missingness matrix of banking_sorted.
+
+```py
+# Isolate missing and non missing values of inv_amount
+missing_investors = banking[banking['inv_amount'].isna()]
+investors = banking[~banking['inv_amount'].isna()]
+
+# Sort banking by age and visualize
+banking_sorted = banking.sort_values(by='age')
+msno.matrix(banking_sorted)
+plt.show()
+```
+---
+### Follow the money
+
+In this exercise, you're working with another version of the banking DataFrame that contains missing values for both the cust_id column and the acct_amount column.
+
+You want to produce analysis on how many unique customers the bank has, the average amount held by customers and more. You know that rows with missing cust_id don't really help you, and that on average acct_amount is usually 5 times the amount of inv_amount.
+
+In this exercise, you will drop rows of banking with missing cust_ids, and impute missing values of acct_amount with some domain knowledge.
+
+**_Instructions:_**
+* Use .dropna() to drop missing values of the cust_id column in banking and store the results in banking_fullid.
+* Use inv_amount to compute the estimated account amounts for banking_fullid by setting the amounts equal to inv_amount * 5, and assign the results to acct_imp.
+* Impute the missing values of acct_amount in banking_fullid with the newly created acct_imp using .fillna().
+
+```py
+# Drop missing values of cust_id
+banking_fullid = banking.dropna(subset = ['cust_id'])
+
+# Compute estimated acct_amount
+acct_imp = banking_fullid['inv_amount']*5
+
+# Impute missing acct_amount with corresponding acct_imp
+banking_imputed = banking_fullid.fillna({'acct_amount':acct_imp})
+
+# Print number of missing values
+print(banking_imputed.isna().sum())
+```
+```
+<script.py> output:
+    cust_id             0
+    acct_amount         0
+    inv_amount          0
+    account_opened      0
+    last_transaction    0
+    dtype: int64
+```
+---
+## Record linkage
