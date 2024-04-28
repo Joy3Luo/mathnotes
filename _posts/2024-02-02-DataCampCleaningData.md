@@ -526,8 +526,7 @@ inconsistent_inv = banking[~inv_equ]
 print("Number of inconsistent investments: ", inconsistent_inv.shape[0])
 ```
 ```
-<script.py> output:
-    Number of inconsistent investments:  8
+Number of inconsistent investments:  8
 ```
 
 **_Instructions:_**
@@ -549,8 +548,7 @@ inconsistent_ages = banking[~age_equ]
 print("Number of inconsistent ages: ", inconsistent_ages.shape[0])
 ```
 ```
-<script.py> output:
-    Number of inconsistent ages:  4
+Number of inconsistent ages:  4
 ```
 ---
 ### Missing investors
@@ -625,13 +623,139 @@ banking_imputed = banking_fullid.fillna({'acct_amount':acct_imp})
 print(banking_imputed.isna().sum())
 ```
 ```
-<script.py> output:
-    cust_id             0
-    acct_amount         0
-    inv_amount          0
-    account_opened      0
-    last_transaction    0
-    dtype: int64
+cust_id             0
+acct_amount         0
+inv_amount          0
+account_opened      0
+last_transaction    0
 ```
 ---
 ## Record linkage
+---
+### The cutoff point
+
+In this exercise, and throughout this chapter, you'll be working with the restaurants DataFrame which has data on various restaurants. Your ultimate goal is to create a restaurant recommendation engine, but you need to first clean your data.
+
+This version of restaurants has been collected from many sources, where the cuisine_type column is riddled with typos, and should contain only italian, american and asian cuisine types. There are so many unique categories that remapping them manually isn't scalable, and it's best to use string similarity instead.
+
+Before doing so, you want to establish the cutoff point for the similarity score using the thefuzz's process.extract() function by finding the similarity score of the most distant typo of each category.
+
+**_Instructions:_**
+* Import process from thefuzz.
+* Store the unique cuisine_types into unique_types.
+* Calculate the similarity of 'asian', 'american', and 'italian' to all possible cuisine_types using process.extract(), while returning all possible matches.
+
+```py
+# Import process from thefuzz
+from thefuzz import process
+
+# Store the unique values of cuisine_type in unique_types
+unique_types = restaurants['cuisine_type'].unique()
+
+# Calculate similarity of 'asian' to all values of unique_types
+print(process.extract('asian', unique_types, limit = len(unique_types)))
+
+# Calculate similarity of 'american' to all values of unique_types
+print(process.extract('american', unique_types, limit = len(unique_types)))
+
+# Calculate similarity of 'italian' to all values of unique_types
+print(process.extract('italian', unique_types, limit = len(unique_types)))
+```
+```
+[('asian', 100), ('asiane', 91), ('asiann', 91), ('asiian', 91), ('asiaan', 91), ('asianne', 83), ('asiat', 80), ('italiann', 72), ('italiano', 72), ('italianne', 72), ('italian', 67), ('amurican', 62), ('american', 62), ('italiaan', 62), ('italiian', 62), ('itallian', 62), ('americann', 57), ('americano', 57), ('ameerican', 57), ('aamerican', 57), ('ameriican', 57), ('amerrican', 57), ('ammericann', 54), ('ameerrican', 54), ('ammereican', 54), ('america', 50), ('merican', 50), ('murican', 50), ('italien', 50), ('americen', 46), ('americin', 46), ('amerycan', 46), ('itali', 40)]
+[('american', 100), ('americann', 94), ('americano', 94), ('ameerican', 94), ('aamerican', 94), ('ameriican', 94), ('amerrican', 94), ('america', 93), ('merican', 93), ('ammericann', 89), ('ameerrican', 89), ('ammereican', 89), ('amurican', 88), ('americen', 88), ('americin', 88), ('amerycan', 88), ('murican', 80), ('asian', 62), ('asiane', 57), ('asiann', 57), ('asiian', 57), ('asiaan', 57), ('italian', 53), ('asianne', 53), ('italiann', 50), ('italiano', 50), ('italiaan', 50), ('italiian', 50), ('itallian', 50), ('italianne', 47), ('asiat', 46), ('itali', 40), ('italien', 40)]
+[('italian', 100), ('italiann', 93), ('italiano', 93), ('italiaan', 93), ('italiian', 93), ('itallian', 93), ('italianne', 88), ('italien', 86), ('itali', 83), ('asian', 67), ('asiane', 62), ('asiann', 62), ('asiian', 62), ('asiaan', 62), ('asianne', 57), ('amurican', 53), ('american', 53), ('americann', 50), ('asiat', 50), ('americano', 50), ('ameerican', 50), ('aamerican', 50), ('ameriican', 50), ('amerrican', 50), ('ammericann', 47), ('ameerrican', 47), ('ammereican', 47), ('america', 43), ('merican', 43), ('murican', 43), ('americen', 40), ('americin', 40), ('amerycan', 40)]
+```
+---
+### Remapping categories II
+
+In the last exercise, you determined that the distance cutoff point for remapping typos of 'american', 'asian', and 'italian' cuisine types stored in the cuisine_type column should be 80.
+
+In this exercise, you're going to put it all together by finding matches with similarity scores equal to or higher than 80 by using fuzywuzzy.process's extract() function, for each correct cuisine type, and replacing these matches with it. Remember, when comparing a string with an array of strings using process.extract(), the output is a list of tuples where each is formatted like:
+```
+(closest match, similarity score, index of match)
+```
+The restaurants DataFrame is in your environment, and you have access to a categories list containing the correct cuisine types ('italian', 'asian', and 'american').
+
+**_Instructions:_**
+* Return all of the unique values in the cuisine_type column of restaurants.
+* As a first step, create a list of all possible matches, comparing 'italian' with the restaurant types listed in the cuisine_type column.
+
+```py
+# Inspect the unique values of the cuisine_type column
+print(restaurants['cuisine_type'].unique())
+
+# Create a list of matches, comparing 'italian' with the cuisine_type column
+matches = process.extract('italian', restaurants['cuisine_type'], limit = len(restaurants.cuisine_type))
+
+# Inspect the first 5 matches
+print(matches[0:5])
+```
+```
+
+[('italian', 100, 11), ('italian', 100, 25), ('italian', 100, 41), ('italian', 100, 47), ('italian', 100, 49)]
+```
+
+**_Instructions:_**
+* Within the for loop, use an if statement to check whether the similarity score in each match is greater than or equal to 80.
+* If it is, use .loc to select rows where cuisine_type in restaurants is equal to the current match (which is the first element of match), and reassign them to be 'italian'.
+
+```py
+# Create a list of matches, comparing 'italian' with the cuisine_type column
+matches = process.extract('italian', restaurants['cuisine_type'], limit=len(restaurants.cuisine_type))
+
+# Iterate through the list of matches to italian
+for match in matches:
+  # Check whether the similarity score is greater than or equal to 80
+  if match[1] >= 80:
+    # Select all rows where the cuisine_type is spelled this way, and set them to the correct cuisine
+    restaurants.loc[restaurants['cuisine_type'] == match[0]] = 'italian'
+```
+
+**_Instructions:_**
+* Using the variable cuisine to iterate through categories, embed your code from the previous step in an outer for loop.
+* Inspect the final result. This has been done for you.
+
+```py
+# Iterate through categories
+for cuisine in categories:  
+  # Create a list of matches, comparing cuisine with the cuisine_type column
+  matches = process.extract(cuisine, restaurants['cuisine_type'], limit=len(restaurants.cuisine_type))
+
+  # Iterate through the list of matches
+  for match in matches:
+     # Check whether the similarity score is greater than or equal to 80
+    if match[1] >= 80:
+      # If it is, select all rows where the cuisine_type is spelled this way, and set them to the correct cuisine
+      restaurants.loc[restaurants['cuisine_type'] == match[0]] = cuisine
+
+# Inspect the final result
+print(restaurants['cuisine_type'].unique())
+```
+```
+['american' 'asian' 'italian']
+```
+---
+### Pairs of restaurants
+
+In the last lesson, you cleaned the restaurants dataset to make it ready for building a restaurants recommendation engine. You have a new DataFrame named restaurants_new with new restaurants to train your model on, that's been scraped from a new data source.
+
+You've already cleaned the cuisine_type and city columns using the techniques learned throughout the course. However you saw duplicates with typos in restaurants names that require record linkage instead of joins with restaurants.
+
+In this exercise, you will perform the first step in record linkage and generate possible pairs of rows between restaurants and restaurants_new. Both DataFrames, pandas and recordlinkage are in your environment.
+
+**_Instructions:_**
+* Instantiate an indexing object by using the Index() function from recordlinkage.
+* Block your pairing on cuisine_type by using indexer's' .block() method.
+* Generate pairs by indexing restaurants and restaurants_new in that order.
+
+```py
+# Create an indexer and object and find possible pairs
+indexer = recordlinkage.Index()
+
+# Block pairing on cuisine_type
+indexer.block('cuisine_type')
+
+# Generate pairs
+pairs = indexer.index(restaurants, restaurants_new)
+```
