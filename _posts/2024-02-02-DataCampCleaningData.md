@@ -37,6 +37,8 @@ It's commonly said that data scientists spend 80% of their time cleaning and man
 
 Data cleaning is an essential task in data science. Without properly cleaned data, the results of any data analysis or machine learning model could be inaccurate. In this course, you will learn how to identify, diagnose, and treat a variety of data cleaning problems in Python, ranging from simple to advanced. You will deal with improper data types, check that your data is in the correct range, handle missing data, perform record linkage, and more!
 
+![Cleaning Data in Python](https://joy3luo.github.io/mathnotes/pics/certificates/Cleaning_Data_in_Python.png)
+
 ---
 ## Common data problems
 ---
@@ -758,4 +760,104 @@ indexer.block('cuisine_type')
 
 # Generate pairs
 pairs = indexer.index(restaurants, restaurants_new)
+```
+---
+### Similar restaurants
+
+In the last exercise, you generated pairs between restaurants and restaurants_new in an effort to cleanly merge both DataFrames using record linkage.
+
+When performing record linkage, there are different types of matching you can perform between different columns of your DataFrames, including exact matches, string similarities, and more.
+
+Now that your pairs have been generated and stored in pairs, you will find exact matches in the city and cuisine_type columns between each pair, and similar strings for each pair in the rest_name column. Both DataFrames, pandas and recordlinkage are in your environment.
+
+**_Instructions:_**
+* Instantiate a comparison object using the recordlinkage.Compare() function.
+* Use the appropriate comp_cl method to find exact matches between the city and cuisine_type columns of both DataFrames.
+* Use the appropriate comp_cl method to find similar strings with a 0.8 similarity threshold in the rest_name column of both DataFrames.
+* Compute the comparison of the pairs by using the .compute() method of comp_cl.
+
+```py
+# Create a comparison object
+comp_cl = recordlinkage.Compare()
+
+# Find exact matches on city, cuisine_types
+comp_cl.exact('city', 'city', label='city')
+comp_cl.exact('cuisine_type', 'cuisine_type', label='cuisine_type')
+
+# Find similar matches of rest_name
+comp_cl.string('rest_name', 'rest_name', label='name', threshold = 0.8)
+
+# Get potential matches and print
+potential_matches = comp_cl.compute(pairs, restaurants, restaurants_new)
+print(potential_matches)
+```
+```
+        city  cuisine_type  name
+0   0      0             1   0.0
+    1      0             1   0.0
+    7      0             1   0.0
+    12     0             1   0.0
+    13     0             1   0.0
+...      ...           ...   ...
+40  18     0             1   0.0
+281 18     0             1   0.0
+288 18     0             1   0.0
+302 18     0             1   0.0
+308 18     0             1   0.0
+
+[3631 rows x 3 columns]
+```
+
+**_Instructions:_**
+* Print out potential_matches, the columns are the columns being compared, with values being 1 for a match, and 0 for not a match for each pair of rows in your DataFrames. To find potential matches, you need to find rows with more than matching value in a column. You can find them with
+```
+matches = potential_matches[potential_matches.sum(axis = 1) >= n]
+```
+Where n is the minimum number of columns you want matching to ensure a proper duplicate find, what do you think should the value of n be?
+
+```
+3 because I need to have matches in all my columns.
+```
+---
+### Linking them together!
+
+In the last lesson, you've finished the bulk of the work on your effort to link restaurants and restaurants_new. You've generated the different pairs of potentially matching rows, searched for exact matches between the cuisine_type and city columns, but compared for similar strings in the rest_name column. You stored the DataFrame containing the scores in potential_matches.
+
+Now it's finally time to link both DataFrames. You will do so by first extracting all row indices of restaurants_new that are matching across the columns mentioned above from potential_matches. Then you will subset restaurants_new on these indices, then append the non-duplicate values to restaurants. All DataFrames are in your environment, alongside pandas imported as pd.
+
+**_Instructions:_**
+* Isolate instances of potential_matches where the row sum is above or equal to 3 by using the .sum() method.
+* Extract the second column index from matches, which represents row indices of matching record from restaurants_new by using the .get_level_values() method.
+* Subset restaurants_new for rows that are not in matching_indices.
+* Append non_dup to restaurants.
+
+```py
+# Isolate potential matches with row sum >=3
+matches = potential_matches[potential_matches.sum(axis = 1) >= 3]
+
+# Get values of second column index of matches
+matching_indices = matches.index.get_level_values(1)
+
+# Subset restaurants_new based on non-duplicate values
+non_dup = restaurants_new[~restaurants_new.index.isin(matching_indices)]
+
+# Append non_dup to restaurants
+full_restaurants = restaurants.append(non_dup)
+print(full_restaurants)
+```
+```
+                    rest_name                  rest_addr               city       phone cuisine_type
+0   arnie morton's of chicago   435 s. la cienega blv .         los angeles  3102461501     american
+1          art's delicatessen       12224 ventura blvd.         studio city  8187621221     american
+2                   campanile       624 s. la brea ave.         los angeles  2139381447     american
+3                       fenix    8358 sunset blvd. west           hollywood  2138486677     american
+4          grill on the alley           9560 dayton way         los angeles  3102760615     american
+..                        ...                        ...                ...         ...          ...
+76                        don        1136 westwood blvd.           westwood  3102091422      italian
+77                      feast        1949 westwood blvd.            west la  3104750400      chinese
+78                   mulberry        17040 ventura blvd.             encino  8189068881        pizza
+80                    jiraffe      502 santa monica blvd       santa monica  3109176671  californian
+81                   martha's  22nd street grill 25 22nd  st. hermosa beach  3103767786     american
+
+[396 rows x 5 columns]
 ```
