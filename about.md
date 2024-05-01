@@ -38,6 +38,8 @@ I always enjoy learning more, so I keep taking online courses. I have earned tho
 
 ![Introduction to Power BI](https://joy3luo.github.io/mathnotes/pics/certificates/Introduction_to_Power_BI.png)
 
+![Introduction to Data Visualization with Matplotlib](https://joy3luo.github.io/mathnotes/pics/certificates/Introduction_to_Data_Visualization_with_Matplotlib.png)
+
 ![Programming for Everybody](https://joy3luo.github.io/mathnotes/pics/certificates/Programming_for_Everybody.png)
 
 ![Python Data Structures](https://joy3luo.github.io/mathnotes/pics/certificates/Python_Data_Structures.png)
