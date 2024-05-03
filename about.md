@@ -67,6 +67,10 @@ I always enjoy learning more, so I keep taking online courses. I have earned tho
 ### Introduction to Data Visualization with Matplotlib
 ![Introduction to Data Visualization with Matplotlib](https://joy3luo.github.io/mathnotes/pics/certificates/Introduction_to_Data_Visualization_with_Matplotlib.png)
 
+## Cloud Computing
+### Introduction to Azure
+![Introduction to Azure](https://joy3luo.github.io/mathnotes/pics/certificates/Introduction_to_Azure.png)
+
 ## Programming
 ### Programming for Everybody
 ![Programming for Everybody](https://joy3luo.github.io/mathnotes/pics/certificates/Programming_for_Everybody.png)
