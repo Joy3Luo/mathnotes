@@ -36,6 +36,7 @@ As a data scientist, you will need to clean data, wrangle and munge it, visualiz
 
 ![Introduction to Importing Data in Python](https://joy3luo.github.io/mathnotes/pics/certificates/Importing_Data.png)
 
+![Intermediate Importing Data in Python](https://joy3luo.github.io/mathnotes/pics/certificates/Intermediate_Importing_Data in_Python.png)
 
 ## Introduction and flat files
 ---
