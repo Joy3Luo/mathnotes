@@ -46,7 +46,7 @@ I always enjoy learning more, so I keep taking online courses. I have earned tho
 ![Introduction to Importing Data in Python](https://joy3luo.github.io/mathnotes/pics/certificates/Importing_Data.png)
 
 ### Intermediate Importing Data in Python
-![Intermediate Importing Data in Python](https://joy3luo.github.io/mathnotes/pics/certificates/Intermediate_Importing_Data in_Python.png)
+![Intermediate Importing Data in Python](https://joy3luo.github.io/mathnotes/pics/certificates/Intermediate_Importing_Data_in_Python.png)
 
 ### Cleaning Data in Python
 ![Cleaning Data in Python](https://joy3luo.github.io/mathnotes/pics/certificates/Cleaning_Data_in_Python.png)
