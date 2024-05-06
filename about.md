@@ -31,7 +31,8 @@ I always enjoy learning more, so I keep taking online courses. I have earned tho
 ### Python Data Structures
 ![Python Data Structures](https://joy3luo.github.io/mathnotes/pics/certificates/Python_Data_Structures.png)
 
-
+### Exploratory Data Analysis in Python
+![Exploratory Data Analysis in Python](https://joy3luo.github.io/mathnotes/pics/certificates/Exploratory_Data_Analysis_in_Python.png)
 
 ### Python Data Science Toolbox
 ![Python Data Science Toolbox](https://joy3luo.github.io/mathnotes/pics/certificates/Data_Toolbox.png)
