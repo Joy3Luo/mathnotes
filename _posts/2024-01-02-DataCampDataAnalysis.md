@@ -30,6 +30,8 @@ toc:  true
       }});
   </script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML-full"></script>  
 
+![Exploratory Data Analysis in Python](https://joy3luo.github.io/mathnotes/pics/certificates/Exploratory_Data_Analysis_in_Python.png)
+
 **Course Description**
 
 So you’ve got some interesting data - where do you begin your analysis? This course will cover the process of exploring and analyzing data, from understanding what’s included in a dataset to incorporating exploration findings into a data science workflow.
@@ -902,3 +904,124 @@ Machine Learning  140779.492  100794.237  78812.586
 Managerial        190551.449  150713.628  31484.700
 Other              92873.911   89750.579  69871.248
 ```
+---
+### Extracting features for correlation
+
+In this exercise, you'll work with a version of the salaries dataset containing a new column called "date_of_response".
+
+The dataset has been read in as a pandas DataFrame, with "date_of_response" as a datetime data type.
+
+Your task is to extract datetime attributes from this column and then create a heat map to visualize the correlation coefficients between variables.
+
+Seaborn has been imported for you as sns, pandas as pd, and matplotlib.pyplot as plt.
+
+**_Instructions:_**
+* Extract the month from "date_of_response", storing it as a column called "month".
+* Create the "weekday" column, containing the weekday that the participants completed the survey.
+* Plot a heat map, including the Pearson correlation coefficient scores.
+
+```py
+# Get the month of the response
+salaries["month"] = salaries["date_of_response"].dt.month
+
+# Extract the weekday of the response
+salaries["weekday"] = salaries["date_of_response"].dt.weekday
+
+# Create a heatmap
+sns.heatmap(salaries.corr(), annot=True)
+plt.show()
+```
+---
+### Calculating salary percentiles
+
+In the video, you saw that the conversion of numeric data into categories sometimes makes it easier to identify patterns.
+
+Your task is to convert the "Salary_USD" column into categories based on its percentiles. First, you need to find the percentiles and store them as variables.
+
+**_Instructions:_**
+* Find the 25th percentile of "Salary_USD".
+* Store the median of "Salary_USD" as salaries_median.
+* Get the 75th percentile of salaries.
+
+```py
+# Find the 25th percentile
+twenty_fifth = salaries["Salary_USD"].quantile(0.25)
+
+# Save the median
+salaries_median = salaries["Salary_USD"].median()
+
+# Gather the 75th percentile
+seventy_fifth = salaries["Salary_USD"].quantile(0.75)
+print(twenty_fifth, salaries_median, seventy_fifth)
+```
+---
+### Categorizing salaries
+
+Now it's time to make a new category! You'll use the variables twenty_fifth, salaries_median, and seventy_fifth, that you created in the previous exercise, to split salaries into different labels.
+
+The result will be a new column called "salary_level", which you'll incorporate into a visualization to analyze survey respondents' salary and at companies of different sizes.
+
+**_Instructions:_**
+* Create salary_labels, a list containing "entry", "mid", "senior", and "exec".
+* Finish salary_ranges, adding the 25th percentile, median, 75th percentile, and largest value from "Salary_USD".
+* Split "Salary_USD" based on the labels and ranges you've created.
+* Use sns.countplot() to visualize the count of "Company_Size", factoring salary level labels.
+
+```py
+# Create salary labels
+salary_labels = ["entry", "mid", "senior", "exec"]
+
+# Create the salary ranges list
+salary_ranges = [0, twenty_fifth, salaries_median, seventy_fifth, salaries["Salary_USD"].max()]
+
+# Create salary_level
+salaries["salary_level"] = pd.cut(salaries["Salary_USD"],
+                                  bins=salary_ranges,
+                                  labels=salary_labels)
+
+# Plot the count of salary levels at companies of different sizes
+sns.countplot(data=salaries, x="Company_Size", hue="salary_level")
+plt.show()
+```
+---
+### Comparing salaries
+
+Exploratory data analysis is a crucial step in generating hypotheses!
+
+You've had an idea you'd like to explore—do data professionals get paid more in the USA than they do in Great Britain?
+
+You'll need to subset the data by "Employee_Location" and produce a plot displaying the average salary between the two groups.
+
+**_Instructions:_**
+* Filter salaries where "Employee_Location" is "US" or "GB", saving as usa_and_gb.
+* Use usa_and_gb to create a barplot visualizing "Salary_USD" against "Employee_Location".
+
+```py
+# Filter for employees in the US or GB
+usa_and_gb = salaries[salaries["Employee_Location"].isin(["US", "GB"])]
+
+# Create a barplot of salaries by location
+sns.barplot(data=usa_and_gb, x="Employee_Location", y="Salary_USD")
+plt.show()
+```
+---
+### Choosing a hypothesis
+You've seen how visualizations can be used to generate hypotheses, making them a crucial part of exploratory data analysis!
+
+In this exercise, you'll generate a bar plot to inspect how salaries differ based on company size and employment status. For reference, there are four values:
+
+Value	Meaning
+CT	Contractor
+FL	Freelance
+PT	Part-time
+FT	Full-time
+
+**_Instructions:_**
+* Produce a barplot comparing "Salary_USD" by "Company_Size", factoring "Employment_Status".
+
+```py
+# Create a bar plot of salary versus company size, factoring in employment status
+sns.barplot(data=salaries, x="Company_Size", y="Salary_USD", hue="Employment_Status")
+plt.show()
+```
+---
